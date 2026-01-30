@@ -43,6 +43,10 @@ public static class PlayerStats
     {
         get => ammo;
     }
+
+    public static float HealBuffer = 2f;
+
+    public static float HealsPerSecond = 10f;
     #endregion
 
     #region Functions
