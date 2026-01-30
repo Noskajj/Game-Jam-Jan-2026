@@ -28,6 +28,10 @@ public class PlayerMovement : MonoBehaviour
 
     public bool is_grounded;            //Flag for if on ground
 
+    //TODO: Make surface share this instead of hard coding
+    public float groundFriction = 20f;
+
+
 
     //PREALLOCATING MEMORY
     private Rigidbody _rb;
@@ -49,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
         _rb.mass = mass;
 
-        SetVelocity(new Vector3(0, 5, 0));
+        SetVelocity(new Vector3(-4, 5, 0));
 
     }
 
@@ -70,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
             //TODO: See if this is needed
             //Ensures velocity doesnt build up when on ground
             if (velocity.y < 0f) velocity.y = 0f;
+            Friction(_dt);
         }
 
 
@@ -81,6 +86,22 @@ public class PlayerMovement : MonoBehaviour
 
 
     //HELPERS:__________________________
+
+    private void Friction(float _dt)
+    {
+        Vector3 horzVel = new Vector3(velocity.x, 0f, velocity.z);
+        //This takes the current Velocity vector, and changes the values to approach 0,0,0, 
+        //at the increment of the time passed
+        horzVel = Vector3.MoveTowards(
+            horzVel,
+            Vector3.zero,
+            groundFriction * _dt
+        );
+
+        velocity.x = horzVel.x;
+        velocity.y = horzVel.y;
+
+    }
 
     public void SetVelocity(Vector3 newVelocity)
     {
