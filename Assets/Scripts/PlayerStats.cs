@@ -15,7 +15,7 @@ public static class PlayerStats
         get => speed;
     }
 
-    private static int maxHealth = 100;
+    private static int maxHealth = 75;
     public static int MaxHealth
     {
         get => maxHealth;
@@ -26,7 +26,7 @@ public static class PlayerStats
         }
     }
 
-    private static int health = 100;
+    private static int health = 75;
     public static int Health
     { 
         get => health;
@@ -60,13 +60,24 @@ public static class PlayerStats
         healthUpdated?.Invoke();
     }
 
-    public static void RemoveHealth(int healthToRemove)
+    /// <summary>
+    /// Removes health from the player
+    /// </summary>
+    /// <param name="healthToRemove"></param>
+    /// <returns>True = dead, False = alive</returns>
+    public static bool RemoveHealth(int healthToRemove)
     {
         if (health <= 0)
-            return;
+            return true;
 
         health = Math.Max(0, health - healthToRemove);
         healthUpdated?.Invoke();
+
+        if (health <= 0)
+            return true;
+       
+
+        return false;
     }
 
     public static bool CanPurchase(int purchaseCost)
