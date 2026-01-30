@@ -36,7 +36,8 @@ public class MonsterLogic : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (!isRangedAttacking && distance > stopDistance)
         {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, monsterSpeed * Time.deltaTime);
+            Vector3 playerPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, playerPos, monsterSpeed * Time.deltaTime);
         }
 
         // range attack
