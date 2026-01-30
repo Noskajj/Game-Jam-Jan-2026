@@ -21,8 +21,19 @@ public class PlayerManager : MonoBehaviour
 
     private void TestDamage(InputAction.CallbackContext context)
     {
-        HasTakenDamage();
+        HasTakenDamage(25);
     }
+
+    #region ProjectileDetection
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Projectile"))
+        {
+            HasTakenDamage(10);
+            Destroy(other.gameObject);
+        }
+    }
+    #endregion
 
     #region Attacking
 
@@ -32,10 +43,9 @@ public class PlayerManager : MonoBehaviour
     private Coroutine HealingStageCoroutine;
 
 
-    public void HasTakenDamage()
+    public void HasTakenDamage(int damage)
     {
-        //TODO: Range does less damage than melee
-        if(PlayerStats.RemoveHealth(25))
+        if(PlayerStats.RemoveHealth(damage))
         {
             //TODO: Player is dead, run dead code
             return;
