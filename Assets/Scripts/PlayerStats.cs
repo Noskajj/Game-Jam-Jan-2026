@@ -65,6 +65,22 @@ public static class PlayerStats
 
     public static int meleeDamage = 25;
     public static int gunDamage = 25;
+
+    private static int maxGunAmmo = 6;
+    public static int MaxGunAmmo
+    {
+        get => maxGunAmmo;
+    }
+
+    private static int currentAmmo = 6;
+    public static int CurrentAmmo
+    {
+        get => currentAmmo;
+    }
+
+    public static float ReloadSpeed = 5f;
+
+    public static int TotalAmmo = 30;
     #endregion
 
     #region Functions
@@ -148,6 +164,21 @@ public static class PlayerStats
     public static void GainStamina(int amount)
     {
         currentStamina += amount;
+    }
+
+    public static void ShootGun()
+    {
+        currentAmmo--;
+    }
+
+    public static void ReloadGun()
+    {
+        //Need to do 
+        if (TotalAmmo <= 0 || currentAmmo >= 6)
+            return;
+
+        TotalAmmo--;
+        currentAmmo++;
     }
 
     #endregion

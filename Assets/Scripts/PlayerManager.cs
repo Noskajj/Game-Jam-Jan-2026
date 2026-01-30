@@ -34,26 +34,35 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region Attacking
+    private Coroutine ReloadCoroutine;
+
     private bool gunEquiped = false;
+    private bool bulletLoaded = true;
     [SerializeField]
     private GameObject bulletPrefab;
 
     private void EquipGun(InputAction.CallbackContext context)
     {
+        if(ReloadCoroutine != null)
+            StopCoroutine(ReloadCoroutine);
+
         gunEquiped = true;
     }
 
     private void UnequipGun(InputAction.CallbackContext context)
     {
         gunEquiped = false;
+
+        if (PlayerStats.CurrentAmmo < PlayerStats.MaxGunAmmo)
+            ReloadCoroutine = StartCoroutine(Reload());
     }
 
     private void Attack(InputAction.CallbackContext context)
     {
-        if(CanAttack())
+        if(!CanAttack())
             return;
 
-
+        
         if(!gunEquiped)
         {
             //Hit anything in range
@@ -61,6 +70,8 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {   //Fire projectile
+
+            //TODO: Projectile is slightly off center, fix
 
             //Get screen center 
             Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
@@ -74,6 +85,9 @@ public class PlayerManager : MonoBehaviour
             Quaternion bulletDir = Quaternion.LookRotation(direction, Vector3.up);
             //Create bullet
             Instantiate(bulletPrefab, transform.position, bulletDir);
+
+            Debug.Log("Gun should shoot now");
+            PlayerStats.ShootGun();
         }
     }
 
@@ -81,8 +95,35 @@ public class PlayerManager : MonoBehaviour
     {
         //Check for gun equiped and CD on gun or sword
         //Also need to check if dodging and other movement shit
+        if(gunEquiped)
+        {
+            if(PlayerStats.CurrentAmmo > 0 && bulletLoaded)
+            {
+                Debug.Log("can attack :)");
+                return true;
+            }
+        }
+        else
+        {
+            //Check melee CD
+        }
 
-        return false;
+        Debug.Log("cant attack :(");
+            return false;
+    }
+
+    private IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(1f);
+
+        while (PlayerStats.CurrentAmmo < PlayerStats.MaxGunAmmo)
+        {
+           PlayerStats.ReloadGun();
+
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        yield return null;
     }
     #endregion
 

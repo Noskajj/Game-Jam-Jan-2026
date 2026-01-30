@@ -26,6 +26,9 @@ public abstract class EnemyClass : MonoBehaviour
         {
             // call gun damage from player stats class
             TakeDamage(PlayerStats.gunDamage);
+
+            //destroys the bullet
+            Destroy(other.gameObject);
         }
     }
 
