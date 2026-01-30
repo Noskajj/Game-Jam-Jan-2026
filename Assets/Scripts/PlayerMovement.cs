@@ -4,31 +4,34 @@ using UnityEngine;
 
 */
 
-//CONSTANT
-const float BUFFER = 0.02f;
+
 
 
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class PlayerMovement : MonoBehaviour
 {
+    //CONSTANT
+    const float BUFFER = 0.02f;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [Header ("Gravity")]
     public float gravity = -20f;
 
-    [Header ("Velocity")]
-    public Vector3  velocity;
+    public Vector3 velocity;
+    
+    public float mass = 1f;
 
-    [Head ("Ground Check Buffer")]
-    float groundCheckBuffer = 0.02f;     //Buffer for ground checks
+    public float groundCheckBuffer = 0.02f;     //Buffer for ground checks
+    public LayerMask groundMask = ~0;
+
 
     public bool is_grounded;            //Flag for if on ground
 
 
     //PREALLOCATING MEMORY
-    private RigidBody _rb;
+    private Rigidbody _rb;
     private Collider _col;
-    private float _dt;
     float distance;
 
     public Vector3  Momentum => mass * velocity;
@@ -46,12 +49,16 @@ public class PlayerMovement : MonoBehaviour
 
         _rb.mass = mass;
 
+        SetVelocity(new Vector3(0, 5, 0));
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        is_grounded = _CheckGrounded();
+        float _dt = Time.deltaTime;
+
+        is_grounded = CheckGrounded();
 
         //Gravity 
         if (!is_grounded)
@@ -66,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-         _rb.MovePosition(_rb.position + velocity * _dt);
+         _rb.MovePosition(_rb.position + velocity * _dt);   // S = V*t
 
 
     }
@@ -83,15 +90,21 @@ public class PlayerMovement : MonoBehaviour
 
         velocity = newVelocity;
     } 
-
-    private bool _CheckGrounded()
+    
+    private bool CheckGrounded()
     {
         
         Bounds b = _col.bounds;
 
         Vector3 origin = new Vector3(b.center.x, b.min.y + BUFFER, b.center.z);
 
-        return Physics.Raycast(origin, Vector3.down ,groundCheckBuffer, 0, QueryTriggerInteraction.Ignore);
 
+        return Physics.Raycast(
+            origin,
+            Vector3.down,
+            (BUFFER + groundCheckBuffer),
+            groundMask,
+            QueryTriggerInteraction.Ignore
+        );
     }
 }
