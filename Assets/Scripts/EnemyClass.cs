@@ -36,6 +36,7 @@ public abstract class EnemyClass : MonoBehaviour
 
     public void Death()
     {
+        Debug.Log("HES FUCKIN DED");
         // gives player something (money)
         // destroy gameobject
     }

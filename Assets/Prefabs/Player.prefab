@@ -147,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1584336246048124724}
   - component: {fileID: 4678245618344423648}
+  - component: {fileID: 2585910292164354934}
   m_Layer: 0
   m_Name: AttackCollider
   m_TagString: Untagged
@@ -190,6 +191,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2585910292164354934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3596127364046007052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2bfb7453297b164ca30a5c47342dead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackDetection
 --- !u!1 &5589711126320005056
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5589711126320005056}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.33, z: 1.64}
   m_LocalScale: {x: 1.982, y: 1.982, z: 0.7}
   m_ConstrainProportionsScale: 0
