@@ -9,4 +9,6 @@ public class MaskManager : MonoBehaviour
     //Do masks give stat buffs? if so do here
 
     //Do masks give unique abilities? if so do here
+
+
 }
