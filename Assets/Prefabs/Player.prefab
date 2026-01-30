@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 5609845393681786721}
   - component: {fileID: 3149010781865605415}
   - component: {fileID: 3087961044076750496}
+  - component: {fileID: 1796698889684797238}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -304,6 +305,18 @@ MonoBehaviour:
     m_Bits: 4294967295
   is_grounded: 0
   groundFriction: 15
+--- !u!114 &1796698889684797238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5589711126320005056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365431ce3fd834e439bcf5e87a52c01c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
 --- !u!1 &5742351490832242385
 GameObject:
   m_ObjectHideFlags: 0
