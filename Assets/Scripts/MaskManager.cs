@@ -10,5 +10,5 @@ public class MaskManager : MonoBehaviour
 
     //Do masks give unique abilities? if so do here
 
-
+    
 }
