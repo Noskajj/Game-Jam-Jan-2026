@@ -384,6 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365431ce3fd834e439bcf5e87a52c01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  bulletPrefab: {fileID: 3363635851721483712, guid: c79302b1451c61242a0ea4a064286180, type: 3}
 --- !u!1 &5742351490832242385
 GameObject:
   m_ObjectHideFlags: 0

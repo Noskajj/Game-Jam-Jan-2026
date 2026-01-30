@@ -16,28 +16,40 @@ public abstract class EnemyClass : MonoBehaviour
     // monster health
     public float maxHealth = 100;
 
+    //Monster soul value
+    public int soulValue = 1;
+
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log($"We detecting {other.tag}");
         if (other.CompareTag("Bullet"))
         {
             // call gun damage from player stats class
-            //maxHealth -= PlayerStats.gunDamage;
+            TakeDamage(PlayerStats.gunDamage);
         }
     }
 
-    public void TakeDamage(int amount)
+    public bool TakeDamage(int amount)
     {
         maxHealth -= amount;
         if (maxHealth <= 0)
         {
             Death();
+            return true;
         }
+
+        return false;
     }
 
     public void Death()
     {
-        Debug.Log("HES FUCKIN DED");
-        // gives player something (money)
+        // give player something (souls)
+        PlayerStats.GainSouls(soulValue);
+
+        //TODO: Tell spawn manager that its dead
+
         // destroy gameobject
+        Destroy(gameObject);
+        
     }
 }

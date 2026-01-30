@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8393413348613020976}
   - component: {fileID: 812240002205743559}
   - component: {fileID: 4995081535802201458}
+  - component: {fileID: 5912684472472771040}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Enemy
@@ -52,6 +53,7 @@ MonoBehaviour:
   meleeCooldown: 5
   meleeAttacktime: 2
   maxHealth: 100
+  soulValue: 1
   rangeAttacktime: 4
   rangeAttackrange: 20
   rangeCooldown: 10
@@ -80,6 +82,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5912684472472771040
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3251419345698819373}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1001 &7066253353354410746
 PrefabInstance:
   m_ObjectHideFlags: 0

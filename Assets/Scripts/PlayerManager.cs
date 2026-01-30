@@ -35,6 +35,8 @@ public class PlayerManager : MonoBehaviour
 
     #region Attacking
     private bool gunEquiped = false;
+    [SerializeField]
+    private GameObject bulletPrefab;
 
     private void EquipGun(InputAction.CallbackContext context)
     {
@@ -58,8 +60,20 @@ public class PlayerManager : MonoBehaviour
             AttackDetection.Instance.Attack();
         }
         else
-        {
-            //Fire projectile
+        {   //Fire projectile
+
+            //Get screen center 
+            Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+
+            //Get mouse offset
+            Vector2 mouseOffset = Mouse.current.position.ReadValue() - screenCenter;
+
+            //Convert to normalized direction
+            Vector3 direction = new Vector3(mouseOffset.x, 0f, mouseOffset.y).normalized;
+            //Get bullet direction
+            Quaternion bulletDir = Quaternion.LookRotation(direction, Vector3.up);
+            //Create bullet
+            Instantiate(bulletPrefab, transform.position, bulletDir);
         }
     }
 
