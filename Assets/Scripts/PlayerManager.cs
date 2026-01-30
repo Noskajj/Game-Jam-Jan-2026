@@ -48,14 +48,27 @@ public class PlayerManager : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext context)
     {
+        if(CanAttack())
+            return;
+
+
         if(!gunEquiped)
         {
-
+            //Hit anything in range
+            AttackDetection.Instance.Attack();
         }
         else
         {
-
+            //Fire projectile
         }
+    }
+
+    private bool CanAttack()
+    {
+        //Check for gun equiped and CD on gun or sword
+        //Also need to check if dodging and other movement shit
+
+        return false;
     }
     #endregion
 
