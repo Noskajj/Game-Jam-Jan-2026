@@ -50,34 +50,31 @@ public class MonsterLogic : EnemyClass
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (!isRangedAttacking && distance > stopDistance)
         {
+            // find player position
             Vector3 playerPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+            // move towards player position
             transform.position = Vector3.MoveTowards(transform.position, playerPos, monsterSpeed * Time.deltaTime);
         }
 
         // range attack
-        rangeAttacktimer -= Time.deltaTime;
-        float distanceFromplayer = Vector3.Distance(transform.position, player.transform.position);
-        if (rangeAttacktimer <= 0 && distanceFromplayer >= 10)
+        if (!isRangedAttacking)
         {
-            isRangedAttacking = true;
-            Debug.Log("isRangedAttacking true");
-            if (isRangedAttacking)
+            rangeAttacktimer -= Time.deltaTime;
+            if (rangeAttacktimer <= 0 && distance >= 10)
             {
-                // range attack animation
-                rangeAttacktime -= Time.deltaTime;
-                Debug.Log("rangeAttacktime reduced");
-                if (rangeAttacktime <= 0)
-                {
-                    ShootProjectile();
-                    Debug.Log("Projectile Spawned");
-                }
-            }
-            else
-            {
-                rangeAttacktimer = rangeCooldown;
+                isRangedAttacking = true;
                 rangeAttacktime = 4;
+            }
+        }
+        else
+        {
+            rangeAttacktime -= Time.deltaTime;
+            if (rangeAttacktime <= 0)
+            {
+                ShootProjectile();
+                Debug.Log("Projectile Spawned");
+                rangeAttacktimer = rangeCooldown;
                 isRangedAttacking = false;
-                Debug.Log("rangeAttack Reset");
             }
         }
     }
