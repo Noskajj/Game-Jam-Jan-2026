@@ -11,12 +11,14 @@ public class PlayerManager : MonoBehaviour
 
     //TODO: Stamina bar thats the same as health system
     
-    private InputAction equipGun;
+    private InputAction equipGunAction, attackAction;
     private void Start()
     {
-        equipGun = InputSystem.actions.FindAction("EquipGun");
-        equipGun.started += EquipGun;
-        equipGun.canceled += UnequipGun;
+        equipGunAction = InputSystem.actions.FindAction("EquipGun");
+        attackAction = InputSystem.actions.FindAction("Attack");
+        equipGunAction.started += EquipGun;
+        equipGunAction.canceled += UnequipGun;
+        attackAction.performed += Attack;
        
     }
 
@@ -44,7 +46,7 @@ public class PlayerManager : MonoBehaviour
         gunEquiped = false;
     }
 
-    private void Attack()
+    private void Attack(InputAction.CallbackContext context)
     {
         if(!gunEquiped)
         {

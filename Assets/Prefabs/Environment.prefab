@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5096479758495890712}
   serializedVersion: 2
   m_LocalRotation: {x: -0.60876137, y: -0, z: -0, w: 0.7933534}
-  m_LocalPosition: {x: -0.09, y: 0.54, z: -1.2081901}
+  m_LocalPosition: {x: -3, y: 0.45, z: 0.07}
   m_LocalScale: {x: 0.1, y: 0.10000001, z: 0.10000001}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -211,6 +211,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5479859020320839941, guid: 0a29f45d986ac2b4c92419936f6bba60, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c516a47149b78064f99ffb2ee3647182, type: 2}
     - target: {fileID: 6799584619073179264, guid: 0a29f45d986ac2b4c92419936f6bba60, type: 3}
       propertyPath: m_Name
       value: Ground
