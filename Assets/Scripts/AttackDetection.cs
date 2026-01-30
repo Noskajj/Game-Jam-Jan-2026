@@ -41,7 +41,7 @@ public class AttackDetection : MonoBehaviour
     {
         foreach(var enemy in enemiesInRange)
         {
-
+            enemy.GetComponent<EnemyClass>().TakeDamage((int)PlayerStats.meleeDamage);
         }
 
     }

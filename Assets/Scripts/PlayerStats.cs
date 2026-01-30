@@ -62,6 +62,9 @@ public static class PlayerStats
 
     public static float StamBuffer = 1f;
     public static float StamRegenPerSecond = 10f;
+
+    public static float meleeDamage = 5f;
+    public static float gunDamage = 5f;
     #endregion
 
     #region Functions
