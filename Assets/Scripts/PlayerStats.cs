@@ -44,9 +44,24 @@ public static class PlayerStats
         get => ammo;
     }
 
+    private static int maxStamina = 100;
+    public static int MaxStamina
+    {
+        get => maxStamina;
+    }
+
+    private static int currentStamina = 100;
+    public static int CurrentStamina
+    {
+        get => currentStamina;
+    }
+
     public static float HealBuffer = 2f;
 
     public static float HealsPerSecond = 10f;
+
+    public static float StamBuffer = 1f;
+    public static float StamRegenPerSecond = 10f;
     #endregion
 
     #region Functions
@@ -110,6 +125,26 @@ public static class PlayerStats
     {
         ammo--;
         ammoUpdated?.Invoke();
+    }
+
+    public static bool HasEnoughStamina(int amount)
+    {
+        if(currentStamina >= amount)
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public static void UseStamina(int amount)
+    {
+        currentStamina -= amount;
+    }
+
+    public static void GainStamina(int amount)
+    {
+        currentStamina += amount;
     }
 
     #endregion

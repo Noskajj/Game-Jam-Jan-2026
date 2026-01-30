@@ -10,18 +10,14 @@ public class PlayerManager : MonoBehaviour
     //Call of duty esqe perks around the map, max 3 equipped, set locations(maybe randomized later)
 
     //TODO: Stamina bar thats the same as health system
-    [SerializeField]
-    private InputActionAsset inputActions;
-    private InputAction action;
+    
+    private InputAction equipGun;
     private void Start()
     {
-        action = inputActions.FindAction("Player/Attack");
-        action.performed += TestDamage;
-    }
-
-    private void TestDamage(InputAction.CallbackContext context)
-    {
-        HasTakenDamage(25);
+        equipGun = InputSystem.actions.FindAction("EquipGun");
+        equipGun.started += EquipGun;
+        equipGun.canceled += UnequipGun;
+       
     }
 
     #region ProjectileDetection
@@ -36,7 +32,29 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region Attacking
+    private bool gunEquiped = false;
 
+    private void EquipGun(InputAction.CallbackContext context)
+    {
+        gunEquiped = true;
+    }
+
+    private void UnequipGun(InputAction.CallbackContext context)
+    {
+        gunEquiped = false;
+    }
+
+    private void Attack()
+    {
+        if(!gunEquiped)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
     #endregion
 
     #region Damage/Healing
@@ -81,6 +99,48 @@ public class PlayerManager : MonoBehaviour
 
             currentHealTimer += healBuffer;
             yield return new WaitForSeconds(healBuffer);
+        }
+
+        yield return null;
+    }
+    #endregion
+
+    #region Stamina
+    private Coroutine StaminaRegenCoroutine;
+
+
+    public void HasUsedStamina(int amount)
+    {
+        if (StaminaRegenCoroutine != null)
+            StopCoroutine(StaminaRegenCoroutine);
+
+        StaminaRegenCoroutine = StartCoroutine(StaminaUsed());
+    }
+
+    private IEnumerator StaminaUsed()
+    {
+        //Start waiting
+        Debug.Log("We waiting for Stam cooldown");
+        yield return new WaitForSeconds(PlayerStats.StamBuffer);
+
+        //Start healing
+        StaminaRegenCoroutine = StartCoroutine(StaminaRegen());
+
+        yield return null;
+    }
+
+    private IEnumerator StaminaRegen()
+    {
+        float currentStamTimer = 0;
+        float stamBuffer = 1f / PlayerStats.StamRegenPerSecond;
+        while (PlayerStats.CurrentStamina < PlayerStats.MaxStamina)
+        {
+            Debug.Log($"We are at {PlayerStats.CurrentStamina} stam out of {PlayerStats.MaxStamina}. With {currentStamTimer} seconds elapsed");
+            PlayerStats.GainStamina(1);
+
+
+            currentStamTimer += stamBuffer;
+            yield return new WaitForSeconds(stamBuffer);
         }
 
         yield return null;
