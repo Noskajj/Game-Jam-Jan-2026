@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AcidProjectile : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     public float speed = 10f;
     public float lifeTime = 10f;
