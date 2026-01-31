@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum SigilType
@@ -11,6 +12,21 @@ public enum SigilType
 
 public class SigilManager : MonoBehaviour
 {
+    public static SigilManager Instance {  get; private set; }
+
+    private HashSet<SigilType> currentSigils = new HashSet<SigilType>();
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        Instance = this;
+
+    }
+
     private SigilType currentSigil;
 
     [SerializeField]
@@ -19,11 +35,12 @@ public class SigilManager : MonoBehaviour
     public bool CanPurchaseSigil(SigilType sigil)
     {
         currentSigil = sigil;
-        if(SigilCost() <= PlayerStats.Souls)
+        if(SigilCost() <= PlayerStats.Souls && !currentSigils.Contains(currentSigil))
         {
             return true;
         }
 
+        Debug.Log("Ya cant get this sigil chief");
         return false;
     }
 
@@ -44,5 +61,43 @@ public class SigilManager : MonoBehaviour
         }
 
         return 1000000;
+    }
+
+
+
+    public void PurchaseSigil(SigilType sigil)
+    {
+        Debug.Log("Yo yo yo we buyin sigils");
+        if(!currentSigils.Contains(sigil))
+        {
+            PlayerStats.SpendSouls(SigilCost());
+            currentSigils.Add(sigil);
+            ActivateSigil(sigil);
+
+        }
+    }
+
+    private void ActivateSigil(SigilType newSigil)
+    {
+        switch (currentSigil)
+        {
+            case SigilType.Blood:
+                PlayerStats.PactOfBlood();
+                break;
+            case SigilType.Service:
+                PlayerStats.PactOfService();
+                break;
+            case SigilType.Agility:
+                PlayerStats.PactOfAgility();
+                break;
+            case SigilType.Time:
+                MaskManager.Instance.PactOfTime();
+                break;
+            case SigilType.Binding:
+                //TODO: Idk how tf they expect me to do this
+                break;
+        }
+
+        Debug.Log("They do be activatin they sigils");
     }
 }

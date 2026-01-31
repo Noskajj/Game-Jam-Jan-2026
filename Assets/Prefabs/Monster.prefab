@@ -118,7 +118,7 @@ MonoBehaviour:
   monsterSpeed: 3
   stopDistance: 2
   maxHealth: 100
-  soulValue: 1
+  soulValue: 100
   meleeCooldown: 5
   meleeAttacktime: 2
   meleeTimer: 2
