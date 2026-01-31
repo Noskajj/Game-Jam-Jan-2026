@@ -114,7 +114,7 @@ public class PlayerManager : MonoBehaviour
         {
             if(PlayerStats.CurrentAmmo > 0 && !gunOnCD)
             {
-                Debug.Log("can attack :)");
+                Debug.Log("can bang bang attack :)");
                 return true;
             }
         }
@@ -123,6 +123,7 @@ public class PlayerManager : MonoBehaviour
             //Check melee CD
             if(!swordOnCD)
             {
+                Debug.Log("We can meelee");
                 return true;
             }
         }

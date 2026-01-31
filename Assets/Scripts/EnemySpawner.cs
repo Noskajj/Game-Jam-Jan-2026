@@ -65,7 +65,7 @@ public class EnemySpawner : MonoBehaviour
 
             waveEnemiesSpawned = 0;
 
-            Debug.Log($"We are starting wave number {waveNumber} that should spawn {totalWaveEnemies} enemies");
+            //Debug.Log($"We are starting wave number {waveNumber} that should spawn {totalWaveEnemies} enemies");
             yield return StartCoroutine(EnemySpawning());
 
             waveNumber++;
