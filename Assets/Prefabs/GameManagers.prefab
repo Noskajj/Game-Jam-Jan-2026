@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MaskManager
   allMasks: 3
   masksCollected: 1
+  magicProjectilePrefab: {fileID: 0}
+  mask3IsActive: 0
 --- !u!1 &2026286911686118886
 GameObject:
   m_ObjectHideFlags: 0
