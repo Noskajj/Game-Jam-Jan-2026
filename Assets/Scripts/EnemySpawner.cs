@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
         bool currentWave = true;
         while(currentWave)
         {
-            Debug.Log("Started spawn cycle");
+            //Debug.Log("Started spawn cycle");
 
             (int, int) coords = GetCoords();
 
@@ -47,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
 
             if (NavMesh.SamplePosition(worldPos, out hit, maxDist, NavMesh.AllAreas))
             {
-                Debug.Log("We at spawning stage");
+                //Debug.Log("We at spawning stage");
                 Vector3 spawnPos = hit.position;
                 spawnPos.y = 1;
                 GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity, transform);
@@ -61,12 +61,12 @@ public class EnemySpawner : MonoBehaviour
 
     private (int, int) GetCoords()
     {
-        Debug.Log("We getting coords");
+        //Debug.Log("We getting coords");
         int side = Random.Range(0, 4);
         int x = 0;
         int y = 0;
 
-        Debug.Log($"{side} side");
+        //Debug.Log($"{side} side");
 
         switch (side)
         {

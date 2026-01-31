@@ -13,6 +13,12 @@ public abstract class EnemyClass : MonoBehaviour
     public float meleeCooldown = 5;
     public float meleeAttacktime = 2;
 
+    // Melee attack
+    public bool playerInMeleeRange;
+    public bool isMeleeAttacking;
+    public float meleeTimer;
+    public int meleeDamage = 25;
+
     // monster health
     public float maxHealth = 100;
 
@@ -54,5 +60,55 @@ public abstract class EnemyClass : MonoBehaviour
         // destroy gameobject
         Destroy(gameObject);
         
+    }
+
+    public void MeleeCheck()
+    {
+        if (!playerInMeleeRange)
+            return;
+
+        if (!isMeleeAttacking)
+        {
+            isMeleeAttacking = true;
+            Debug.Log("Melee attacking");
+            meleeTimer = meleeAttacktime;
+        }
+
+        meleeTimer -= Time.deltaTime;
+
+        if (meleeTimer <= 0)
+        {
+            if (playerInMeleeRange)
+            {
+                // Player take damage
+                Debug.Log("Player took damage");
+                PlayerManager.Instance.HasTakenDamage(meleeDamage);
+            }
+
+            // Resets
+            isMeleeAttacking = false;
+            meleeTimer = meleeCooldown;
+            Debug.Log("Reset melee attack");
+        }
+    }
+    public void PlayerEnteredMeleeRange()
+    {
+        playerInMeleeRange = true;
+        Debug.Log("Player in melee range");
+    }
+
+    public void PlayerExitMeleeRange()
+    {
+        playerInMeleeRange = false;
+        Debug.Log("Player exit melee range");
+        // Cancel melee
+        isMeleeAttacking = false;
+    }
+
+    public void MeleeState()
+    {
+        // Don't trigger range if melee state or range is true
+        if (isMeleeAttacking || playerInMeleeRange)
+            return;
     }
 }

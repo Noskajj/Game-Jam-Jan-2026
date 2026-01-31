@@ -3,17 +3,17 @@ using UnityEngine;
 public class EnemyMelee : MonoBehaviour
 {
 
-    private MonsterLogic monsterLogic;
+    private EnemyClass enemyClass;
     private void Awake()
     {
-        monsterLogic = GetComponentInParent<MonsterLogic>();
+        enemyClass = GetComponentInParent<EnemyClass>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            monsterLogic.PlayerEnteredMeleeRange();
+            enemyClass.PlayerEnteredMeleeRange();
             Debug.Log("Melee hitbox colliding with player");
         }
     }
@@ -22,7 +22,7 @@ public class EnemyMelee : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            monsterLogic.PlayerExitMeleeRange();
+            enemyClass.PlayerExitMeleeRange();
         }
     }
 }
