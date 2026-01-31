@@ -51,6 +51,7 @@ public class PhysicsObjects : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log(velocity);
         float dt = Time.fixedDeltaTime;
 
         isGrounded = groundContacts > 0;
@@ -73,6 +74,7 @@ public class PhysicsObjects : MonoBehaviour
         }
         else
         {
+            Debug.Log("On ground");
             if (velocity.y < 0f) velocity.y = 0f;
 
             Friction(dt);

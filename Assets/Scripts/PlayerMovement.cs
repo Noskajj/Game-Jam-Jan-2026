@@ -210,6 +210,18 @@ public class PlayerMovement : MonoBehaviour
         velocity = newVelocity;
     }
 
+    public void Apply_Force(Vector3 force)
+    {
+        /*
+         When a force is applied the rigid body wakes up
+         */
+
+        Vector3 acc = force / mass;
+        velocity += acc;   //TODO: Make this a gradient
+
+    }
+
+
     private void OnCollisionStay(Collision collision)
     {
         // Bitwise check
