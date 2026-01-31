@@ -56,12 +56,20 @@ public abstract class EnemyClass : MonoBehaviour
         PlayerStats.GainSouls(soulValue);
 
         //TODO: Tell spawn manager that its dead
+        EnemySpawner.Instance.EnemyDeath();
 
         // destroy gameobject
         Destroy(gameObject);
         
     }
 
+    public void WaveModifiers(int wave)
+    {
+        maxHealth = 15f * Mathf.Log(wave + 1) + 75;
+        monsterSpeed *= 0.12f * Mathf.Log(wave + 1) + 1;
+
+    }
+    
     public void MeleeCheck()
     {
         if (!playerInMeleeRange)

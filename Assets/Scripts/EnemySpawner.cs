@@ -4,6 +4,9 @@ using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner Instance { get; private set; }
+
+
     [SerializeField]
     private GameObject enemyPrefab;
     [SerializeField]
@@ -13,17 +16,69 @@ public class EnemySpawner : MonoBehaviour
 
     private Coroutine spawnEnemyCoroutine;
 
+    #region WaveSection
+    private int waveNumber = 0;
+
+    private int totalWaveEnemies = 0;
+
+    private int waveEnemiesSpawned = 0;
+
+    private int maxEnemies = 50;
+
+    private int enemyCount = 0;
+
+    public void EnemyDeath()
+    {
+        enemyCount--;
+    }
+    #endregion
+
 
     private void Awake()
     {
-        StartCoroutine(SpawnEnemy());
+        if(Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        Instance = this;
+
+        StartCoroutine(WaveSpawning());
     }
 
-    private IEnumerator SpawnEnemy()
+    private IEnumerator WaveSpawning()
     {
-        bool currentWave = true;
-        while(currentWave)
+        while (true)
         {
+            if (enemyCount > 0)
+            {
+                yield return new WaitForSeconds(5f);
+
+                continue;
+            }
+
+            yield return new WaitForSeconds(2f);
+
+            //TODO: Change this for proper gameplay
+            totalWaveEnemies = (int)(0.25f * Mathf.Log(waveNumber + 1) * waveNumber + 2f * waveNumber + 10f);
+            //totalWaveEnemies = waveNumber + 1;
+
+            waveEnemiesSpawned = 0;
+
+            Debug.Log($"We are starting wave number {waveNumber} that should spawn {totalWaveEnemies} enemies");
+            yield return StartCoroutine(EnemySpawning());
+
+            waveNumber++;
+        }
+    }
+
+    private IEnumerator EnemySpawning()
+    {
+        bool waveActive = true;
+        while(waveActive)
+        {
+            yield return new WaitUntil(() => enemyCount < maxEnemies);
+
             //Debug.Log("Started spawn cycle");
 
             (int, int) coords = GetCoords();
@@ -36,7 +91,8 @@ public class EnemySpawner : MonoBehaviour
 
             if(!groundPlane.Raycast(ray, out float enter))
             {
-
+                yield return null;
+                continue;
             }
 
             Vector3 worldPos = ray.GetPoint(enter);
@@ -50,11 +106,19 @@ public class EnemySpawner : MonoBehaviour
                 //Debug.Log("We at spawning stage");
                 Vector3 spawnPos = hit.position;
                 spawnPos.y = 1;
-                GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity, transform);
+                GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation, transform);
                 newEnemy.GetComponent<EnemyClass>().player = player;
+
+                //Wave Logic 
+                enemyCount++;
+                waveEnemiesSpawned++;
+                newEnemy.GetComponent<EnemyClass>().WaveModifiers(waveNumber);
             }
 
             yield return new WaitForSeconds(enemyDelay);
+
+            if(waveEnemiesSpawned >= totalWaveEnemies)
+                waveActive = false;
         }
 
     }
