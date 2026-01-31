@@ -37,6 +37,11 @@ public class MaskManager : MonoBehaviour
     [SerializeField]
     private int allMasks, masksCollected;
 
+    public void MaskCollected()
+    {
+        masksCollected++;
+    }
+
     #region mask1
     private float mask1CD = 45f;
     private float mask1Duration = 5f;
@@ -126,7 +131,6 @@ public class MaskManager : MonoBehaviour
 
     private IEnumerator Mask3Activated()
     {
-        //TODO: Make enemies freeze
         mask3Activated?.Invoke();
         mask3IsActive = true;
 

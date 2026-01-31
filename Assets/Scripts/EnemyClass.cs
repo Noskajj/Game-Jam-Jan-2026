@@ -68,7 +68,7 @@ public abstract class EnemyClass : MonoBehaviour
         // give player something (souls)
         PlayerStats.GainSouls(soulValue);
 
-        //TODO: Tell spawn manager that its dead
+        //Tell spawn manager that its dead
         EnemySpawner.Instance.EnemyDeath();
 
         // destroy gameobject

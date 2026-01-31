@@ -173,7 +173,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(PlayerStats.RemoveHealth(damage))
         {
-            //TODO: Player is dead, run dead code
+            GameOver();
             return;
         }
 
@@ -210,6 +210,13 @@ public class PlayerManager : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    private void GameOver()
+    {
+        //TODO: display game over ui
+
+        //Time scale = 0
     }
     #endregion
 
