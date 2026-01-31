@@ -1,10 +1,14 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Sigil : MonoBehaviour
 {
     [SerializeField]
-    private SigilType sigilType = SigilType.Blood;
+    private SigilType sigilType;
+
+    [SerializeField]
+    private TextMeshPro popupText;
 
     //Some sort of detection
     private InputAction PurchaseSigil;
@@ -15,6 +19,11 @@ public class Sigil : MonoBehaviour
     {
         PurchaseSigil = InputSystem.actions.FindAction("Interact");
         PurchaseSigil.started += BuySigil;
+
+
+        popupText.text = $" 'E' \n" +
+            $"Pact of {sigilType} \n" +
+            $"Cost: {SigilManager.Instance.SigilCost(sigilType)}";
     }
 
     private void BuySigil(InputAction.CallbackContext context)
@@ -34,6 +43,7 @@ public class Sigil : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            popupText.enabled = true;
         }
     }
 
@@ -42,6 +52,7 @@ public class Sigil : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            popupText.enabled = false;
         }
     }
 }

@@ -109,7 +109,7 @@ public class EnemySpawner : MonoBehaviour
                 GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation, transform);
 
                 EnemyClass enemy = newEnemy.GetComponent<EnemyClass>();
-                enemy.player = player;
+                enemy.SetPlayer(player);
 
                 //Wave Logic 
                 enemyCount++;

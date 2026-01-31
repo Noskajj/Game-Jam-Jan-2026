@@ -15,13 +15,14 @@ public class MonsterLogic : MeleeClass
     public float projectileSpeed = 15;
  
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        if (!stunned || Vector3.Distance(transform.position, player.transform.position) >= 10f)
-        {
+        base.Update();
+
+        
             RangeCheck();
             MeleeCheck();
-        }
+        
     }
 
     private void ShootProjectile()

@@ -12,12 +12,10 @@ public class RangedCultistLogic : EnemyClass
     public float projectileSpeed = 25;
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        if (!stunned || Vector3.Distance(transform.position, player.transform.position) >= 10f)
-        {
-            RangeCheck();
-        }
+        base.Update();
+        RangeCheck();
     }
 
     private void ShootProjectile()
@@ -35,38 +33,37 @@ public class RangedCultistLogic : EnemyClass
         isRangedAttacking = false;
     }
 
+    protected override void StopDist()
+    {
+        agent.stoppingDistance = stopDistance;
+    }
+
     private void RangeCheck()
     {
-        // move towards player and stop at a set distance from the player
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (!isRangedAttacking && distance > stopDistance)
+        if (agent.remainingDistance <= agent.stoppingDistance)
         {
-            // find player position
-            Vector3 playerPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-            // move towards player position
-            transform.position = Vector3.MoveTowards(transform.position, playerPos, monsterSpeed * Time.deltaTime);
-        }
-
-        // range attack
-        if (!isRangedAttacking)
-        {
-            rangeAttacktimer -= Time.deltaTime;
-            if (rangeAttacktimer <= 0)
+            // range attack
+            if (!isRangedAttacking)
             {
-                isRangedAttacking = true;
-                rangeAttacktime = 2;
+                rangeAttacktimer -= Time.deltaTime;
+                if (rangeAttacktimer <= 0)
+                {
+                    isRangedAttacking = true;
+                    rangeAttacktime = 2;
+                }
+            }
+            else
+            {
+                rangeAttacktime -= Time.deltaTime;
+                if (rangeAttacktime <= 0)
+                {
+                    ShootProjectile();
+                    //Debug.Log("Projectile Spawned");
+                    rangeAttacktimer = rangeCooldown;
+                    isRangedAttacking = false;
+                }
             }
         }
-        else
-        {
-            rangeAttacktime -= Time.deltaTime;
-            if (rangeAttacktime <= 0)
-            {
-                ShootProjectile();
-                //Debug.Log("Projectile Spawned");
-                rangeAttacktimer = rangeCooldown;
-                isRangedAttacking = false;
-            }
-        }
+            
     }
 }

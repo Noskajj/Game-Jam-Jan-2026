@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMelee : MonoBehaviour
 {
-
+    
     private MeleeClass meleeClass;
     private void Awake()
     {

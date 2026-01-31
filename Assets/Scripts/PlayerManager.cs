@@ -256,7 +256,7 @@ public class PlayerManager : MonoBehaviour
         float stamBuffer = 1f / PlayerStats.StamRegenPerSecond;
         while (PlayerStats.CurrentStamina < PlayerStats.MaxStamina)
         {
-            Debug.Log($"We are at {PlayerStats.CurrentStamina} stam out of {PlayerStats.MaxStamina}. With {currentStamTimer} seconds elapsed");
+            //Debug.Log($"We are at {PlayerStats.CurrentStamina} stam out of {PlayerStats.MaxStamina}. With {currentStamTimer} seconds elapsed");
             PlayerStats.GainStamina(1);
 
 
