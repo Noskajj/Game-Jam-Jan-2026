@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask = ~0;
 
 
-    public bool is_grounded;            //Flag for if on ground
+    public bool isGrounded;            //Flag for if on ground
 
     //TODO: Make surface share this instead of hard coding
     public float groundFriction = 20f;
@@ -77,20 +77,20 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         
 
         float _dt = Time.deltaTime;
-        is_grounded = Check_Grounded();
+        isGrounded = Check_Grounded();
         
         Player_Move(_dt);
 
 
 
         //Gravity 
-        if (!is_grounded)
+        if (!isGrounded)
         { 
             velocity.y += gravity * _dt;         //V = u + a*t
         }

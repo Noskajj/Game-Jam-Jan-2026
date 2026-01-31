@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
-    public float enemyDelay = 1f;
+    public float enemyDelay = 2f;
 
     private Coroutine spawnEnemyCoroutine;
 
@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
 
             (int, int) coords = GetCoords();
 
-            //Get screen edges
+            //Get screen edges                                             O(n)
             Vector3 screenPos = new Vector3(coords.Item1, coords.Item2, Camera.main.transform.position.y);
 
             //Convert to world pos
