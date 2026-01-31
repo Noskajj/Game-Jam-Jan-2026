@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static MaskManager;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -50,22 +51,36 @@ public class PlayerManager : MonoBehaviour
 
     private bool gunEquiped = false;
     private bool gunOnCD, swordOnCD;
-    private int meleeStamCost = 25;
+    public delegate void SwordCDInvoked((float cooldown, float active) values);
+    public Mask1CDInvoked SwordInvoked;
+
+    public delegate void GunCDInvoked((float cooldown, float active) values);
+    public Mask1CDInvoked GunInvoked;
 
     [SerializeField]
     private GameObject bulletPrefab;
+
+    //TODO: get this to work with upgrades
+    private float gunSpeedModifier = 2f;
+    private float GunSpeedModifier
+    {
+        get => Math.Max(0.2f, gunSpeedModifier - UpgradeManager.Instance.SpeedWalker);
+    }
 
     private void EquipGun(InputAction.CallbackContext context)
     {
         if(ReloadCoroutine != null)
             StopCoroutine(ReloadCoroutine);
 
+        PlayerStats.speedBonus -= GunSpeedModifier;
         gunEquiped = true;
     }
 
     private void UnequipGun(InputAction.CallbackContext context)
     {
         gunEquiped = false;
+
+        PlayerStats.speedBonus += GunSpeedModifier;
 
         if (PlayerStats.CurrentAmmo < PlayerStats.MaxGunAmmo)
             ReloadCoroutine = StartCoroutine(Reload());
@@ -82,7 +97,7 @@ public class PlayerManager : MonoBehaviour
             //Hit anything in range
             AttackDetection.Instance.Attack();
 
-            PlayerStats.UseStamina(meleeStamCost);
+            PlayerStats.UseStamina(PlayerStats.SwordStaminaCost);
             StartCoroutine(MeleeCD());
         }
         else
@@ -124,7 +139,7 @@ public class PlayerManager : MonoBehaviour
         else
         {
             //Check melee CD
-            if(!swordOnCD && meleeStamCost < PlayerStats.CurrentStamina)
+            if(!swordOnCD && PlayerStats.SwordStaminaCost < PlayerStats.CurrentStamina)
             {
                 Debug.Log("We can meelee");
                 return true;
@@ -152,8 +167,8 @@ public class PlayerManager : MonoBehaviour
     private IEnumerator MeleeCD()
     {
         swordOnCD = true;
-
-        yield return new WaitForSeconds(PlayerStats.meleeBuffer);
+        SwordInvoked?.Invoke((PlayerStats.MeleeBuffer, 0f));
+        yield return new WaitForSeconds(PlayerStats.MeleeBuffer);
 
         swordOnCD = false;
     }
@@ -161,8 +176,8 @@ public class PlayerManager : MonoBehaviour
     private IEnumerator GunCD()
     {
         gunOnCD = true;
-
-        yield return new WaitForSeconds(PlayerStats.gunBuffer);
+        GunInvoked?.Invoke((PlayerStats.GunBuffer, 0f));
+        yield return new WaitForSeconds(PlayerStats.GunBuffer);
 
         gunOnCD = false;
     }

@@ -14,7 +14,6 @@ public class EnemySpawner : MonoBehaviour
 
     public float enemyDelay = 1f;
 
-    private Coroutine spawnEnemyCoroutine;
 
     #region WaveSection
     private int waveNumber = 0;
