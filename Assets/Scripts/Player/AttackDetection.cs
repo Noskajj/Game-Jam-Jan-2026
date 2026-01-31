@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class AttackDetection : MonoBehaviour
 {
-    public Vector3 meleeForce = new Vector3(0, 6, 35);  //Melee strength
+    public Vector3 meleeForce = new Vector3(0, 10, 35);  //Melee strength
 
     public static AttackDetection Instance { get; private set;}
     
