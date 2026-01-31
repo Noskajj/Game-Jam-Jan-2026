@@ -30,7 +30,7 @@ public class SigilManager : MonoBehaviour
     private SigilType currentSigil;
 
     [SerializeField]
-    private int bloodCost = 20, serviceCost = 30, agilityCost = 40, timeCost = 50, bindingCost = 60;
+    private int bloodCost = 150, serviceCost = 70, agilityCost = 1000, timeCost = 125, bindingCost = 250;
 
     public bool CanPurchaseSigil(SigilType sigil)
     {
