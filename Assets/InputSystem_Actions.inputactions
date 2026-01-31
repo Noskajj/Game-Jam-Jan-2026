@@ -95,6 +95,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Mask1Activate",
+                    "type": "Button",
+                    "id": "4c3bce95-06d4-464e-b3dc-f605e84975fa",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Mask2Activate",
+                    "type": "Button",
+                    "id": "b21a1a9b-21e1-4f97-8a22-f1dfc832d2a6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Mask3Activate",
+                    "type": "Button",
+                    "id": "77a42084-b87f-4c1b-9790-8b51443224e9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -491,6 +518,39 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "EquipGun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d196c4ca-c767-4b76-8d8f-ff7773fa3a03",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Mask1Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3e99d1b-1467-4d6c-9ad1-44d890c719d7",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Mask2Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be728281-f11c-4958-ad55-9cfb75e1a88c",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Mask3Activate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
