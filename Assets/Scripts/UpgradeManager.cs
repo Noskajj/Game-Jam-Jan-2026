@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,9 @@ public class UpgradeManager : MonoBehaviour
         buyLargerPouch.onClick.AddListener(() => BuyGunUpgrade(2));
         buyNimbleFingers.onClick.AddListener(() => BuyGunUpgrade(3));
         buySpeedWalker.onClick.AddListener(() => BuyGunUpgrade(4));
+
+        gunCostTxt.text = $"Gun Cost: {GunUpgradeCost}";
+        swordCostTxt.text = $"Sword Cost: {SwordUpgradeCost}";
     }
 
     #region UI
@@ -30,6 +34,9 @@ public class UpgradeManager : MonoBehaviour
 
     [SerializeField]
     private Button buyHarderBullet, buyLargerChamber, buyLargerPouch, buyNimbleFingers, buySpeedWalker;
+
+    [SerializeField]
+    private TextMeshProUGUI gunCostTxt, swordCostTxt;
 
     private void BuyGunUpgrade(int gunId)
     {
@@ -59,6 +66,8 @@ public class UpgradeManager : MonoBehaviour
                 default:
                     goto case 0;
             }
+
+            gunCostTxt.text = $"Gun Cost: {GunUpgradeCost}";
         }
     }
 
@@ -84,6 +93,8 @@ public class UpgradeManager : MonoBehaviour
                 default:
                     goto case 0;
             }
+
+            swordCostTxt.text = $"Sword Cost: {SwordUpgradeCost}";
         }
     }
 
