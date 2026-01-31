@@ -122,11 +122,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6641837318634074419}
-  - component: {fileID: 64259009563599458}
+  - component: {fileID: 7944433509062114388}
   - component: {fileID: 5847511988216069857}
   - component: {fileID: 1886102062539645732}
   m_Layer: 0
-  m_Name: Masked Cultist
+  m_Name: Ranged Cultist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,10 +146,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3464439199584144136}
-  - {fileID: 4180395944657291801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &64259009563599458
+--- !u!114 &7944433509062114388
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,18 +157,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6929060413286982554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df854418e2828bc44abd2751b883145b, type: 3}
+  m_Script: {fileID: 11500000, guid: eef4e795dfd0d984a83311f215e2072f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MaskedCultistLogic
+  m_EditorClassIdentifier: Assembly-CSharp::RangedCultistLogic
+  rangeAttacktime: 2
+  rangeCooldown: 3
+  rangeAttacktimer: 3
+  projectilePrefab: {fileID: 6729389453814341081, guid: 65d416516cb896c4f8569c64fd4758f6, type: 3}
+  firePoint: {fileID: 6641837318634074419}
+  projectileSpeed: 25
   player: {fileID: 0}
-  monsterSpeed: 4
-  stopDistance: 2
-  meleeCooldown: 5
-  meleeAttacktime: 2
-  meleeTimer: 0
-  meleeDamage: 25
-  maxHealth: 100
-  soulValue: 1
+  stopDistance: 10
+  monsterSpeed: 3
 --- !u!65 &5847511988216069857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -218,69 +217,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!1 &7835590407619106496
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4180395944657291801}
-  - component: {fileID: 8847097389658136660}
-  - component: {fileID: 4990620735450125573}
-  m_Layer: 0
-  m_Name: MeleeRange
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4180395944657291801
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7835590407619106496}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6641837318634074419}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &8847097389658136660
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7835590407619106496}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 2.0740428
-  m_Center: {x: 0.026600838, y: 0, z: 0}
---- !u!114 &4990620735450125573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7835590407619106496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3ee4c20f2d00f41bf0c84a963f2fd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMelee
