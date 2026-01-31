@@ -37,6 +37,11 @@ public class MaskManager : MonoBehaviour
     [SerializeField]
     private int allMasks, masksCollected;
 
+    public int MasksCollected
+    {
+        get => masksCollected;
+    }
+
     float maskCDMultiplier = 1;
 
     public void PactOfTime()
