@@ -78,13 +78,14 @@ GameObject:
   - component: {fileID: 812240002205743559}
   - component: {fileID: 4995081535802201458}
   - component: {fileID: 5912684472472771040}
+  - component: {fileID: 8766938176352856493}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8393413348613020976
 Transform:
   m_ObjectHideFlags: 0
@@ -117,14 +118,12 @@ MonoBehaviour:
   player: {fileID: 5589711126320005056, guid: b96a07d89890d4843adbae121d73e845, type: 3}
   monsterSpeed: 3
   stopDistance: 2
+  maxHealth: 100
+  soulValue: 100
   meleeCooldown: 5
   meleeAttacktime: 2
-  playerInMeleeRange: 0
-  isMeleeAttacking: 0
   meleeTimer: 2
   meleeDamage: 10
-  maxHealth: 100
-  soulValue: 1
   rangeAttacktime: 4
   rangeAttackrange: 20
   rangeCooldown: 10
@@ -147,7 +146,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -180,6 +179,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &8766938176352856493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3251419345698819373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adcbd51f70037d040b399bb164c15fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PhysicsObjects
+  gravity: -20
+  velocity: {x: 0, y: 0, z: 0}
+  mass: 1
+  groundCheckBuffer: 0.02
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 124
+  groundFriction: 20
+  sleepTime: 2
+  isGrounded: 0
+  isAsleep: 0
 --- !u!1001 &7066253353354410746
 PrefabInstance:
   m_ObjectHideFlags: 0
