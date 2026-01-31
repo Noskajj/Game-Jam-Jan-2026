@@ -59,7 +59,9 @@ public class EnemySpawner : MonoBehaviour
 
             yield return new WaitForSeconds(2f);
 
+            //TODO: Change this for proper gameplay
             totalWaveEnemies = (int)(0.25f * Mathf.Log(waveNumber + 1) * waveNumber + 2f * waveNumber + 10f);
+            //totalWaveEnemies = waveNumber + 1;
 
             waveEnemiesSpawned = 0;
 
