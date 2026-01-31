@@ -31,7 +31,7 @@ public class PhysicsObjects : MonoBehaviour
     private float _asleepTimer;
     float distance;
 
-    public Vector3  Momentum => mass * velocity;
+    public Vector3 Momentum => mass * velocity;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,7 +45,7 @@ public class PhysicsObjects : MonoBehaviour
         _rb.mass = mass;
         _asleepTimer = 0f;
 
-        Apply_Force(new Vector3(0, 4, 0));
+        //Apply_Force(new Vector3(0, 4, 0));
     }
 
     // Update is called once per frame
@@ -65,8 +65,8 @@ public class PhysicsObjects : MonoBehaviour
             }
             return;
         }
-            
-            
+
+
         if (!isGrounded)
         {
             //Gravity
@@ -74,6 +74,7 @@ public class PhysicsObjects : MonoBehaviour
         }
         else
         {
+            Debug.Log("On ground");
             if (velocity.y < 0f) velocity.y = 0f;
 
             Friction(dt);
@@ -101,7 +102,7 @@ public class PhysicsObjects : MonoBehaviour
             _asleepTimer = 0f;
         }
 
-        
+
     }
 
 
@@ -115,7 +116,7 @@ public class PhysicsObjects : MonoBehaviour
             horzVel,
             Vector3.zero,
             groundFriction * _dt
-        ); 
+        );
 
         velocity.x = horzVel.x;
         velocity.z = horzVel.z;

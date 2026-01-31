@@ -14,11 +14,12 @@ public class PlayerMovement : MonoBehaviour
 {
     //CONSTANT
     const float BUFFER = 0.02f;
+    const float GROUND_NORMAL = 0.6f;   //Normal of the ground plane min
 
     [SerializeField]
     private InputActionAsset inputActions;
     private InputAction moveAction;
-    private InputAction jumpAction;
+    private InputAction dashAction;
 
 
 
@@ -31,13 +32,15 @@ public class PlayerMovement : MonoBehaviour
     
     public float playerAccel = 30f;
 
-    public float jumpVel = 8f;
-    
+    public float dashUp = 8f;
+    public float dashHorz = 12f;
+
     public float mass = 1f;
 
     public float groundCheckBuffer = 0.02f;     //Buffer for ground checks
-    public LayerMask groundMask = ~3;           //1111111111111111100
+    public LayerMask groundMask = 1 << 3;           //1111111111111111100
     private int groundContacts = 0;
+    private bool groundedThisStep;
 
 
     public bool isGrounded;            //Flag for if on ground
@@ -61,9 +64,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         moveAction = inputActions.FindAction("Player/Move");
-        jumpAction = inputActions.FindAction("Player/Jump");
+        dashAction = inputActions.FindAction("Player/Dash");
         
-        jumpAction.performed += Player_Jump;
+        dashAction.performed += Player_Dash;
 
 
         _rb = GetComponent<Rigidbody>();
@@ -73,18 +76,18 @@ public class PlayerMovement : MonoBehaviour
 
         _rb.mass = mass;
 
-        Set_Velocity(new Vector3(0, 5, 0));
+        //Set_Velocity(new Vector3(0, 5, 0));
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        
+        isGrounded = groundedThisStep;
+        groundedThisStep = false;
 
         float _dt = Time.fixedDeltaTime;
-        isGrounded = groundContacts > 0;
+
         
         Player_Move(_dt);
 
@@ -160,12 +163,25 @@ public class PlayerMovement : MonoBehaviour
         }
     } 
 
-    private void Player_Jump(InputAction.CallbackContext context)
+    private void Player_Dash(InputAction.CallbackContext context)
     {
-        float jump = context.ReadValue<float>();
-        if(jump != 0){
-            velocity.y = jumpVel;
+        Vector2 dash = moveAction.ReadValue<Vector2>();
+
+        if (dash.sqrMagnitude < 0.001f)
+        {
+            return;
         }
+
+        if (!isGrounded)
+        {
+            return;
+        }
+        Vector3 dashVel = new Vector3(dash.x, 0f, dash.y).normalized;
+
+        velocity.y = dashUp;
+        velocity.x = dashVel.x * dashHorz;
+        velocity.z = dashVel.z * dashHorz;
+
     }
 
 
@@ -194,24 +210,39 @@ public class PlayerMovement : MonoBehaviour
         velocity = newVelocity;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Apply_Force(Vector3 force)
     {
-        //Collisions call back. 
+        /*
+         When a force is applied the rigid body wakes up
+         */
 
-        //Bitwise operations to check if correct layer. Very efficent
-        if (((1 << collision.gameObject.layer) & groundMask) != 0)
+        Vector3 acc = force / mass;
+        velocity += acc;   //TODO: Make this a gradient
+
+    }
+
+
+    private void OnCollisionStay(Collision collision)
+    {
+        // Bitwise check
+        if (((1 << collision.gameObject.layer) & groundMask) == 0)
+            return;
+
+        Bounds bound = _col.bounds;
+        float playerBottom = bound.min.y + 0.02f; //Wiggle room
+        
+        for (int i = 0; i < collision.contactCount; i++)
         {
-            groundContacts++;
+            var hit = collision.contacts[i];
+
+
+            if ((hit.normal.y > GROUND_NORMAL) && hit.point.y <= playerBottom) 
+            {
+                groundedThisStep = true;
+                return;
+            }
         }
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        //Bitwise operations to check if correct layer. Very efficent
-        if (((1 << collision.gameObject.layer) & groundMask) != 0)
-        {
-            groundContacts--;
-        }
-    }
 }
 
