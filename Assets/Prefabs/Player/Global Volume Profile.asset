@@ -15,10 +15,10 @@ MonoBehaviour:
   active: 1
   type:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 3
   intensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.583
   response:
     m_OverrideState: 0
     m_Value: 0.8
@@ -74,13 +74,13 @@ MonoBehaviour:
     m_Value: 3
   colorFilter:
     m_OverrideState: 0
-    m_Value: {r: 0, g: 0.9803922, b: 0.6039216, a: 1}
+    m_Value: {r: 1.4745098, g: 1.1215686, b: 1.1215686, a: 1}
   hueShift:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -15
   saturation:
     m_OverrideState: 1
-    m_Value: 18
+    m_Value: -25
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
