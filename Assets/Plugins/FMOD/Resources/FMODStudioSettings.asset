@@ -709,7 +709,6 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
-  - Level1
   - SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
@@ -724,7 +723,7 @@ MonoBehaviour:
   SharedLibraryTimeSinceStart: 0
   CurrentVersion: 131858
   HideSetupWizard: 1
-  LastEventReferenceScanVersion: 131635
+  LastEventReferenceScanVersion: 131858
   Platforms:
   - {fileID: -8014176455679330765}
   - {fileID: -7860733567358376108}
