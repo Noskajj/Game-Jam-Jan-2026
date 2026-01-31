@@ -242,6 +242,26 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 168
       objectReference: {fileID: 0}
+    - target: {fileID: 1910248793244840377, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1272
+      objectReference: {fileID: 0}
+    - target: {fileID: 2265348872048709265, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1521
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232109766676598409, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
+      propertyPath: m_VersionIndex
+      value: 87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293036112462400643, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
+      propertyPath: m_VersionIndex
+      value: 2964
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384300542423382577, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
+      propertyPath: m_VersionIndex
+      value: 489
+      objectReference: {fileID: 0}
     - target: {fileID: 5008754881130285176, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_VersionIndex
       value: 174
@@ -249,6 +269,10 @@ PrefabInstance:
     - target: {fileID: 5062959124482852869, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_Name
       value: Greybox
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090275060072546756, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
+      propertyPath: m_VersionIndex
+      value: 384
       objectReference: {fileID: 0}
     - target: {fileID: 6533370803925608779, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_LocalPosition.x
@@ -290,9 +314,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6741482304770782718, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
+      propertyPath: m_VersionIndex
+      value: 96
+      objectReference: {fileID: 0}
     - target: {fileID: 8521975911493273369, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_VersionIndex
       value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534174588986847305, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
+      propertyPath: m_VersionIndex
+      value: 192
+      objectReference: {fileID: 0}
+    - target: {fileID: 8788215828495965544, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
+      propertyPath: m_VersionIndex
+      value: 168
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
