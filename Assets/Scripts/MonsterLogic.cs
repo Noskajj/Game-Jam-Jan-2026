@@ -14,7 +14,12 @@ public class MonsterLogic : EnemyClass
     public Transform firePoint;
     public float projectileSpeed = 15;
 
-   
+    // Melee attack
+    private bool isMeleeAttacking;
+    private bool playerInMeleeRange;
+    public float meleeTimer;
+    public int meleeDamage = 10;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +32,7 @@ public class MonsterLogic : EnemyClass
     void Update()
     {
         RangeCheck();
+        MeleeCheck();
     }
 
     private void ShootProjectile()
@@ -46,6 +52,10 @@ public class MonsterLogic : EnemyClass
 
     private void RangeCheck()
     {
+        // Don't trigger range if melee state or range is true
+        if (isMeleeAttacking || playerInMeleeRange)
+            return;
+        
         // move towards player and stop at a set distance from the player
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (!isRangedAttacking && distance > stopDistance)
@@ -76,6 +86,49 @@ public class MonsterLogic : EnemyClass
                 rangeAttacktimer = rangeCooldown;
                 isRangedAttacking = false;
             }
+        }
+    }
+
+    public void PlayerEnteredMeleeRange()
+    {
+        playerInMeleeRange = true;
+        Debug.Log("Player in melee range");  
+    }
+
+    public void PlayerExitMeleeRange()
+    {
+        playerInMeleeRange = false;
+        Debug.Log("Player exit melee range");
+        // Cancel melee
+        isMeleeAttacking = false;
+    }
+
+    public void MeleeCheck()
+    {
+        if (!playerInMeleeRange)
+            return;
+
+        if (!isMeleeAttacking)
+        {
+            isMeleeAttacking = true;
+            Debug.Log("Melee attacking");
+            meleeTimer = meleeAttacktime;
+        }
+
+        meleeTimer -= Time.deltaTime;
+
+        if (meleeTimer <= 0)
+        {
+            if (playerInMeleeRange)
+            {
+                // Player take damage
+                Debug.Log("Player took damage");
+            }
+
+            // Resets
+            isMeleeAttacking = false;
+            meleeTimer = meleeCooldown;
+            Debug.Log("Reset melee attack");
         }
     }
 }
