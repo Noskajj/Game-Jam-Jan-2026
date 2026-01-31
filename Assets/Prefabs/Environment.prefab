@@ -147,6 +147,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5337977795853909709, guid: 0a29f45d986ac2b4c92419936f6bba60, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 098a25e4fc1e696469ce7a78b8675203, type: 2}
     - target: {fileID: 5479859020320839941, guid: 0a29f45d986ac2b4c92419936f6bba60, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -307,19 +311,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1910248793244840377, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_VersionIndex
-      value: 1932
+      value: 1419
       objectReference: {fileID: 0}
     - target: {fileID: 2265348872048709265, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_VersionIndex
-      value: 1584
+      value: 1071
       objectReference: {fileID: 0}
     - target: {fileID: 2422411984576344395, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_VersionIndex
-      value: 1341
+      value: 2082
       objectReference: {fileID: 0}
     - target: {fileID: 3232109766676598409, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_VersionIndex
-      value: 1584
+      value: 1071
       objectReference: {fileID: 0}
     - target: {fileID: 5062959124482852869, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_Name
@@ -367,15 +371,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7905457548758066503, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_VersionIndex
-      value: 1485
+      value: 2226
       objectReference: {fileID: 0}
     - target: {fileID: 8534174588986847305, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_VersionIndex
-      value: 1584
+      value: 1071
       objectReference: {fileID: 0}
     - target: {fileID: 8788215828495965544, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_VersionIndex
-      value: 1581
+      value: 1071
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
