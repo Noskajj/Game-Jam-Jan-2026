@@ -266,6 +266,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 7293304375500857776, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1827922139}
     - target: {fileID: 7366401395124025706, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
