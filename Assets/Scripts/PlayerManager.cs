@@ -9,8 +9,20 @@ public class PlayerManager : MonoBehaviour
     //Static shop can upgrade what you have 
     //Call of duty esqe perks around the map, max 3 equipped, set locations(maybe randomized later)
 
-    //TODO: Stamina bar thats the same as health system
     
+    public static PlayerManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if(Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        Instance = this;
+    }
+
+
     private InputAction equipGunAction, attackAction;
     private void Start()
     {
@@ -37,7 +49,7 @@ public class PlayerManager : MonoBehaviour
     private Coroutine ReloadCoroutine;
 
     private bool gunEquiped = false;
-    private bool bulletLoaded = true;
+    private bool gunOnCD, swordOnCD;
     [SerializeField]
     private GameObject bulletPrefab;
 
@@ -67,6 +79,8 @@ public class PlayerManager : MonoBehaviour
         {
             //Hit anything in range
             AttackDetection.Instance.Attack();
+
+            StartCoroutine(MeleeCD());
         }
         else
         {   //Fire projectile
@@ -88,6 +102,7 @@ public class PlayerManager : MonoBehaviour
 
             Debug.Log("Gun should shoot now");
             PlayerStats.ShootGun();
+            StartCoroutine(GunCD());
         }
     }
 
@@ -97,15 +112,20 @@ public class PlayerManager : MonoBehaviour
         //Also need to check if dodging and other movement shit
         if(gunEquiped)
         {
-            if(PlayerStats.CurrentAmmo > 0 && bulletLoaded)
+            if(PlayerStats.CurrentAmmo > 0 && !gunOnCD)
             {
-                Debug.Log("can attack :)");
+                Debug.Log("can bang bang attack :)");
                 return true;
             }
         }
         else
         {
             //Check melee CD
+            if(!swordOnCD)
+            {
+                Debug.Log("We can meelee");
+                return true;
+            }
         }
 
         Debug.Log("cant attack :(");
@@ -124,6 +144,24 @@ public class PlayerManager : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    private IEnumerator MeleeCD()
+    {
+        swordOnCD = true;
+
+        yield return new WaitForSeconds(PlayerStats.meleeBuffer);
+
+        swordOnCD = false;
+    }
+
+    private IEnumerator GunCD()
+    {
+        gunOnCD = true;
+
+        yield return new WaitForSeconds(PlayerStats.gunBuffer);
+
+        gunOnCD = false;
     }
     #endregion
 

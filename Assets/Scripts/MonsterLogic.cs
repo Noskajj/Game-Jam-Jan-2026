@@ -14,8 +14,6 @@ public class MonsterLogic : EnemyClass
     public Transform firePoint;
     public float projectileSpeed = 15;
 
-   
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +25,7 @@ public class MonsterLogic : EnemyClass
     void Update()
     {
         RangeCheck();
+        MeleeCheck();
     }
 
     private void ShootProjectile()
@@ -46,6 +45,7 @@ public class MonsterLogic : EnemyClass
 
     private void RangeCheck()
     {
+        MeleeState();
         // move towards player and stop at a set distance from the player
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (!isRangedAttacking && distance > stopDistance)
@@ -78,4 +78,6 @@ public class MonsterLogic : EnemyClass
             }
         }
     }
+
+    
 }

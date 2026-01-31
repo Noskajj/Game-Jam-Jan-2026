@@ -28,16 +28,19 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 velocity;
 
     public float moveSpeed = 4f;
+    
+    public float playerAccel = 30f;
 
     public float jumpVel = 8f;
     
     public float mass = 1f;
 
     public float groundCheckBuffer = 0.02f;     //Buffer for ground checks
-    public LayerMask groundMask = ~0;
+    public LayerMask groundMask = ~3;           //1111111111111111100
+    private int groundContacts = 0;
 
 
-    public bool is_grounded;            //Flag for if on ground
+    public bool isGrounded;            //Flag for if on ground
 
     //TODO: Make surface share this instead of hard coding
     public float groundFriction = 20f;
@@ -70,23 +73,25 @@ public class PlayerMovement : MonoBehaviour
 
         _rb.mass = mass;
 
-        SetVelocity(new Vector3(0, 5, 0));
+        Set_Velocity(new Vector3(0, 5, 0));
 
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+
         
-        Player_Move();
+
+        float _dt = Time.fixedDeltaTime;
+        isGrounded = groundContacts > 0;
+        
+        Player_Move(_dt);
 
 
-        float _dt = Time.deltaTime;
-
-        is_grounded = Check_Grounded();
 
         //Gravity 
-        if (!is_grounded)
+        if (!isGrounded)
         { 
             velocity.y += gravity * _dt;         //V = u + a*t
         }
@@ -99,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-         _rb.MovePosition(_rb.position + velocity * _dt);   // S = V*t
+         _rb.linearVelocity = velocity;   // S = V*t
 
 
     }
@@ -108,19 +113,52 @@ public class PlayerMovement : MonoBehaviour
 
     //HELPERS:__________________________
 
-    private void Player_Move()
+    private void Player_Move(float _dt)
     {
-        Vector2 movDirection = moveAction.ReadValue<Vector2>();;
-        if(movDirection.x != 0)
+        //Apply acceleration in a direction
+        // V_{t+1} = V_t + clamp((U * MAX_SPEED), -r*delta_t, r*delta_t)
+
+        Vector2 keyInput = moveAction.ReadValue<Vector2>();
+
+        //Gives the current velocity vector in 3D space
+        Vector3 currVel = new Vector3(velocity.x, 0f, velocity.z);
+
+        if (keyInput.sqrMagnitude > 0f)
         {
-            velocity.x = movDirection.x * moveSpeed;
-        }
-        if(movDirection.y != 0)
-        {
-            velocity.z = movDirection.y * moveSpeed;
+            //Gives a velocity vector in 3D space
+            Vector3 targVel = new Vector3(keyInput.x, 0f, keyInput.y) * moveSpeed;
+
+            currVel = Vector3.MoveTowards(currVel, targVel, playerAccel * _dt);
         }
 
+        velocity.x = currVel.x;
+        velocity.z = currVel.z;
+
+
+
     }
+
+
+    private float Clamp(float x, float a, float b)
+    {
+        /*
+            Clamps the value of x between a given range of a-b.
+            Used for physics calculations
+        */
+
+        if (x < a)
+        {
+            return a;
+        }
+        else if (a <= x && x <= b)
+        {
+            return x;
+        }
+        else
+        {
+            return b;
+        }
+    } 
 
     private void Player_Jump(InputAction.CallbackContext context)
     {
@@ -147,29 +185,33 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void SetVelocity(Vector3 newVelocity)
+    public void Set_Velocity(Vector3 newVelocity)
     {
         /*
         Allows us to update velocity 
         */
 
         velocity = newVelocity;
-    } 
-    
-    private bool Check_Grounded()
+    }
+
+    private void OnCollisionEnter(Collision collision)
     {
-        
-        Bounds b = _col.bounds;
+        //Collisions call back. 
 
-        Vector3 origin = new Vector3(b.center.x, b.min.y + BUFFER, b.center.z);
+        //Bitwise operations to check if correct layer. Very efficent
+        if (((1 << collision.gameObject.layer) & groundMask) != 0)
+        {
+            groundContacts++;
+        }
+    }
 
-
-        return Physics.Raycast(
-            origin,
-            Vector3.down,
-            (BUFFER + groundCheckBuffer),
-            groundMask,
-            QueryTriggerInteraction.Ignore
-        );
+    private void OnCollisionExit(Collision collision)
+    {
+        //Bitwise operations to check if correct layer. Very efficent
+        if (((1 << collision.gameObject.layer) & groundMask) != 0)
+        {
+            groundContacts--;
+        }
     }
 }
+
