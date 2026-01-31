@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 velocity;
 
     public float moveSpeed = 4f;
+    
+    public float playerAccel = 30f;
 
     public float jumpVel = 8f;
     
@@ -70,20 +72,22 @@ public class PlayerMovement : MonoBehaviour
 
         _rb.mass = mass;
 
-        SetVelocity(new Vector3(0, 5, 0));
+        Set_Velocity(new Vector3(0, 5, 0));
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        Player_Move();
 
+        
 
         float _dt = Time.deltaTime;
-
         is_grounded = Check_Grounded();
+        
+        Player_Move(_dt);
+
+
 
         //Gravity 
         if (!is_grounded)
@@ -108,19 +112,52 @@ public class PlayerMovement : MonoBehaviour
 
     //HELPERS:__________________________
 
-    private void Player_Move()
+    private void Player_Move(float _dt)
     {
-        Vector2 movDirection = moveAction.ReadValue<Vector2>();;
-        if(movDirection.x != 0)
+        //Apply acceleration in a direction
+        // V_{t+1} = V_t + clamp((U * MAX_SPEED), -r*delta_t, r*delta_t)
+
+        Vector2 keyInput = moveAction.ReadValue<Vector2>();
+
+        //Gives the current velocity vector in 3D space
+        Vector3 currVel = new Vector3(velocity.x, 0f, velocity.z);
+
+        if (keyInput.sqrMagnitude > 0f)
         {
-            velocity.x = movDirection.x * moveSpeed;
-        }
-        if(movDirection.y != 0)
-        {
-            velocity.z = movDirection.y * moveSpeed;
+            //Gives a velocity vector in 3D space
+            Vector3 targVel = new Vector3(keyInput.x, 0f, keyInput.y) * moveSpeed;
+
+            currVel = Vector3.MoveTowards(currVel, targVel, playerAccel * _dt);
         }
 
+        velocity.x = currVel.x;
+        velocity.z = currVel.z;
+
+
+
     }
+
+
+    private float Clamp(float x, float a, float b)
+    {
+        /*
+            Clamps the value of x between a given range of a-b.
+            Used for physics calculations
+        */
+
+        if (x < a)
+        {
+            return a;
+        }
+        else if (a <= x && x <= b)
+        {
+            return x;
+        }
+        else
+        {
+            return b;
+        }
+    } 
 
     private void Player_Jump(InputAction.CallbackContext context)
     {
@@ -147,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void SetVelocity(Vector3 newVelocity)
+    public void Set_Velocity(Vector3 newVelocity)
     {
         /*
         Allows us to update velocity 
