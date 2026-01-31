@@ -37,13 +37,23 @@ public class MaskManager : MonoBehaviour
     [SerializeField]
     private int allMasks, masksCollected;
 
+    float maskCDMultiplier = 1;
+
+    public void PactOfTime()
+    {
+        maskCDMultiplier = 0.7f;
+    }
+
     public void MaskCollected()
     {
         masksCollected++;
     }
 
     #region mask1
-    private float mask1CD = 45f;
+    private float mask1CD
+    {
+        get => 45f * maskCDMultiplier;
+    } 
     private float mask1Duration = 5f;
     private bool mask1OnCD = false;
 
@@ -75,7 +85,10 @@ public class MaskManager : MonoBehaviour
     #endregion
 
     #region mask2
-    private float mask2CD = 12f;
+    private float mask2CD
+    {
+        get => 12f * maskCDMultiplier;
+    }
     private bool mask2OnCD = false;
     [SerializeField]
     private GameObject magicProjectilePrefab;
@@ -113,7 +126,10 @@ public class MaskManager : MonoBehaviour
     #endregion
 
     #region mask3
-    private float mask3CD = 120f;
+    private float mask3CD
+    {
+        get => 120f * maskCDMultiplier;
+    }
     private bool mask3OnCD = false;
     private float mask3Duration = 10f;
     public bool mask3IsActive = false;

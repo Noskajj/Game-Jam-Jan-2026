@@ -9,21 +9,18 @@ public static class PlayerStats
 
     #region Variables
     private static int speed = 5;
+    private static int speedBonus = 0;
     public static int Speed 
     {
         //speed + or * upgrades
-        get => speed;
+        get => speed + speedBonus;
     }
 
     private static int maxHealth = 75;
+    private static int maxHealthBonus = 0;
     public static int MaxHealth
     {
-        get => maxHealth;
-        set
-        {
-            maxHealth = value;
-            MaxHealthChanged?.Invoke();
-        }
+        get => maxHealth + maxHealthBonus;
     }
 
     private static int health = 75;
@@ -45,22 +42,35 @@ public static class PlayerStats
     }
 
     private static int maxStamina = 100;
+    private static int bonusMaxStamina = 0;
     public static int MaxStamina
     {
-        get => maxStamina;
+        get => maxStamina + bonusMaxStamina;
     }
 
     private static int currentStamina = 100;
+    private static int bonusStamina = 0;
     public static int CurrentStamina
     {
-        get => currentStamina;
+        get => currentStamina + bonusStamina;
     }
 
-    public static float HealBuffer = 2f;
+    private static float healBuffer = 2f;
+    private static float bonusHealBuffer = 0f;
+    public static float HealBuffer
+    {
+        get => healBuffer - bonusHealBuffer;
+    }
 
     public static float HealsPerSecond = 10f;
 
-    public static float StamBuffer = 1f;
+    private static float stamBuffer = 1f;
+    private static float bonusStamBuffer = 0f;
+    public static float StamBuffer
+    {
+        get => stamBuffer - bonusStamBuffer;
+    }
+
     public static float StamRegenPerSecond = 10f;
 
     private static int meleeDamage = 25;
@@ -193,6 +203,24 @@ public static class PlayerStats
         TotalAmmo--;
         currentAmmo++;
     }
+
+    public static void PactOfBlood()
+    {
+        bonusHealBuffer = 1;
+        maxHealthBonus = 50;
+    }
+
+    public static void PactOfService()
+    {
+        bonusStamBuffer = 0.3f;
+        bonusMaxStamina = 50;
+    }
+
+    public static void PactOfAgility()
+    {
+        speedBonus = 3;
+    }
+
 
     #endregion
 }

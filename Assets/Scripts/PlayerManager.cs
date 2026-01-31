@@ -50,6 +50,8 @@ public class PlayerManager : MonoBehaviour
 
     private bool gunEquiped = false;
     private bool gunOnCD, swordOnCD;
+    private int meleeStamCost = 25;
+
     [SerializeField]
     private GameObject bulletPrefab;
 
@@ -80,6 +82,7 @@ public class PlayerManager : MonoBehaviour
             //Hit anything in range
             AttackDetection.Instance.Attack();
 
+            PlayerStats.UseStamina(meleeStamCost);
             StartCoroutine(MeleeCD());
         }
         else
@@ -121,7 +124,7 @@ public class PlayerManager : MonoBehaviour
         else
         {
             //Check melee CD
-            if(!swordOnCD)
+            if(!swordOnCD && meleeStamCost < PlayerStats.CurrentStamina)
             {
                 Debug.Log("We can meelee");
                 return true;
