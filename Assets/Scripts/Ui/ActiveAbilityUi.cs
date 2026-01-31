@@ -70,7 +70,7 @@ public class ActiveAbilityUi : MonoBehaviour
         {
             timer += Time.deltaTime;
             CDOverlay.fillAmount = 1f - (timer / cooldown);
-            Debug.Log($"Overlay fill amount is {CDOverlay.fillAmount}");
+            //Debug.Log($"Overlay fill amount is {CDOverlay.fillAmount}");
             float remaining = Mathf.Max(0f, cooldown - timer);
             CDTimer.text =  remaining.ToString("F1");
 

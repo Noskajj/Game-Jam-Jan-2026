@@ -206,6 +206,7 @@ public static class PlayerStats
     public static void UseStamina(int amount)
     {
         currentStamina -= amount;
+        PlayerManager.Instance.HasUsedStamina(amount);
     }
 
     public static void GainStamina(int amount)
