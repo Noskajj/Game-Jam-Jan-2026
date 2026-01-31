@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private InputActionAsset inputActions;
     private InputAction moveAction;
-    private InputAction jumpAction;
+    private InputAction dashAction;
 
 
 
@@ -31,8 +31,9 @@ public class PlayerMovement : MonoBehaviour
     
     public float playerAccel = 30f;
 
-    public float jumpVel = 8f;
-    
+    public float dashUp = 8f;
+    public float dashHorz = 12f;
+
     public float mass = 1f;
 
     public float groundCheckBuffer = 0.02f;     //Buffer for ground checks
@@ -61,9 +62,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         moveAction = inputActions.FindAction("Player/Move");
-        jumpAction = inputActions.FindAction("Player/Jump");
+        dashAction = inputActions.FindAction("Player/Dash");
         
-        jumpAction.performed += Player_Jump;
+        dashAction.performed += Player_Dash;
 
 
         _rb = GetComponent<Rigidbody>();
@@ -73,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
         _rb.mass = mass;
 
-        Set_Velocity(new Vector3(0, 5, 0));
+        //Set_Velocity(new Vector3(0, 5, 0));
 
     }
 
@@ -160,12 +161,25 @@ public class PlayerMovement : MonoBehaviour
         }
     } 
 
-    private void Player_Jump(InputAction.CallbackContext context)
+    private void Player_Dash(InputAction.CallbackContext context)
     {
-        float jump = context.ReadValue<float>();
-        if(jump != 0){
-            velocity.y = jumpVel;
+        Vector2 dash = moveAction.ReadValue<Vector2>();
+
+        if (dash.sqrMagnitude < 0.001f)
+        {
+            return;
         }
+
+        if (!isGrounded)
+        {
+            return;
+        }
+        Vector3 dashVel = new Vector3(dash.x, 0f, dash.y).normalized;
+
+        velocity.y = dashUp;
+        velocity.x = dashVel.x * dashHorz;
+        velocity.z = dashVel.z * dashHorz;
+
     }
 
 
