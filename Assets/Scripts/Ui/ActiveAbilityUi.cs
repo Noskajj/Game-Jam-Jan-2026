@@ -10,7 +10,7 @@ public class ActiveAbilityUi : MonoBehaviour
     [SerializeField]
     private int ability = 0;
     [SerializeField]
-    private TextMeshProUGUI CDTimer;
+    private TextMeshProUGUI CDTimer, gunAmmo;
     [SerializeField]
     private Image CDOverlay, bgImage;
 
@@ -30,6 +30,20 @@ public class ActiveAbilityUi : MonoBehaviour
             case 2:
                 MaskManager.Instance.Mask3Invoked += StartCooldown;
                 break;
+            case 3:
+                PlayerManager.Instance.SwordInvoked += StartCooldown;
+                break;
+            case 4:
+                PlayerManager.Instance.GunInvoked += StartCooldown;
+                break;
+        }
+    }
+
+    private void Update()
+    {
+        if(ability == 4)
+        {
+            gunAmmo.text = PlayerStats.CurrentAmmo.ToString();
         }
     }
 
