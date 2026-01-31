@@ -9,21 +9,18 @@ public static class PlayerStats
 
     #region Variables
     private static int speed = 5;
-    public static int Speed 
+    public static float speedBonus = 0;
+    public static float Speed 
     {
         //speed + or * upgrades
-        get => speed;
+        get => speed + speedBonus;
     }
 
     private static int maxHealth = 75;
+    private static int maxHealthBonus = 0;
     public static int MaxHealth
     {
-        get => maxHealth;
-        set
-        {
-            maxHealth = value;
-            MaxHealthChanged?.Invoke();
-        }
+        get => maxHealth + maxHealthBonus;
     }
 
     private static int health = 75;
@@ -45,41 +42,60 @@ public static class PlayerStats
     }
 
     private static int maxStamina = 100;
+    private static int bonusMaxStamina = 0;
     public static int MaxStamina
     {
-        get => maxStamina;
+        get => maxStamina + bonusMaxStamina;
     }
 
     private static int currentStamina = 100;
+    private static int bonusStamina = 0;
     public static int CurrentStamina
     {
-        get => currentStamina;
+        get => currentStamina + bonusStamina;
     }
 
-    public static float HealBuffer = 2f;
+    private static int swordStaminaCost = 25;
+    public static int SwordStaminaCost
+    {
+        get => Math.Max(5, swordStaminaCost - UpgradeManager.Instance.EfficientSwing);
+    }
+    public static int dashStaminaCost = 25;
+    private static float healBuffer = 2f;
+    private static float bonusHealBuffer = 0f;
+    public static float HealBuffer
+    {
+        get => healBuffer - bonusHealBuffer;
+    }
 
     public static float HealsPerSecond = 10f;
 
-    public static float StamBuffer = 1f;
+    private static float stamBuffer = 1f;
+    private static float bonusStamBuffer = 0f;
+    public static float StamBuffer
+    {
+        get => stamBuffer - bonusStamBuffer;
+    }
+
     public static float StamRegenPerSecond = 10f;
 
     private static int meleeDamage = 25;
     public static int meleeBonus = 0;
     public static int MeleeDamage
     {
-        get => meleeDamage + meleeBonus;
+        get => meleeDamage + meleeBonus + UpgradeManager.Instance.HarderSwings;
     }
     private static int gunDamage = 25;
     public static int gunBonus = 0;
     public static int GunDamage
     {
-        get => gunDamage + gunBonus;
+        get => gunDamage + gunBonus + UpgradeManager.Instance.HarderBullet;
     }
 
     private static int maxGunAmmo = 6;
     public static int MaxGunAmmo
     {
-        get => maxGunAmmo;
+        get => maxGunAmmo + UpgradeManager.Instance.LargerChamber;
     }
 
     private static int currentAmmo = 6;
@@ -88,12 +104,30 @@ public static class PlayerStats
         get => currentAmmo;
     }
 
-    public static float ReloadSpeed = 5f;
+    private static float reloadSpeed = 5f;
+    public static float ReloadSpeed
+    {
+        get => Math.Max(1f, reloadSpeed - UpgradeManager.Instance.NimbleFingers);
+    }
 
     public static int TotalAmmo = 30;
 
-    public static float meleeBuffer = 0.5f;
-    public static float gunBuffer = 0.5f;
+    private static int maxTotalAmmo = 30;
+    public static int MaxTotalAmmo
+    {
+        get => maxTotalAmmo + UpgradeManager.Instance.LargerPouch;
+    }
+
+    private static float meleeBuffer = 0.8f;
+    public static float MeleeBuffer
+    {
+        get => Math.Max(0.1f, meleeBuffer - UpgradeManager.Instance.FasterSwinging);
+    }
+    private static float gunBuffer = 0.5f;
+    public static float GunBuffer
+    {
+        get => gunBuffer;
+    }
     #endregion
 
     #region Functions
@@ -193,6 +227,24 @@ public static class PlayerStats
         TotalAmmo--;
         currentAmmo++;
     }
+
+    public static void PactOfBlood()
+    {
+        bonusHealBuffer = 1;
+        maxHealthBonus = 50;
+    }
+
+    public static void PactOfService()
+    {
+        bonusStamBuffer = 0.3f;
+        bonusMaxStamina = 50;
+    }
+
+    public static void PactOfAgility()
+    {
+        speedBonus = 3;
+    }
+
 
     #endregion
 }
