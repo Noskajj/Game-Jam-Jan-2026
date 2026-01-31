@@ -15,6 +15,29 @@ public abstract class EnemyClass : MonoBehaviour
     //Monster soul value
     public int soulValue = 1;
 
+    protected bool stunned = false;
+
+    private void Start()
+    {
+        MaskManager.mask3Activated += StunActivated;
+        MaskManager.mask3Deactivated += StunDeactivated;
+    }
+
+    private void StunActivated()
+    {
+        stunned = true;
+    }
+
+    private void StunDeactivated()
+    {
+        stunned = false;
+    }
+
+    public void InitializeStun(bool stun)
+    {
+        stunned = stun;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log($"We detecting {other.tag}");

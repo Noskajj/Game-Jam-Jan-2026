@@ -40,7 +40,6 @@ public class MaskManager : MonoBehaviour
     #region mask1
     private float mask1CD = 45f;
     private float mask1Duration = 5f;
-    private float damageBoost = 100f;
     private bool mask1OnCD = false;
 
     //Main mask, damage boost for 5 seconds, cd 45
@@ -55,6 +54,7 @@ public class MaskManager : MonoBehaviour
 
     private IEnumerator Mask1Activated()
     {
+        //Boosts damage by 100%
         PlayerStats.meleeBonus = PlayerStats.MeleeDamage;
         PlayerStats.gunBonus = PlayerStats.GunDamage;
 
@@ -107,10 +107,11 @@ public class MaskManager : MonoBehaviour
     }
     #endregion
 
-        #region mask3
+    #region mask3
     private float mask3CD = 120f;
     private bool mask3OnCD = false;
     private float mask3Duration = 10f;
+    public bool mask3IsActive = false;
 
     public static event Action mask3Activated, mask3Deactivated;
     //Mask 3, AOE stun, cd 120
@@ -127,9 +128,11 @@ public class MaskManager : MonoBehaviour
     {
         //TODO: Make enemies freeze
         mask3Activated?.Invoke();
+        mask3IsActive = true;
 
         yield return new WaitForSeconds(mask3Duration);
 
+        mask3IsActive = false;
         mask3Deactivated?.Invoke();
 
         mask3OnCD = true;

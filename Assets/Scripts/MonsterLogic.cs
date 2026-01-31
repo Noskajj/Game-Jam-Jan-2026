@@ -17,8 +17,11 @@ public class MonsterLogic : MeleeClass
     // Update is called once per frame
     void Update()
     {
-        RangeCheck();
-        MeleeCheck();
+        if (!stunned || Vector3.Distance(transform.position, player.transform.position) >= 10f)
+        {
+            RangeCheck();
+            MeleeCheck();
+        }
     }
 
     private void ShootProjectile()
@@ -39,6 +42,7 @@ public class MonsterLogic : MeleeClass
     private void RangeCheck()
     {
         MeleeState();
+
         // move towards player and stop at a set distance from the player
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (!isRangedAttacking && distance > stopDistance)
