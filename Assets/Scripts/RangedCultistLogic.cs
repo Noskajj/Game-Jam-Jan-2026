@@ -1,24 +1,20 @@
-using System.Xml.Serialization;
 using UnityEngine;
 
-public class MonsterLogic : MeleeClass
+public class RangedCultistLogic : EnemyClass
 {
-
     // ranged attack
     private bool isRangedAttacking;
     public float rangeAttacktime = 2;
-    public float rangeAttackrange = 20;
-    public float rangeCooldown = 8;
-    public float rangeAttacktimer = 1;
+    public float rangeCooldown = 3;
+    public float rangeAttacktimer = 3;
     public GameObject projectilePrefab;
     public Transform firePoint;
-    public float projectileSpeed = 15;
- 
+    public float projectileSpeed = 25;
+
     // Update is called once per frame
     void Update()
     {
         RangeCheck();
-        MeleeCheck();
     }
 
     private void ShootProjectile()
@@ -38,7 +34,6 @@ public class MonsterLogic : MeleeClass
 
     private void RangeCheck()
     {
-        MeleeState();
         // move towards player and stop at a set distance from the player
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (!isRangedAttacking && distance > stopDistance)
@@ -53,10 +48,10 @@ public class MonsterLogic : MeleeClass
         if (!isRangedAttacking)
         {
             rangeAttacktimer -= Time.deltaTime;
-            if (rangeAttacktimer <= 0 && distance >= 10)
+            if (rangeAttacktimer <= 0)
             {
                 isRangedAttacking = true;
-                rangeAttacktime = 4;
+                rangeAttacktime = 2;
             }
         }
         else
@@ -71,6 +66,4 @@ public class MonsterLogic : MeleeClass
             }
         }
     }
-
-    
 }
