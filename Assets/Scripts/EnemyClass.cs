@@ -21,7 +21,7 @@ public abstract class EnemyClass : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"We detecting {other.tag}");
+        //Debug.Log($"We detecting {other.tag}");
         if (other.CompareTag("Bullet"))
         {
             // call gun damage from player stats class
