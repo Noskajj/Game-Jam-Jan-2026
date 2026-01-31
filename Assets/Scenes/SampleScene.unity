@@ -647,6 +647,14 @@ PrefabInstance:
       propertyPath: <playerFootsteps>k__BackingField.Path
       value: event:/SFX/Player/PlayerFootsteps_Stone
       objectReference: {fileID: 0}
+    - target: {fileID: 2497689615458498922, guid: 532bbf3399fa5924e81df18229efe0b7, type: 3}
+      propertyPath: musicVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497689615458498922, guid: 532bbf3399fa5924e81df18229efe0b7, type: 3}
+      propertyPath: masterVolume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4391516051120565977, guid: 532bbf3399fa5924e81df18229efe0b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.13879

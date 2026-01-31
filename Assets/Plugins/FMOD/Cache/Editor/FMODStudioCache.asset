@@ -100,6 +100,7 @@ MonoBehaviour:
     Data3: -2048076900
     Data4: 1991676968
   Banks:
+  - {fileID: -1405833492818729174}
   - {fileID: 6818030266804918858}
   IsStream: 1
   Is3D: 0
@@ -231,7 +232,7 @@ MonoBehaviour:
   Path: E:/Personal Projects/Game Jam Jan 2026 FMOD/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639055121159209373
+  lastModified: 639055140150106657
   FileSizes:
   - Name: Desktop
     Value: 928320
@@ -282,6 +283,7 @@ MonoBehaviour:
     Data3: -925021559
     Data4: 1912107054
   Banks:
+  - {fileID: -1405833492818729174}
   - {fileID: 6818030266804918858}
   IsStream: 1
   Is3D: 0
@@ -336,6 +338,7 @@ MonoBehaviour:
     Data3: 1475938447
     Data4: -1396481279
   Banks:
+  - {fileID: -1405833492818729174}
   - {fileID: 6818030266804918858}
   IsStream: 1
   Is3D: 0
@@ -390,6 +393,7 @@ MonoBehaviour:
     Data3: 1500421801
     Data4: 935498771
   Banks:
+  - {fileID: -1405833492818729174}
   - {fileID: 6818030266804918858}
   IsStream: 1
   Is3D: 0
@@ -398,6 +402,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 39375
+--- !u!114 &-1405833492818729174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: E:/Personal Projects/Game Jam Jan 2026 FMOD/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 639055140150689346
+  FileSizes:
+  - Name: Desktop
+    Value: 6983712
+  Exists: 1
 --- !u!114 &-836150054414237507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +465,7 @@ MonoBehaviour:
   - {fileID: 8852934123364073249}
   - {fileID: 6818030266804918858}
   - {fileID: -4140000524652855832}
+  - {fileID: -1405833492818729174}
   EditorEvents:
   - {fileID: -1951656434665128461}
   - {fileID: 653743111213893693}
@@ -479,7 +504,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 8852934123364073249}
   cacheVersion: 131858
-  cacheTime: 639055121159209373
+  cacheTime: 639055140969519101
   SerializableEventsDict:
   - key: event:/Music/Menu Theme
     index: 0
@@ -643,6 +668,7 @@ MonoBehaviour:
     Data3: 1184702607
     Data4: 1080608345
   Banks:
+  - {fileID: -1405833492818729174}
   - {fileID: 6818030266804918858}
   IsStream: 1
   Is3D: 0
@@ -803,6 +829,7 @@ MonoBehaviour:
     Data3: 1555387566
     Data4: -1842186464
   Banks:
+  - {fileID: -1405833492818729174}
   - {fileID: -4140000524652855832}
   IsStream: 1
   Is3D: 0
@@ -907,7 +934,7 @@ MonoBehaviour:
   Path: E:/Personal Projects/Game Jam Jan 2026 FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639055121157341695
+  lastModified: 639055140969323280
   FileSizes:
   - Name: Desktop
     Value: 7495296
@@ -1008,10 +1035,10 @@ MonoBehaviour:
   Path: E:/Personal Projects/Game Jam Jan 2026 FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639055121157542118
+  lastModified: 639055140969519101
   FileSizes:
   - Name: Desktop
-    Value: 2552
+    Value: 2598
   Exists: 1
 --- !u!114 &9062638151560235315
 MonoBehaviour:
