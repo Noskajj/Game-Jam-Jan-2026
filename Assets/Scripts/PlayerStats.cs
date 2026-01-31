@@ -55,6 +55,7 @@ public static class PlayerStats
         get => currentStamina + bonusStamina;
     }
 
+    public static int dashStaminaCost = 25;
     private static float healBuffer = 2f;
     private static float bonusHealBuffer = 0f;
     public static float HealBuffer

@@ -165,22 +165,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void Player_Dash(InputAction.CallbackContext context)
     {
-        Vector2 dash = moveAction.ReadValue<Vector2>();
-
-        if (dash.sqrMagnitude < 0.001f)
+        if(PlayerStats.dashStaminaCost >= PlayerStats.CurrentStamina)
         {
-            return;
-        }
+            Vector2 dash = moveAction.ReadValue<Vector2>();
 
-        if (!isGrounded)
-        {
-            return;
-        }
-        Vector3 dashVel = new Vector3(dash.x, 0f, dash.y).normalized;
+            if (dash.sqrMagnitude < 0.001f)
+            {
+                return;
+            }
 
-        velocity.y = dashUp;
-        velocity.x = dashVel.x * dashHorz;
-        velocity.z = dashVel.z * dashHorz;
+            if (!isGrounded)
+            {
+                return;
+            }
+            Vector3 dashVel = new Vector3(dash.x, 0f, dash.y).normalized;
+
+            velocity.y = dashUp;
+            velocity.x = dashVel.x * dashHorz;
+            velocity.z = dashVel.z * dashHorz;
+
+            PlayerStats.UseStamina(PlayerStats.dashStaminaCost);
+        }
+        
 
     }
 
