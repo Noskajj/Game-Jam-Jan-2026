@@ -15,15 +15,22 @@ public class MaskedCultistLogic : MeleeClass
     // Update is called once per frame
     void Update()
     {
-        DistanceCheck();
-        MeleeCheck();
+        if (!stunned || Vector3.Distance(transform.position, player.transform.position) >= 10f)
+        {
+            DistanceCheck();
+            MeleeCheck();
+        }
     }
 
     private void DistanceCheck()
     {
         MeleeState();
+
+        
         // move towards player and stop at a set distance from the player
         distance = Vector3.Distance(transform.position, player.transform.position);
+       
+
         if (distance > stopDistance)
         {
             // find player position

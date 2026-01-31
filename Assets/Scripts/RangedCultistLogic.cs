@@ -14,7 +14,10 @@ public class RangedCultistLogic : EnemyClass
     // Update is called once per frame
     void Update()
     {
-        RangeCheck();
+        if (!stunned || Vector3.Distance(transform.position, player.transform.position) >= 10f)
+        {
+            RangeCheck();
+        }
     }
 
     private void ShootProjectile()

@@ -107,12 +107,15 @@ public class EnemySpawner : MonoBehaviour
                 Vector3 spawnPos = hit.position;
                 spawnPos.y = 1;
                 GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation, transform);
-                newEnemy.GetComponent<EnemyClass>().player = player;
+
+                EnemyClass enemy = newEnemy.GetComponent<EnemyClass>();
+                enemy.player = player;
 
                 //Wave Logic 
                 enemyCount++;
                 waveEnemiesSpawned++;
-                newEnemy.GetComponent<EnemyClass>().WaveModifiers(waveNumber);
+                enemy.WaveModifiers(waveNumber);
+                enemy.InitializeStun(MaskManager.Instance.mask3IsActive);
             }
 
             yield return new WaitForSeconds(enemyDelay);
