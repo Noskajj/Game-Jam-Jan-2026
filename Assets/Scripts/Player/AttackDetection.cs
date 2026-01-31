@@ -79,9 +79,7 @@ public class AttackDetection : MonoBehaviour
         {
             Debug.Log("attak enmies");
             if(enemy.GetComponent<EnemyClass>().TakeDamage((int)PlayerStats.MeleeDamage))
-            
                 enemiesInRange.Remove(enemy);
-            
 
         }
 

@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Threading;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +16,10 @@ public class ActiveAbilityUi : MonoBehaviour
 
     private void Start()
     {
-        switch(ability)
+        CDTimer.text = "";
+        CDOverlay.fillAmount = 0f;
+
+        switch (ability)
         {
             case 0:
                 MaskManager.Instance.Mask1Invoked += StartCooldown;
@@ -28,22 +33,44 @@ public class ActiveAbilityUi : MonoBehaviour
         }
     }
 
-    public void StartCooldown(float cooldown)
+    public void StartCooldown((float cooldown, float active) values)
     {
-        CDOverlay.fillAmount = 1f;
+        float cooldown = values.cooldown;
+        float active = values.active;
+
+        
         CDTimer.text = cooldown.ToString();
         
-        StartCoroutine(CooldownAnimation(cooldown));
+        StartCoroutine(ActiveTimer(active, cooldown));
+    }
+
+    private IEnumerator ActiveTimer(float time, float cdTime)
+    {
+        float timer = 0f;
+        CDOverlay.fillAmount = 0f;
+
+        while (timer < time)
+        {
+            timer += Time.deltaTime;
+            float remaining = Mathf.Max(0f, time - timer);
+            CDTimer.text = remaining.ToString("F1");
+
+            yield return null;
+        }
+
+        StartCoroutine(CooldownAnimation(cdTime));
     }
 
     private IEnumerator CooldownAnimation(float cooldown)
     {
+        CDOverlay.fillAmount = 1f;
         float timer = 0f;
 
         while (timer < cooldown)
         {
             timer += Time.deltaTime;
             CDOverlay.fillAmount = 1f - (timer / cooldown);
+            Debug.Log($"Overlay fill amount is {CDOverlay.fillAmount}");
             float remaining = Mathf.Max(0f, cooldown - timer);
             CDTimer.text =  remaining.ToString("F1");
 
@@ -54,4 +81,6 @@ public class ActiveAbilityUi : MonoBehaviour
         CDTimer.text = "";
         
     }
+
+
 }

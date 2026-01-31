@@ -56,7 +56,7 @@ public class MaskManager : MonoBehaviour
     } 
     private float mask1Duration = 5f;
     private bool mask1OnCD = false;
-    public delegate void Mask1CDInvoked(float value);
+    public delegate void Mask1CDInvoked((float cooldown, float active) values);
     public Mask1CDInvoked Mask1Invoked;
     //Main mask, damage boost for 5 seconds, cd 45
     private void CheckForMask1(InputAction.CallbackContext context)
@@ -74,10 +74,11 @@ public class MaskManager : MonoBehaviour
         PlayerStats.meleeBonus = PlayerStats.MeleeDamage;
         PlayerStats.gunBonus = PlayerStats.GunDamage;
 
+        Mask1Invoked?.Invoke((mask1CD, mask1Duration));
         yield return new WaitForSeconds(mask1Duration);
 
         mask1OnCD = true;
-        Mask1Invoked?.Invoke(mask1CD);
+        
         yield return new WaitForSeconds(mask1CD);
 
         mask1OnCD = false;
@@ -93,7 +94,7 @@ public class MaskManager : MonoBehaviour
     private bool mask2OnCD = false;
     [SerializeField]
     private GameObject magicProjectilePrefab;
-    public delegate void Mask2CDInvoked(float value);
+    public delegate void Mask2CDInvoked((float cooldown, float active) values);
     public Mask1CDInvoked Mask2Invoked;
 
     //Mask 2, spells projectile aoe, cd 12
@@ -121,7 +122,7 @@ public class MaskManager : MonoBehaviour
         Instantiate(magicProjectilePrefab, PlayerManager.Instance.transform.position, bulletDir);
 
         mask2OnCD = true;
-        Mask2Invoked?.Invoke(mask2CD);
+        Mask2Invoked?.Invoke((mask2CD, 0f));
         yield return new WaitForSeconds(mask2CD);
 
         mask2OnCD = false;
@@ -136,7 +137,7 @@ public class MaskManager : MonoBehaviour
     private bool mask3OnCD = false;
     private float mask3Duration = 10f;
     public bool mask3IsActive = false;
-    public delegate void Mask3CDInvoked(float value);
+    public delegate void Mask3CDInvoked((float cooldown, float active) values);
     public Mask1CDInvoked Mask3Invoked;
 
     public static event Action mask3Activated, mask3Deactivated;
@@ -155,13 +156,14 @@ public class MaskManager : MonoBehaviour
         mask3Activated?.Invoke();
         mask3IsActive = true;
 
+        Mask3Invoked?.Invoke((mask3CD, mask3Duration));
         yield return new WaitForSeconds(mask3Duration);
 
         mask3IsActive = false;
         mask3Deactivated?.Invoke();
 
         mask3OnCD = true;
-        Mask3Invoked?.Invoke(mask3CD);
+        
         yield return new WaitForSeconds(mask3CD);
 
         mask3OnCD = false;
