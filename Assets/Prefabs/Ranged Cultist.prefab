@@ -108,7 +108,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 7944433509062114388}
   - component: {fileID: 5847511988216069857}
   - component: {fileID: 1886102062539645732}
+  - component: {fileID: 3802416003239022483}
   m_Layer: 0
   m_Name: Ranged Cultist
   m_TagString: Untagged
@@ -160,15 +161,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef4e795dfd0d984a83311f215e2072f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedCultistLogic
+  monsterSpeed: 3
+  stopDistance: 10
+  maxHealth: 100
+  soulValue: 1
   rangeAttacktime: 2
   rangeCooldown: 3
   rangeAttacktimer: 3
   projectilePrefab: {fileID: 6729389453814341081, guid: 65d416516cb896c4f8569c64fd4758f6, type: 3}
   firePoint: {fileID: 6641837318634074419}
   projectileSpeed: 25
-  player: {fileID: 0}
-  stopDistance: 10
-  monsterSpeed: 3
 --- !u!65 &5847511988216069857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -217,3 +219,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!195 &3802416003239022483
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6929060413286982554}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1.44
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

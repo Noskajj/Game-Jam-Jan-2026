@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class EnemyClass : MonoBehaviour
 {
     // assign player prefeb
-    public GameObject player;
+    protected GameObject player;
 
     // monster movement
     public float monsterSpeed = 3;
@@ -21,6 +22,35 @@ public abstract class EnemyClass : MonoBehaviour
     {
         MaskManager.mask3Activated += StunActivated;
         MaskManager.mask3Deactivated += StunDeactivated;
+        agent = transform.GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        StopDist();
+    }
+
+    protected NavMeshAgent agent;
+
+    protected virtual void Update()
+    {
+        Movement();
+    }
+
+    public void SetPlayer(GameObject playerObj)
+    {
+        player = playerObj;
+    }
+
+    protected virtual void Movement()
+    {
+        //For melee, includes stopping logic
+        if (!stunned || Vector3.Distance(transform.position, player.transform.position) >= 10f)
+        {
+            agent.SetDestination(player.transform.position);
+        }
+    }
+
+    protected virtual void StopDist()
+    {
+        agent.stoppingDistance = 0.5f;
     }
 
     private void StunActivated()

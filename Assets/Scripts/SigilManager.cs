@@ -29,13 +29,13 @@ public class SigilManager : MonoBehaviour
 
     private SigilType currentSigil;
 
-    [SerializeField]
-    private int bloodCost = 150, serviceCost = 70, agilityCost = 1000, timeCost = 125, bindingCost = 250;
+    
+    private int bloodCost = 150, serviceCost = 70, agilityCost = 100, timeCost = 125, bindingCost = 250;
 
     public bool CanPurchaseSigil(SigilType sigil)
     {
         currentSigil = sigil;
-        if(SigilCost() <= PlayerStats.Souls && !currentSigils.Contains(currentSigil))
+        if(SigilCost(currentSigil) <= PlayerStats.Souls && !currentSigils.Contains(currentSigil))
         {
             return true;
         }
@@ -44,9 +44,9 @@ public class SigilManager : MonoBehaviour
         return false;
     }
 
-    private int SigilCost()
+    public int SigilCost(SigilType sigil)
     {
-        switch(currentSigil)
+        switch(sigil)
         {
             case SigilType.Blood:
                 return bloodCost;
@@ -70,7 +70,7 @@ public class SigilManager : MonoBehaviour
         Debug.Log("Yo yo yo we buyin sigils");
         if(!currentSigils.Contains(sigil))
         {
-            PlayerStats.SpendSouls(SigilCost());
+            PlayerStats.SpendSouls(SigilCost(sigil));
             currentSigils.Add(sigil);
             ActivateSigil(sigil);
 
