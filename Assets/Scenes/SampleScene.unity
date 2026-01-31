@@ -300,9 +300,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::uncleAttacks
   bolt: {fileID: 405280807}
   bossMass: 20
+  timer: 0
   dashForce: 500
   dashCooldown: 3
-  dashTimer: 0
+  boltCooldown: 3
+  boltLockOnWindow: 5
 --- !u!1 &405280806
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +459,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!1 &614407491 stripped
 GameObject:
