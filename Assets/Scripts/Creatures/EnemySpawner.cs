@@ -8,13 +8,12 @@ public class EnemySpawner : MonoBehaviour
 
 
     [SerializeField]
-    private GameObject enemyPrefab;
+    private GameObject[] enemyPrefabs;
     [SerializeField]
     private GameObject player;
 
     public float enemyDelay = 1f;
 
-    private Coroutine spawnEnemyCoroutine;
 
     #region WaveSection
     private int waveNumber = 0;
@@ -59,9 +58,7 @@ public class EnemySpawner : MonoBehaviour
 
             yield return new WaitForSeconds(2f);
 
-            //TODO: Change this for proper gameplay
             totalWaveEnemies = (int)(0.25f * Mathf.Log(waveNumber + 1) * waveNumber + 2f * waveNumber + 10f);
-            //totalWaveEnemies = waveNumber + 1;
 
             waveEnemiesSpawned = 0;
 
@@ -106,7 +103,24 @@ public class EnemySpawner : MonoBehaviour
                 //Debug.Log("We at spawning stage");
                 Vector3 spawnPos = hit.position;
                 spawnPos.y = 1;
-                GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation, transform);
+                int selection = 0;
+                if(MaskManager.Instance.MasksCollected >=3)
+                {
+                    //Random all enemies
+                    selection = Random.Range(0, enemyPrefabs.Length);
+                }
+                else if(MaskManager.Instance.MasksCollected >= 2)
+                {
+                    //Random 3 enemies
+                    selection = Random.Range(0, enemyPrefabs.Length -1);
+                }
+                else if(MaskManager.Instance.MasksCollected >= 1)
+                {
+                    //Random 2 enemies
+                    selection = Random.Range(0, enemyPrefabs.Length -2);
+                }
+
+                GameObject newEnemy = Instantiate(enemyPrefabs[selection], spawnPos, enemyPrefabs[selection].transform.rotation, transform);
 
                 EnemyClass enemy = newEnemy.GetComponent<EnemyClass>();
                 enemy.SetPlayer(player);

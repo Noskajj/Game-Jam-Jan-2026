@@ -98,7 +98,7 @@ public abstract class EnemyClass : MonoBehaviour
         // give player something (souls)
         PlayerStats.GainSouls(soulValue);
 
-        //TODO: Tell spawn manager that its dead
+        //Tell spawn manager that its dead
         EnemySpawner.Instance.EnemyDeath();
 
         // destroy gameobject
@@ -108,7 +108,7 @@ public abstract class EnemyClass : MonoBehaviour
 
     public void WaveModifiers(int wave)
     {
-        maxHealth = 15f * Mathf.Log(wave + 1) + 75;
+        maxHealth *= Mathf.Atan(wave * 0.02f) + 1f;
         monsterSpeed *= 0.12f * Mathf.Log(wave + 1) + 1;
 
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static MaskManager;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -50,16 +51,19 @@ public class PlayerManager : MonoBehaviour
 
     private bool gunEquiped = false;
     private bool gunOnCD, swordOnCD;
-    
+    public delegate void SwordCDInvoked((float cooldown, float active) values);
+    public Mask1CDInvoked SwordInvoked;
+
+    public delegate void GunCDInvoked((float cooldown, float active) values);
+    public Mask1CDInvoked GunInvoked;
 
     [SerializeField]
     private GameObject bulletPrefab;
 
-    //TODO: get this to work with upgrades
     private float gunSpeedModifier = 2f;
     private float GunSpeedModifier
     {
-        get => Math.Max(0.2f, GunSpeedModifier - UpgradeManager.Instance.SpeedWalker);
+        get => Math.Max(0.2f, gunSpeedModifier - UpgradeManager.Instance.SpeedWalker);
     }
 
     private void EquipGun(InputAction.CallbackContext context)
@@ -162,7 +166,7 @@ public class PlayerManager : MonoBehaviour
     private IEnumerator MeleeCD()
     {
         swordOnCD = true;
-
+        SwordInvoked?.Invoke((PlayerStats.MeleeBuffer, 0f));
         yield return new WaitForSeconds(PlayerStats.MeleeBuffer);
 
         swordOnCD = false;
@@ -171,7 +175,7 @@ public class PlayerManager : MonoBehaviour
     private IEnumerator GunCD()
     {
         gunOnCD = true;
-
+        GunInvoked?.Invoke((PlayerStats.GunBuffer, 0f));
         yield return new WaitForSeconds(PlayerStats.GunBuffer);
 
         gunOnCD = false;
@@ -186,7 +190,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(PlayerStats.RemoveHealth(damage))
         {
-            //TODO: Player is dead, run dead code
+            GameOver();
             return;
         }
 
@@ -223,6 +227,13 @@ public class PlayerManager : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    private void GameOver()
+    {
+        //TODO: display game over ui
+
+        //Time scale = 0
     }
     #endregion
 

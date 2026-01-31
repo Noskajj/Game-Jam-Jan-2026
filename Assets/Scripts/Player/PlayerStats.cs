@@ -49,10 +49,9 @@ public static class PlayerStats
     }
 
     private static int currentStamina = 100;
-    private static int bonusStamina = 0;
     public static int CurrentStamina
     {
-        get => currentStamina + bonusStamina;
+        get => currentStamina;
     }
 
     private static int swordStaminaCost = 25;
@@ -206,6 +205,7 @@ public static class PlayerStats
     public static void UseStamina(int amount)
     {
         currentStamina -= amount;
+        PlayerManager.Instance.HasUsedStamina(amount);
     }
 
     public static void GainStamina(int amount)
