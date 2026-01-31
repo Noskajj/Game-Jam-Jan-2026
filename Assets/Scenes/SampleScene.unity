@@ -207,8 +207,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1605842815428843968, guid: 532bbf3399fa5924e81df18229efe0b7, type: 3}
       propertyPath: masksCollected
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1605842815428843968, guid: 532bbf3399fa5924e81df18229efe0b7, type: 3}
+      propertyPath: magicProjectilePrefab
+      value: 
+      objectReference: {fileID: 1769406006115635367, guid: 594accf42503d6d4eb923c21b74709da, type: 3}
     - target: {fileID: 4391516051120565977, guid: 532bbf3399fa5924e81df18229efe0b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.13879
