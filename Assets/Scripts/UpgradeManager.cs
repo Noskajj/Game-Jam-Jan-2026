@@ -169,7 +169,7 @@ public class UpgradeManager : MonoBehaviour
     private int largerChamberAmount = 0;
 
     /// <summary>
-    /// How many bullets you can hold total
+    /// How many bullets you can hold total(reserve ammo)
     /// </summary>
     public int LargerPouch
     {
