@@ -201,7 +201,7 @@ public class PlayerManager : MonoBehaviour
         float healBuffer = 1f / PlayerStats.HealsPerSecond;
         while (PlayerStats.Health < PlayerStats.MaxHealth)
         {
-            Debug.Log($"We are at {PlayerStats.Health} health out of {PlayerStats.MaxHealth}. With {currentHealTimer} seconds elapsed");
+            //Debug.Log($"We are at {PlayerStats.Health} health out of {PlayerStats.MaxHealth}. With {currentHealTimer} seconds elapsed");
             PlayerStats.AddHealth(1);
 
 

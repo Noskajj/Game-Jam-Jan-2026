@@ -60,12 +60,12 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
             //TODO: Change this for proper gameplay
-            //totalWaveEnemies = (int)(0.25f * Mathf.Log(waveNumber) * waveNumber + 2f * waveNumber + 10f);
-            totalWaveEnemies = waveNumber + 1;
+            totalWaveEnemies = (int)(0.25f * Mathf.Log(waveNumber + 1) * waveNumber + 2f * waveNumber + 10f);
+            //totalWaveEnemies = waveNumber + 1;
 
             waveEnemiesSpawned = 0;
 
-            //Debug.Log($"We are starting wave number {waveNumber} that should spawn {totalWaveEnemies} enemies");
+            Debug.Log($"We are starting wave number {waveNumber} that should spawn {totalWaveEnemies} enemies");
             yield return StartCoroutine(EnemySpawning());
 
             waveNumber++;
@@ -106,7 +106,7 @@ public class EnemySpawner : MonoBehaviour
                 //Debug.Log("We at spawning stage");
                 Vector3 spawnPos = hit.position;
                 spawnPos.y = 1;
-                GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity, transform);
+                GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation, transform);
                 newEnemy.GetComponent<EnemyClass>().player = player;
 
                 //Wave Logic 
