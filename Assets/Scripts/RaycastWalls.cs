@@ -6,31 +6,62 @@ using UnityEngine;
 public class RaycastWalls : MonoBehaviour
 {
     public LayerMask wallLayer;
-    private HashSet<Renderer> disabledRenders = new HashSet<Renderer>();
+    private HashSet<Renderer> currentlyBlocking = new HashSet<Renderer>();
+    private HashSet<Renderer> lastFrameBlocking = new HashSet<Renderer>();
+    private Material wallMat;
 
     private void Update()
     {
-         foreach(var rend in disabledRenders)
+        lastFrameBlocking.Clear();
+         foreach(var rend in currentlyBlocking)
         {
-            if(rend != null)
-                rend.enabled = true;
+           lastFrameBlocking.Add(rend);
         }
-         disabledRenders.Clear();
+
+         currentlyBlocking.Clear();
 
         Vector3 direction = transform.parent.position - transform.position;
         float dist = direction.magnitude;
 
         RaycastHit[] hits = Physics.RaycastAll(transform.position, direction.normalized, dist, wallLayer);
-       foreach(var hit in hits)
+        foreach(var hit in hits)
         {
             Renderer wallRenderer = hit.collider.GetComponent<Renderer>();
             if (wallRenderer != null)
             {
+                currentlyBlocking.Add(wallRenderer);
+
                 wallRenderer.enabled = false;
-                disabledRenders.Add(wallRenderer);
             }
         }       
+
+       foreach(var rend in lastFrameBlocking)
+        {
+            if (!currentlyBlocking.Contains(rend))
+                rend.enabled = true;
+        }
     }
+
+    private void SetTransparent(Renderer rend, float alpha)
+    {
+        Debug.Log("transparent attemp");
+        Material mat = rend.material;
+        mat.SetFloat("_Surface", 1);
+        Color color = mat.color;
+        color.a = alpha;
+        mat.color = color;
+    }
+
+    private void SetOpaque(Renderer rend, float alpha)
+    {
+        Material mat = rend.material;
+        mat.SetFloat("_Surface", 0);
+        Color color = mat.color;
+        color.a = alpha;
+        mat.color = color;
+    }
+
+
 
     //Not implemented yet
     private IEnumerator FadeWall(Renderer wallRenderer, int targetVal, int fadeTime)
