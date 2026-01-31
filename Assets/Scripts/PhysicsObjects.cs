@@ -11,10 +11,14 @@ public class PhysicsObjects : MonoBehaviour
     public Vector3 velocity;
     public float mass = 1f;
     public float groundCheckBuffer = 0.02f;     //Buffer for ground checks
-    public LayerMask groundMask = ~0;
+    public LayerMask groundMask = ~3;   //1111111111111111100
+    private int groundContacts = 0;
+
 
     public float groundFriction = 20f;
     public float sleepTime = 2f;
+
+
 
     //FLAGS
     public bool isGrounded;
@@ -37,17 +41,20 @@ public class PhysicsObjects : MonoBehaviour
         _col = GetComponent<Collider>();
 
         _rb.useGravity = false;                 //We arnt using unity gravity
-
+        _rb.isKinematic = false;
         _rb.mass = mass;
         _asleepTimer = 0f;
+
+        Apply_Force(new Vector3(12, 5, 2));
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log(velocity);
         float dt = Time.fixedDeltaTime;
 
-        isGrounded = Check_Grounded();
+        isGrounded = groundContacts > 0;
 
         if (isAsleep)
         {
@@ -71,17 +78,17 @@ public class PhysicsObjects : MonoBehaviour
         }
         else
         {
-            velocity.y = (velocity.y < 0f) ? 0f : velocity.y;
+            if (velocity.y < 0f) velocity.y = 0f;
 
             Friction(dt);
         }
 
-        _rb.MovePosition(_rb.position + velocity * dt);     //S = V * detla t
-
+        //_rb.MovePosition(_rb.position + velocity * dt);     //S = V * detla t
+        _rb.linearVelocity = velocity;
 
         //Sleep code:
 
-        if (isGrounded && velocity.magnitude <= 0.01f)
+        if (isGrounded && velocity.sqrMagnitude <= 0.1f)
         {
 
             _asleepTimer += dt;
@@ -134,12 +141,14 @@ public class PhysicsObjects : MonoBehaviour
     private void WakeUp()
     {
         isAsleep = false;
+        Debug.Log("Cube is awake");
         _asleepTimer = 0f;
     }
 
     private void Sleep()
     {
         isAsleep = true;
+        Debug.Log("Cube is asleep");
 
     }
 
@@ -152,6 +161,27 @@ public class PhysicsObjects : MonoBehaviour
         velocity = newVelocity;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Collisions call back. 
+
+        //Bitwise operations to check if correct layer. Very efficent
+        if (((1 << collision.gameObject.layer) & groundMask) != 0)
+        {
+            groundContacts++;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        //Bitwise operations to check if correct layer. Very efficent
+        if (((1 << collision.gameObject.layer) & groundMask) != 0)
+        {
+            groundContacts--;
+        }
+    }
+
+    /*
     private bool Check_Grounded()
     {
 
@@ -168,5 +198,6 @@ public class PhysicsObjects : MonoBehaviour
             QueryTriggerInteraction.Ignore
         );
     }
+    */
 
 }

@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public float mass = 1f;
 
     public float groundCheckBuffer = 0.02f;     //Buffer for ground checks
-    public LayerMask groundMask = ~0;
+    public LayerMask groundMask = ~3;
 
 
     public bool isGrounded;            //Flag for if on ground
@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
         
 
-        float _dt = Time.deltaTime;
+        float _dt = Time.fixedDeltaTime;
         isGrounded = Check_Grounded();
         
         Player_Move(_dt);
@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //TODO: See if this is needed
             //Ensures velocity doesnt build up when on ground
-            if (velocity.y < 0f) velocity.y = 0f;
+            if (velocity.y < 0f) velocity.y = -0.5f;
             Friction(_dt);
         }
 
