@@ -63,8 +63,18 @@ public static class PlayerStats
     public static float StamBuffer = 1f;
     public static float StamRegenPerSecond = 10f;
 
-    public static int meleeDamage = 25;
-    public static int gunDamage = 25;
+    private static int meleeDamage = 25;
+    public static int meleeBonus = 0;
+    public static int MeleeDamage
+    {
+        get => meleeDamage + meleeBonus;
+    }
+    private static int gunDamage = 25;
+    public static int gunBonus = 0;
+    public static int GunDamage
+    {
+        get => gunDamage + gunBonus;
+    }
 
     private static int maxGunAmmo = 6;
     public static int MaxGunAmmo

@@ -21,7 +21,7 @@ public abstract class EnemyClass : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             // call gun damage from player stats class
-            TakeDamage(PlayerStats.gunDamage);
+            TakeDamage(other.GetComponent<Projectile>().ProjectileHit());
 
             //destroys the bullet
             Destroy(other.gameObject);
