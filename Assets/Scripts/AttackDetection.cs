@@ -75,19 +75,15 @@ public class AttackDetection : MonoBehaviour
 
     public void Attack()
     {
-        foreach (var enemy in enemiesInRange)
+        foreach(var enemy in enemiesInRange)
         {
             Debug.Log("attak enmies");
-            if (enemy.GetComponent<EnemyClass>().TakeDamage((int)PlayerStats.meleeDamage))
-            {
+            if(enemy.GetComponent<EnemyClass>().TakeDamage((int)PlayerStats.meleeDamage))
+            
                 enemiesInRange.Remove(enemy);
-            }
-            else
-            {
-                enemy.GetComponent<PhysicsObjects>().Apply_Force(new Vector3(3, 3, 3));
-            }
-        } 
+            
 
+        }
 
     }
 

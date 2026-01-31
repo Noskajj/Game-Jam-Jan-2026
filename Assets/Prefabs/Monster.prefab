@@ -119,6 +119,10 @@ MonoBehaviour:
   stopDistance: 2
   meleeCooldown: 5
   meleeAttacktime: 2
+  playerInMeleeRange: 0
+  isMeleeAttacking: 0
+  meleeTimer: 2
+  meleeDamage: 10
   maxHealth: 100
   soulValue: 1
   rangeAttacktime: 4
@@ -128,8 +132,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6729389453814341081, guid: 65d416516cb896c4f8569c64fd4758f6, type: 3}
   firePoint: {fileID: 3848729277333319732}
   projectileSpeed: 15
-  meleeTimer: 0
-  meleeDamage: 10
 --- !u!65 &4995081535802201458
 BoxCollider:
   m_ObjectHideFlags: 0
