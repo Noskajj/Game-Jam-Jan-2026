@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &614407491 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5589711126320005056, guid: b96a07d89890d4843adbae121d73e845, type: 3}
+  m_PrefabInstance: {fileID: 5689603846903435581}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1515903993
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,11 +203,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1827922139 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8515870012549396430, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
-  m_PrefabInstance: {fileID: 7945686942842024971}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5331281566002152412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -211,9 +211,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 356114507586586884, guid: 2df285afed07d654a8f90d92ea413fe0, type: 3}
+      propertyPath: m_Name
+      value: Mask1UIDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992552845769521635, guid: 2df285afed07d654a8f90d92ea413fe0, type: 3}
+      propertyPath: ability
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2997259259476488156, guid: 2df285afed07d654a8f90d92ea413fe0, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3981253345130688727, guid: 2df285afed07d654a8f90d92ea413fe0, type: 3}
+      propertyPath: ability
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4119482100967479487, guid: 2df285afed07d654a8f90d92ea413fe0, type: 3}
       propertyPath: m_Pivot.x
@@ -294,6 +306,18 @@ PrefabInstance:
     - target: {fileID: 4119482100967479487, guid: 2df285afed07d654a8f90d92ea413fe0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792840054599329935, guid: 2df285afed07d654a8f90d92ea413fe0, type: 3}
+      propertyPath: m_Name
+      value: Mask2UIDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 6648571462755852731, guid: 2df285afed07d654a8f90d92ea413fe0, type: 3}
+      propertyPath: m_Name
+      value: Mask3UIDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004540866160851000, guid: 2df285afed07d654a8f90d92ea413fe0, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1702,6 +1726,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7293304375500857776, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 614407491}
     - target: {fileID: 7297777168169824367, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2151,9 +2179,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8468533945675003179, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7945686942842024974}
-    - targetCorrespondingSourceObject: {fileID: 8515870012549396430, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 75832185}
   m_SourcePrefab: {fileID: 100100000, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
 --- !u!1 &7945686942842024972 stripped
 GameObject:

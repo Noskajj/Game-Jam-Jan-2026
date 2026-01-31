@@ -14,7 +14,6 @@ public class EnemySpawner : MonoBehaviour
 
     public float enemyDelay = 1f;
 
-    private Coroutine spawnEnemyCoroutine;
 
     #region WaveSection
     private int waveNumber = 0;
@@ -77,7 +76,7 @@ public class EnemySpawner : MonoBehaviour
         {
             yield return new WaitUntil(() => enemyCount < maxEnemies);
 
-            //Debug.Log("Started spawn cycle");
+            Debug.Log("Started spawn cycle");
 
             (int, int) coords = GetCoords();
 
@@ -101,7 +100,7 @@ public class EnemySpawner : MonoBehaviour
 
             if (NavMesh.SamplePosition(worldPos, out hit, maxDist, NavMesh.AllAreas))
             {
-                //Debug.Log("We at spawning stage");
+                Debug.Log("We at spawning stage");
                 Vector3 spawnPos = hit.position;
                 spawnPos.y = 1;
                 GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation, transform);

@@ -13,7 +13,7 @@ public class UpgradeManager : MonoBehaviour
 
         Instance = this;
 
-        buyEfficientSwing.onClick.AddListener(() => BuySwordUpgrade(0));
+        /*buyEfficientSwing.onClick.AddListener(() => BuySwordUpgrade(0));
         buyFasterSwing.onClick.AddListener(() => BuySwordUpgrade(1));
         buyHarderSwing.onClick.AddListener(() => BuySwordUpgrade(2));
 
@@ -21,7 +21,7 @@ public class UpgradeManager : MonoBehaviour
         buyLargerChamber.onClick.AddListener(() => BuyGunUpgrade(1));
         buyLargerPouch.onClick.AddListener(() => BuyGunUpgrade(2));
         buyNimbleFingers.onClick.AddListener(() => BuyGunUpgrade(3));
-        buySpeedWalker.onClick.AddListener(() => BuyGunUpgrade(4));
+        buySpeedWalker.onClick.AddListener(() => BuyGunUpgrade(4));*/
     }
 
     #region UI

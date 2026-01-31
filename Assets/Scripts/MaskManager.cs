@@ -56,7 +56,8 @@ public class MaskManager : MonoBehaviour
     } 
     private float mask1Duration = 5f;
     private bool mask1OnCD = false;
-
+    public delegate void Mask1CDInvoked(float value);
+    public Mask1CDInvoked Mask1Invoked;
     //Main mask, damage boost for 5 seconds, cd 45
     private void CheckForMask1(InputAction.CallbackContext context)
     {
@@ -76,7 +77,7 @@ public class MaskManager : MonoBehaviour
         yield return new WaitForSeconds(mask1Duration);
 
         mask1OnCD = true;
-
+        Mask1Invoked?.Invoke(mask1CD);
         yield return new WaitForSeconds(mask1CD);
 
         mask1OnCD = false;
@@ -92,6 +93,8 @@ public class MaskManager : MonoBehaviour
     private bool mask2OnCD = false;
     [SerializeField]
     private GameObject magicProjectilePrefab;
+    public delegate void Mask2CDInvoked(float value);
+    public Mask1CDInvoked Mask2Invoked;
 
     //Mask 2, spells projectile aoe, cd 12
     private void CheckForMask2(InputAction.CallbackContext context)
@@ -118,7 +121,7 @@ public class MaskManager : MonoBehaviour
         Instantiate(magicProjectilePrefab, PlayerManager.Instance.transform.position, bulletDir);
 
         mask2OnCD = true;
-
+        Mask2Invoked?.Invoke(mask2CD);
         yield return new WaitForSeconds(mask2CD);
 
         mask2OnCD = false;
@@ -133,6 +136,8 @@ public class MaskManager : MonoBehaviour
     private bool mask3OnCD = false;
     private float mask3Duration = 10f;
     public bool mask3IsActive = false;
+    public delegate void Mask3CDInvoked(float value);
+    public Mask1CDInvoked Mask3Invoked;
 
     public static event Action mask3Activated, mask3Deactivated;
     //Mask 3, AOE stun, cd 120
@@ -156,7 +161,7 @@ public class MaskManager : MonoBehaviour
         mask3Deactivated?.Invoke();
 
         mask3OnCD = true;
-
+        Mask3Invoked?.Invoke(mask3CD);
         yield return new WaitForSeconds(mask3CD);
 
         mask3OnCD = false;

@@ -59,7 +59,7 @@ public class PlayerManager : MonoBehaviour
     private float gunSpeedModifier = 2f;
     private float GunSpeedModifier
     {
-        get => Math.Max(0.2f, GunSpeedModifier - UpgradeManager.Instance.SpeedWalker);
+        get => Math.Max(0.2f, gunSpeedModifier - UpgradeManager.Instance.SpeedWalker);
     }
 
     private void EquipGun(InputAction.CallbackContext context)
