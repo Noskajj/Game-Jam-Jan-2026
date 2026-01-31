@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RangedCultistLogic : MonoBehaviour
+public class RangedCultistLogic : EnemyClass
 {
     // ranged attack
     private bool isRangedAttacking;
@@ -10,13 +10,6 @@ public class RangedCultistLogic : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform firePoint;
     public float projectileSpeed = 25;
-    
-    // Assign player distance
-    public GameObject player;
-    public float stopDistance = 12;
-
-    // Speed
-    public float monsterSpeed = 4;
 
     // Update is called once per frame
     void Update()

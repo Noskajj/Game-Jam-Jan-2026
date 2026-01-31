@@ -1,7 +1,7 @@
 using System.Xml.Serialization;
 using UnityEngine;
 
-public class MonsterLogic : EnemyClass
+public class MonsterLogic : MeleeClass
 {
 
     // ranged attack

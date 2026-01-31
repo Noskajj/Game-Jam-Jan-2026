@@ -1,7 +1,7 @@
 using System.Xml.Serialization;
 using UnityEngine;
 
-public class MaskedCultistLogic : EnemyClass
+public class MaskedCultistLogic : MeleeClass
 {
     private float distance;
 
