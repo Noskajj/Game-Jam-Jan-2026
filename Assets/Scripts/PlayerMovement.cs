@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 {
     //CONSTANT
     const float BUFFER = 0.02f;
+    const float GROUND_NORMAL = 0.6f;   //Normal of the ground plane min
 
     [SerializeField]
     private InputActionAsset inputActions;
@@ -37,8 +38,9 @@ public class PlayerMovement : MonoBehaviour
     public float mass = 1f;
 
     public float groundCheckBuffer = 0.02f;     //Buffer for ground checks
-    public LayerMask groundMask = ~3;           //1111111111111111100
+    public LayerMask groundMask = 1 << 3;           //1111111111111111100
     private int groundContacts = 0;
+    private bool groundedThisStep;
 
 
     public bool isGrounded;            //Flag for if on ground
@@ -81,11 +83,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        
+        isGrounded = groundedThisStep;
+        groundedThisStep = false;
 
         float _dt = Time.fixedDeltaTime;
-        isGrounded = groundContacts > 0;
+
         
         Player_Move(_dt);
 
@@ -208,24 +210,27 @@ public class PlayerMovement : MonoBehaviour
         velocity = newVelocity;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        //Collisions call back. 
+        // Bitwise check
+        if (((1 << collision.gameObject.layer) & groundMask) == 0)
+            return;
 
-        //Bitwise operations to check if correct layer. Very efficent
-        if (((1 << collision.gameObject.layer) & groundMask) != 0)
+        Bounds bound = _col.bounds;
+        float playerBottom = bound.min.y + 0.02f; //Wiggle room
+        
+        for (int i = 0; i < collision.contactCount; i++)
         {
-            groundContacts++;
+            var hit = collision.contacts[i];
+
+
+            if ((hit.normal.y > GROUND_NORMAL) && hit.point.y <= playerBottom) 
+            {
+                groundedThisStep = true;
+                return;
+            }
         }
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        //Bitwise operations to check if correct layer. Very efficent
-        if (((1 << collision.gameObject.layer) & groundMask) != 0)
-        {
-            groundContacts--;
-        }
-    }
 }
 

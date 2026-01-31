@@ -51,7 +51,6 @@ public class PhysicsObjects : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(velocity);
         float dt = Time.fixedDeltaTime;
 
         isGrounded = groundContacts > 0;
