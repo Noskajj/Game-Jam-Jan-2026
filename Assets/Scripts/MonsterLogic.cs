@@ -1,7 +1,7 @@
 using System.Xml.Serialization;
 using UnityEngine;
 
-public class MonsterLogic : EnemyClass
+public class MonsterLogic : MeleeClass
 {
 
     // ranged attack
@@ -13,19 +13,15 @@ public class MonsterLogic : EnemyClass
     public GameObject projectilePrefab;
     public Transform firePoint;
     public float projectileSpeed = 15;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    
+ 
     // Update is called once per frame
     void Update()
     {
-        RangeCheck();
-        MeleeCheck();
+        if (!stunned || Vector3.Distance(transform.position, player.transform.position) >= 10f)
+        {
+            RangeCheck();
+            MeleeCheck();
+        }
     }
 
     private void ShootProjectile()
@@ -46,6 +42,7 @@ public class MonsterLogic : EnemyClass
     private void RangeCheck()
     {
         MeleeState();
+
         // move towards player and stop at a set distance from the player
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (!isRangedAttacking && distance > stopDistance)
@@ -72,7 +69,7 @@ public class MonsterLogic : EnemyClass
             if (rangeAttacktime <= 0)
             {
                 ShootProjectile();
-                Debug.Log("Projectile Spawned");
+                //Debug.Log("Projectile Spawned");
                 rangeAttacktimer = rangeCooldown;
                 isRangedAttacking = false;
             }

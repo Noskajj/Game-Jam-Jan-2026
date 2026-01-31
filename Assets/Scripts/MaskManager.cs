@@ -1,14 +1,145 @@
 using NUnit.Framework;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MaskManager : MonoBehaviour
 {
+    public static MaskManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if(Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        Instance = this;
+
+    }
+
+    private InputAction useMask1, useMask2, useMask3;
+    private void Start()
+    {
+        useMask1 = InputSystem.actions.FindAction("Mask1Activate");
+        useMask2 = InputSystem.actions.FindAction("Mask2Activate");
+        useMask3 = InputSystem.actions.FindAction("Mask3Activate");
+
+        useMask1.started += CheckForMask1;
+        useMask2.started += CheckForMask2;
+        useMask3.started += CheckForMask3;
+
+    }
+
+
     [SerializeField]
-    private List allMasks, currentMasks;
+    private int allMasks, masksCollected;
 
-    //Do masks give stat buffs? if so do here
+    #region mask1
+    private float mask1CD = 45f;
+    private float mask1Duration = 5f;
+    private bool mask1OnCD = false;
 
-    //Do masks give unique abilities? if so do here
+    //Main mask, damage boost for 5 seconds, cd 45
+    private void CheckForMask1(InputAction.CallbackContext context)
+    {
+        if(!mask1OnCD && masksCollected >=1)
+        {
+            //DO mask 1 effect
+            StartCoroutine(Mask1Activated());
+        }
+    }
 
-    
+    private IEnumerator Mask1Activated()
+    {
+        //Boosts damage by 100%
+        PlayerStats.meleeBonus = PlayerStats.MeleeDamage;
+        PlayerStats.gunBonus = PlayerStats.GunDamage;
+
+        yield return new WaitForSeconds(mask1Duration);
+
+        mask1OnCD = true;
+
+        yield return new WaitForSeconds(mask1CD);
+
+        mask1OnCD = false;
+    }
+
+    #endregion
+
+    #region mask2
+    private float mask2CD = 12f;
+    private bool mask2OnCD = false;
+    [SerializeField]
+    private GameObject magicProjectilePrefab;
+
+    //Mask 2, spells projectile aoe, cd 12
+    private void CheckForMask2(InputAction.CallbackContext context)
+    {
+        if (!mask2OnCD && masksCollected >= 2)
+        {
+            //DO mask 2 effect
+            StartCoroutine(Mask2Activated());
+        }
+    }
+
+    private IEnumerator Mask2Activated()
+    {
+        Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        //Get mouse offset
+        Vector2 mouseOffset = Mouse.current.position.ReadValue() - screenCenter;
+
+        //Convert to normalized direction
+        Vector3 direction = new Vector3(mouseOffset.x, 0f, mouseOffset.y).normalized;
+        //Get bullet direction
+        Quaternion bulletDir = Quaternion.LookRotation(direction, Vector3.up);
+        //Create bullet
+        Instantiate(magicProjectilePrefab, PlayerManager.Instance.transform.position, bulletDir);
+
+        mask2OnCD = true;
+
+        yield return new WaitForSeconds(mask2CD);
+
+        mask2OnCD = false;
+    }
+    #endregion
+
+    #region mask3
+    private float mask3CD = 120f;
+    private bool mask3OnCD = false;
+    private float mask3Duration = 10f;
+    public bool mask3IsActive = false;
+
+    public static event Action mask3Activated, mask3Deactivated;
+    //Mask 3, AOE stun, cd 120
+    private void CheckForMask3(InputAction.CallbackContext context)
+    {
+        if (!mask3OnCD && masksCollected >= 3)
+        {
+            //DO mask 3 effect
+            StartCoroutine(Mask3Activated());
+        }
+    }
+
+    private IEnumerator Mask3Activated()
+    {
+        //TODO: Make enemies freeze
+        mask3Activated?.Invoke();
+        mask3IsActive = true;
+
+        yield return new WaitForSeconds(mask3Duration);
+
+        mask3IsActive = false;
+        mask3Deactivated?.Invoke();
+
+        mask3OnCD = true;
+
+        yield return new WaitForSeconds(mask3CD);
+
+        mask3OnCD = false;
+    }
+    #endregion
 }

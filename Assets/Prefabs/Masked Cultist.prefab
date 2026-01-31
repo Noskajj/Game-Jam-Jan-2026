@@ -122,6 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6641837318634074419}
+  - component: {fileID: 64259009563599458}
   - component: {fileID: 5847511988216069857}
   - component: {fileID: 1886102062539645732}
   m_Layer: 0
@@ -148,6 +149,27 @@ Transform:
   - {fileID: 4180395944657291801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &64259009563599458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6929060413286982554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df854418e2828bc44abd2751b883145b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MaskedCultistLogic
+  player: {fileID: 0}
+  monsterSpeed: 4
+  stopDistance: 2
+  meleeCooldown: 5
+  meleeAttacktime: 2
+  meleeTimer: 0
+  meleeDamage: 25
+  maxHealth: 100
+  soulValue: 1
 --- !u!65 &5847511988216069857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -206,6 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4180395944657291801}
   - component: {fileID: 8847097389658136660}
+  - component: {fileID: 4990620735450125573}
   m_Layer: 0
   m_Name: MeleeRange
   m_TagString: Untagged
@@ -249,3 +272,15 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2.0740428
   m_Center: {x: 0.026600838, y: 0, z: 0}
+--- !u!114 &4990620735450125573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7835590407619106496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3ee4c20f2d00f41bf0c84a963f2fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMelee
