@@ -28,16 +28,21 @@ public class EnemySpawner : MonoBehaviour
 
             (int, int) coords = GetCoords();
 
-            //Get screen edges
-            Vector3 screenPos = new Vector3(coords.Item1, coords.Item2, Camera.main.transform.position.y);
+            //Get world pos
 
-            //Convert to world pos
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-                
-            worldPos.y = 0;
+            Ray ray = Camera.main.ScreenPointToRay(new Vector3(coords.Item1, coords.Item2, 0f));
+
+            Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+
+            if(!groundPlane.Raycast(ray, out float enter))
+            {
+
+            }
+
+            Vector3 worldPos = ray.GetPoint(enter);
 
             //Check navmesh
-            float maxDist = 0.5f;
+            float maxDist = 2f;
             NavMeshHit hit;
 
             if (NavMesh.SamplePosition(worldPos, out hit, maxDist, NavMesh.AllAreas))
@@ -61,9 +66,12 @@ public class EnemySpawner : MonoBehaviour
         int x = 0;
         int y = 0;
 
+        Debug.Log($"{side} side");
+
         switch (side)
         {
             case 0:
+                x = 0;
                 y = Random.Range(0, Screen.height);
                 break;
             case 1:
@@ -71,13 +79,14 @@ public class EnemySpawner : MonoBehaviour
                 y = Random.Range(0, Screen.height);
                 break;
             case 2:
+                y = 0;
                 x = Random.Range(0, Screen.width);
                 break;
             case 3:
                 y = Screen.height;
                 x = Random.Range(0, Screen.width);
                 break;
-
+               
         }
         
 

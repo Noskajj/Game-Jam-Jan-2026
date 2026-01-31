@@ -9,8 +9,20 @@ public class PlayerManager : MonoBehaviour
     //Static shop can upgrade what you have 
     //Call of duty esqe perks around the map, max 3 equipped, set locations(maybe randomized later)
 
-    //TODO: Stamina bar thats the same as health system
     
+    public static PlayerManager Instance;
+
+    private void Awake()
+    {
+        if(Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        Instance = this;
+    }
+
+
     private InputAction equipGunAction, attackAction;
     private void Start()
     {
