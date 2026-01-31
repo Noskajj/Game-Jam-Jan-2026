@@ -165,7 +165,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Player_Dash(InputAction.CallbackContext context)
     {
-        if(PlayerStats.dashStaminaCost >= PlayerStats.CurrentStamina)
+        if(PlayerStats.dashStaminaCost <= PlayerStats.CurrentStamina)
         {
             Vector2 dash = moveAction.ReadValue<Vector2>();
 

@@ -49,10 +49,9 @@ public static class PlayerStats
     }
 
     private static int currentStamina = 100;
-    private static int bonusStamina = 0;
     public static int CurrentStamina
     {
-        get => currentStamina + bonusStamina;
+        get => currentStamina;
     }
 
     private static int swordStaminaCost = 25;

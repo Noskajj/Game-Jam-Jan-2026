@@ -13,7 +13,7 @@ public class UpgradeManager : MonoBehaviour
 
         Instance = this;
 
-        /*buyEfficientSwing.onClick.AddListener(() => BuySwordUpgrade(0));
+        buyEfficientSwing.onClick.AddListener(() => BuySwordUpgrade(0));
         buyFasterSwing.onClick.AddListener(() => BuySwordUpgrade(1));
         buyHarderSwing.onClick.AddListener(() => BuySwordUpgrade(2));
 
@@ -21,7 +21,7 @@ public class UpgradeManager : MonoBehaviour
         buyLargerChamber.onClick.AddListener(() => BuyGunUpgrade(1));
         buyLargerPouch.onClick.AddListener(() => BuyGunUpgrade(2));
         buyNimbleFingers.onClick.AddListener(() => BuyGunUpgrade(3));
-        buySpeedWalker.onClick.AddListener(() => BuyGunUpgrade(4));*/
+        buySpeedWalker.onClick.AddListener(() => BuyGunUpgrade(4));
     }
 
     #region UI
@@ -99,20 +99,20 @@ public class UpgradeManager : MonoBehaviour
     #endregion
 
     #region Cost Scaling
-    private int baseGunPrice = 500;
-    private int GunCostMultiplier  = 1;
+    private int baseGunPrice = 25;
+    private int GunCostMultiplier  = 8;
     private int GunUpgradesPurchased = 0;
     private int GunUpgradeCost
     {
-        get => 500 * (GunCostMultiplier * GunUpgradesPurchased);
+        get => baseGunPrice + (GunCostMultiplier * GunUpgradesPurchased);
     }
 
-    private int baseSwordPrice = 500;
+    private int baseSwordPrice = 25;
     private int SwordCostMultiplier = 1;
     private int SwordUpgradesPurchased = 0;
     private int SwordUpgradeCost
     {
-        get => 500 * (GunCostMultiplier * GunUpgradesPurchased);
+        get => baseSwordPrice + (SwordCostMultiplier * SwordUpgradesPurchased);
     }
 
     #endregion
@@ -141,7 +141,7 @@ public class UpgradeManager : MonoBehaviour
     /// </summary>
     public int HarderSwings
     {
-        get => 10 * harderSwingsAmount;
+        get => 8 * harderSwingsAmount;
     }
     private int harderSwingsAmount = 0;
 
@@ -154,7 +154,7 @@ public class UpgradeManager : MonoBehaviour
     ///  
     public int HarderBullet
     {
-        get => 10 * harderBulletAmount;
+        get => 5 * harderBulletAmount;
     }
     private int harderBulletAmount = 0;
    

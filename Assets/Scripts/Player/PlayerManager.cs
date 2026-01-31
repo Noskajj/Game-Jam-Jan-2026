@@ -60,7 +60,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private GameObject bulletPrefab;
 
-    //TODO: get this to work with upgrades
     private float gunSpeedModifier = 2f;
     private float GunSpeedModifier
     {

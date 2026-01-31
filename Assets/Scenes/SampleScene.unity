@@ -419,7 +419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1605842815428843968, guid: 532bbf3399fa5924e81df18229efe0b7, type: 3}
       propertyPath: masksCollected
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1605842815428843968, guid: 532bbf3399fa5924e81df18229efe0b7, type: 3}
       propertyPath: magicProjectilePrefab
@@ -1730,6 +1730,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 614407491}
+    - target: {fileID: 7293304375500857776, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293304375500857776, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
+      propertyPath: 'enemyPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6929060413286982554, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+    - target: {fileID: 7293304375500857776, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
+      propertyPath: 'enemyPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6929060413286982554, guid: f25f1fd7bd39aed4fa27701a7d365555, type: 3}
+    - target: {fileID: 7293304375500857776, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
+      propertyPath: 'enemyPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 3251419345698819373, guid: aa40d7f8b597f834e88d8b6c4a2a993c, type: 3}
     - target: {fileID: 7297777168169824367, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
       propertyPath: m_IsActive
       value: 1
