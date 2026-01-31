@@ -84,7 +84,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8393413348613020976
 Transform:
   m_ObjectHideFlags: 0
@@ -117,14 +117,12 @@ MonoBehaviour:
   player: {fileID: 5589711126320005056, guid: b96a07d89890d4843adbae121d73e845, type: 3}
   monsterSpeed: 3
   stopDistance: 2
+  maxHealth: 100
+  soulValue: 100
   meleeCooldown: 5
   meleeAttacktime: 2
-  playerInMeleeRange: 0
-  isMeleeAttacking: 0
   meleeTimer: 2
   meleeDamage: 10
-  maxHealth: 100
-  soulValue: 1
   rangeAttacktime: 4
   rangeAttackrange: 20
   rangeCooldown: 10
