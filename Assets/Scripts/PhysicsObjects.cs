@@ -45,7 +45,7 @@ public class PhysicsObjects : MonoBehaviour
         _rb.mass = mass;
         _asleepTimer = 0f;
 
-        Apply_Force(new Vector3(12, 5, 2));
+        Apply_Force(new Vector3(0, 4, 0));
     }
 
     // Update is called once per frame
@@ -59,16 +59,12 @@ public class PhysicsObjects : MonoBehaviour
         if (isAsleep)
         {
 
-            if (!isGrounded || velocity.sqrMagnitude > 0f)
+            if (!isGrounded || _rb.linearVelocity.sqrMagnitude > 0.0001f)
             {
                 WakeUp();
             }
             return;
         }
-            
-            
-            
-            
             
             
         if (!isGrounded)
