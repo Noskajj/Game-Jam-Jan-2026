@@ -36,10 +36,11 @@ public class PlayerMovement : MonoBehaviour
     public float mass = 1f;
 
     public float groundCheckBuffer = 0.02f;     //Buffer for ground checks
-    public LayerMask groundMask = ~0;
+    public LayerMask groundMask = ~3;           //1111111111111111100
+    private int groundContacts = 0;
 
 
-    public bool is_grounded;            //Flag for if on ground
+    public bool isGrounded;            //Flag for if on ground
 
     //TODO: Make surface share this instead of hard coding
     public float groundFriction = 20f;
@@ -77,20 +78,20 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         
 
-        float _dt = Time.deltaTime;
-        is_grounded = Check_Grounded();
+        float _dt = Time.fixedDeltaTime;
+        isGrounded = groundContacts > 0;
         
         Player_Move(_dt);
 
 
 
         //Gravity 
-        if (!is_grounded)
+        if (!isGrounded)
         { 
             velocity.y += gravity * _dt;         //V = u + a*t
         }
@@ -103,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-         _rb.MovePosition(_rb.position + velocity * _dt);   // S = V*t
+         _rb.linearVelocity = velocity;   // S = V*t
 
 
     }
@@ -191,22 +192,26 @@ public class PlayerMovement : MonoBehaviour
         */
 
         velocity = newVelocity;
-    } 
-    
-    private bool Check_Grounded()
+    }
+
+    private void OnCollisionEnter(Collision collision)
     {
-        
-        Bounds b = _col.bounds;
+        //Collisions call back. 
 
-        Vector3 origin = new Vector3(b.center.x, b.min.y + BUFFER, b.center.z);
+        //Bitwise operations to check if correct layer. Very efficent
+        if (((1 << collision.gameObject.layer) & groundMask) != 0)
+        {
+            groundContacts++;
+        }
+    }
 
-
-        return Physics.Raycast(
-            origin,
-            Vector3.down,
-            (BUFFER + groundCheckBuffer),
-            groundMask,
-            QueryTriggerInteraction.Ignore
-        );
+    private void OnCollisionExit(Collision collision)
+    {
+        //Bitwise operations to check if correct layer. Very efficent
+        if (((1 << collision.gameObject.layer) & groundMask) != 0)
+        {
+            groundContacts--;
+        }
     }
 }
+
