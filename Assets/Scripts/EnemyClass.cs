@@ -78,7 +78,7 @@ public abstract class EnemyClass : MonoBehaviour
 
     public void WaveModifiers(int wave)
     {
-        maxHealth *= Mathf.Atan(wave * 0.02f) + 1f;
+        maxHealth = 15f * Mathf.Log(wave + 1) + 75;
         monsterSpeed *= 0.12f * Mathf.Log(wave + 1) + 1;
 
     }

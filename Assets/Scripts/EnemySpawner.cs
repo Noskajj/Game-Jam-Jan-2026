@@ -8,12 +8,13 @@ public class EnemySpawner : MonoBehaviour
 
 
     [SerializeField]
-    private GameObject[] enemyPrefabs;
+    private GameObject enemyPrefab;
     [SerializeField]
     private GameObject player;
 
     public float enemyDelay = 1f;
 
+    private Coroutine spawnEnemyCoroutine;
 
     #region WaveSection
     private int waveNumber = 0;
@@ -105,24 +106,7 @@ public class EnemySpawner : MonoBehaviour
                 //Debug.Log("We at spawning stage");
                 Vector3 spawnPos = hit.position;
                 spawnPos.y = 1;
-                int selection = 0;
-                if(MaskManager.Instance.MasksCollected >=3)
-                {
-                    //Random all enemies
-                    selection = Random.Range(0, enemyPrefabs.Length);
-                }
-                else if(MaskManager.Instance.MasksCollected >= 2)
-                {
-                    //Random 3 enemies
-                    selection = Random.Range(0, enemyPrefabs.Length -1);
-                }
-                else if(MaskManager.Instance.MasksCollected >= 1)
-                {
-                    //Random 2 enemies
-                    selection = Random.Range(0, enemyPrefabs.Length -2);
-                }
-
-                GameObject newEnemy = Instantiate(enemyPrefabs[selection], spawnPos, enemyPrefabs[selection].transform.rotation, transform);
+                GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation, transform);
 
                 EnemyClass enemy = newEnemy.GetComponent<EnemyClass>();
                 enemy.player = player;

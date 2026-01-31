@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,9 +22,6 @@ public class UpgradeManager : MonoBehaviour
         buyLargerPouch.onClick.AddListener(() => BuyGunUpgrade(2));
         buyNimbleFingers.onClick.AddListener(() => BuyGunUpgrade(3));
         buySpeedWalker.onClick.AddListener(() => BuyGunUpgrade(4));
-
-        gunCostTxt.text = $"Gun Cost: {GunUpgradeCost}";
-        swordCostTxt.text = $"Sword Cost: {SwordUpgradeCost}";
     }
 
     #region UI
@@ -34,9 +30,6 @@ public class UpgradeManager : MonoBehaviour
 
     [SerializeField]
     private Button buyHarderBullet, buyLargerChamber, buyLargerPouch, buyNimbleFingers, buySpeedWalker;
-
-    [SerializeField]
-    private TextMeshProUGUI gunCostTxt, swordCostTxt;
 
     private void BuyGunUpgrade(int gunId)
     {
@@ -66,8 +59,6 @@ public class UpgradeManager : MonoBehaviour
                 default:
                     goto case 0;
             }
-
-            gunCostTxt.text = $"Gun Cost: {GunUpgradeCost}";
         }
     }
 
@@ -93,8 +84,6 @@ public class UpgradeManager : MonoBehaviour
                 default:
                     goto case 0;
             }
-
-            swordCostTxt.text = $"Sword Cost: {SwordUpgradeCost}";
         }
     }
 
@@ -110,20 +99,20 @@ public class UpgradeManager : MonoBehaviour
     #endregion
 
     #region Cost Scaling
-    private int baseGunPrice = 25;
-    private int GunCostMultiplier  = 8;
+    private int baseGunPrice = 500;
+    private int GunCostMultiplier  = 1;
     private int GunUpgradesPurchased = 0;
     private int GunUpgradeCost
     {
-        get => baseGunPrice + (GunCostMultiplier * GunUpgradesPurchased);
+        get => 500 * (GunCostMultiplier * GunUpgradesPurchased);
     }
 
-    private int baseSwordPrice = 25;
+    private int baseSwordPrice = 500;
     private int SwordCostMultiplier = 1;
     private int SwordUpgradesPurchased = 0;
     private int SwordUpgradeCost
     {
-        get => baseSwordPrice + (SwordCostMultiplier * SwordUpgradesPurchased);
+        get => 500 * (GunCostMultiplier * GunUpgradesPurchased);
     }
 
     #endregion
@@ -152,7 +141,7 @@ public class UpgradeManager : MonoBehaviour
     /// </summary>
     public int HarderSwings
     {
-        get => 8 * harderSwingsAmount;
+        get => 10 * harderSwingsAmount;
     }
     private int harderSwingsAmount = 0;
 
@@ -165,7 +154,7 @@ public class UpgradeManager : MonoBehaviour
     ///  
     public int HarderBullet
     {
-        get => 5 * harderBulletAmount;
+        get => 10 * harderBulletAmount;
     }
     private int harderBulletAmount = 0;
    
@@ -180,7 +169,7 @@ public class UpgradeManager : MonoBehaviour
     private int largerChamberAmount = 0;
 
     /// <summary>
-    /// How many bullets you can hold total(reserve ammo)
+    /// How many bullets you can hold total
     /// </summary>
     public int LargerPouch
     {

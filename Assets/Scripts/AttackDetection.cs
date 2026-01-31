@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class AttackDetection : MonoBehaviour
 {
-    public Vector3 meleeForce = new Vector3(0, 6, 35);  //Melee strength
-
     public static AttackDetection Instance { get; private set;}
     
     private void Awake()
@@ -77,69 +75,26 @@ public class AttackDetection : MonoBehaviour
 
     public void Attack()
     {
-        List<Collider> deadEnemys = null;
-
-        foreach (var enemyObj in enemiesInRange)
+        foreach(var enemy in enemiesInRange)
         {
-
-            var enemy = enemyObj.GetComponentInParent<EnemyClass>();
-
-            if (enemy == null) continue;
-
-            Debug.Log("Attack Enemy Melee");
-
-            bool isDead = enemy.TakeDamage((int)PlayerStats.MeleeDamage);
-
-            //Stupid physics shit start:
-
-            var enemyPush = enemyObj.GetComponentInParent<PhysicsObjects>();
-
-            if (enemyPush != null)
+            Debug.Log("attak enmies");
+            if (enemy.GetComponent<EnemyClass>().TakeDamage((int)PlayerStats.MeleeDamage))
             {
-                enemyPush.Apply_Force(Impulse_Vector(enemyObj)); //TODO change
-            }
+                PhysicsObjects enemyImpulse = enemy.GetComponent<PhysicsObjects>();
+                enemyImpulse.Apply_Force(new Vector3(0, 10, 6));
 
-            //Stupid physics shit end;
 
-            if (isDead) 
-            {
-                deadEnemys ??= new List<Collider>();
-                deadEnemys.Add(enemyObj);
+
+                enemiesInRange.Remove(enemy);
+            
+
 
             }
-
-
+                
+            
 
         }
-        //FREE MEMORY CODE DO NOT DELETE
-        if (deadEnemys != null)
-        {
-            for (int i = 0; i < deadEnemys.Count; i++)
-            {
-                enemiesInRange.Remove(deadEnemys[i]);
-            }
-        }
 
-    }
-
-    private Vector3 Impulse_Vector(Collider enemy)
-    {
-        Vector3 direction = enemy.transform.position - transform.position;
-
-        direction.y = 0f;         //We dont care about y angle
-
-        direction.Normalize();
-
-        float angleRad = Mathf.Atan2(direction.x, direction.z);
-
-        float x = -1 * meleeForce.x * Mathf.Cos(angleRad) - meleeForce.z * Mathf.Sin(angleRad);
-        float z = -1* meleeForce.x * Mathf.Sin(angleRad) - meleeForce.z * Mathf.Cos(angleRad);
-
-        Vector3 rotatedForce = new Vector3((-1 * x), meleeForce.y, z);
-        direction.y = 0f;
-
-
-        return rotatedForce;
     }
 
     #endregion
