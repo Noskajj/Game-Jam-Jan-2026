@@ -81,6 +81,9 @@ public static class PlayerStats
     public static float ReloadSpeed = 5f;
 
     public static int TotalAmmo = 30;
+
+    public static float meleeBuffer = 0.5f;
+    public static float gunBuffer = 0.5f;
     #endregion
 
     #region Functions
