@@ -18,7 +18,7 @@ public class MonsterLogic : EnemyClass
     private bool isMeleeAttacking;
     private bool playerInMeleeRange;
     public float meleeTimer;
-    public int meleeDamage = 10;
+    public int meleeDamage = 25;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -123,6 +123,7 @@ public class MonsterLogic : EnemyClass
             {
                 // Player take damage
                 Debug.Log("Player took damage");
+                PlayerManager.Instance.HasTakenDamage(meleeDamage);
             }
 
             // Resets
