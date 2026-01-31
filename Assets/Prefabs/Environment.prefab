@@ -31,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 2497936411830933040}
   - {fileID: 5370139780220711943}
+  - {fileID: 2697509164685727612}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7540623484243542764
@@ -202,3 +203,65 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 4d965837608e994469b44615fb995cf7, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1001 &8738093315195004495
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7366401395124025706}
+    m_Modifications:
+    - target: {fileID: 6641837318634074419, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641837318634074419, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641837318634074419, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641837318634074419, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641837318634074419, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641837318634074419, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641837318634074419, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641837318634074419, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641837318634074419, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641837318634074419, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929060413286982554, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+      propertyPath: m_Name
+      value: Masked Cultist
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+--- !u!4 &2697509164685727612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6641837318634074419, guid: afc982696a2b5bf4b8941bb0bc4ecde0, type: 3}
+  m_PrefabInstance: {fileID: 8738093315195004495}
+  m_PrefabAsset: {fileID: 0}

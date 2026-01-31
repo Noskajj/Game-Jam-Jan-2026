@@ -14,8 +14,8 @@ public abstract class EnemyClass : MonoBehaviour
     public float meleeAttacktime = 2;
 
     // Melee attack
-    public bool playerInMeleeRange;
-    public bool isMeleeAttacking;
+    private bool playerInMeleeRange;
+    private bool isMeleeAttacking;
     public float meleeTimer;
     public int meleeDamage = 25;
 
