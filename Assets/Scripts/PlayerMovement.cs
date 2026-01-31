@@ -36,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
     public float mass = 1f;
 
     public float groundCheckBuffer = 0.02f;     //Buffer for ground checks
-    public LayerMask groundMask = ~3;
+    public LayerMask groundMask = ~3;           //1111111111111111100
+    private int groundContacts = 0;
 
 
     public bool isGrounded;            //Flag for if on ground
@@ -83,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         
 
         float _dt = Time.fixedDeltaTime;
-        isGrounded = Check_Grounded();
+        isGrounded = groundContacts > 0;
         
         Player_Move(_dt);
 
@@ -98,12 +99,12 @@ public class PlayerMovement : MonoBehaviour
         {
             //TODO: See if this is needed
             //Ensures velocity doesnt build up when on ground
-            if (velocity.y < 0f) velocity.y = -0.5f;
+            if (velocity.y < 0f) velocity.y = 0f;
             Friction(_dt);
         }
 
 
-         _rb.MovePosition(_rb.position + velocity * _dt);   // S = V*t
+         _rb.linearVelocity = velocity;   // S = V*t
 
 
     }
@@ -191,22 +192,26 @@ public class PlayerMovement : MonoBehaviour
         */
 
         velocity = newVelocity;
-    } 
-    
-    private bool Check_Grounded()
+    }
+
+    private void OnCollisionEnter(Collision collision)
     {
-        
-        Bounds b = _col.bounds;
+        //Collisions call back. 
 
-        Vector3 origin = new Vector3(b.center.x, b.min.y + BUFFER, b.center.z);
+        //Bitwise operations to check if correct layer. Very efficent
+        if (((1 << collision.gameObject.layer) & groundMask) != 0)
+        {
+            groundContacts++;
+        }
+    }
 
-
-        return Physics.Raycast(
-            origin,
-            Vector3.down,
-            (BUFFER + groundCheckBuffer),
-            groundMask,
-            QueryTriggerInteraction.Ignore
-        );
+    private void OnCollisionExit(Collision collision)
+    {
+        //Bitwise operations to check if correct layer. Very efficent
+        if (((1 << collision.gameObject.layer) & groundMask) != 0)
+        {
+            groundContacts--;
+        }
     }
 }
+

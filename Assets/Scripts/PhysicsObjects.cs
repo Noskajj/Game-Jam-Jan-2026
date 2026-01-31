@@ -59,7 +59,7 @@ public class PhysicsObjects : MonoBehaviour
         if (isAsleep)
         {
 
-            if (!isGrounded)
+            if (!isGrounded || velocity.sqrMagnitude > 0f)
             {
                 WakeUp();
             }
