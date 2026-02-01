@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 535cc92df2da3934e9ed435d2eb6d126, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 14b666f5be9d6924882bb56b847e7f82, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 14b666f5be9d6924882bb56b847e7f82, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -442,5 +442,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActiveAbilityUi
   ability: 0
   CDTimer: {fileID: 7087969136449927779}
+  gunAmmo: {fileID: 0}
   CDOverlay: {fileID: 1636484509204980194}
   bgImage: {fileID: 3474557080023130138}
