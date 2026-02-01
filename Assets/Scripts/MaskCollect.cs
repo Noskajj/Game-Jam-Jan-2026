@@ -15,7 +15,7 @@ public class MaskCollect : MonoBehaviour
     {
         MaskManager.Instance.MaskCollected();
         //Play maskCollected sound
-        MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.maskCollected, this.transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.maskCollected, this.transform.position);
         Destroy(gameObject);
     }
 

@@ -76,7 +76,7 @@ public abstract class EnemyClass : MonoBehaviour
             // call gun damage from player stats class
             TakeDamage(other.GetComponent<Projectile>().ProjectileHit());
             // Play enemyHurt sound
-            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.enemyHurt, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyHurt, this.transform.position);
             //destroys the bullet
             Destroy(other.gameObject);
         }

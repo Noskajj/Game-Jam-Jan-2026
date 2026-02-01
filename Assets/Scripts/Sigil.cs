@@ -34,7 +34,7 @@ public class Sigil : MonoBehaviour
             {
                 SigilManager.Instance.PurchaseSigil(sigilType);
                 //Play magicalInfusion
-                MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.magicalInfusion, this.transform.position);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.magicalInfusion, this.transform.position);
             }
         }
         
