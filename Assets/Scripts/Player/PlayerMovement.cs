@@ -63,6 +63,9 @@ public class PlayerMovement : MonoBehaviour
     //audio stuff
     private EventInstance playerFootsteps;
 
+
+    //player animation
+    public Animator playerAnimator;
      
     void Start()
     {
@@ -84,6 +87,8 @@ public class PlayerMovement : MonoBehaviour
 
         //audio stuff
         playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.playerFootstepsStone);
+
+        //playerAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -149,10 +154,21 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 targVel = new Vector3(moveKeyInput.x, 0f, moveKeyInput.y) * moveSpeed;
 
             currVel = Vector3.MoveTowards(currVel, targVel, playerAccel * _dt);
+
+            playerAnimator.SetFloat("MoveX", targVel.x);
+            playerAnimator.SetFloat("MoveZ", targVel.z);
+            playerAnimator.SetBool("IsMoving", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsMoving", false);
         }
 
-        velocity.x = currVel.x;
+            velocity.x = currVel.x;
         velocity.z = currVel.z;
+
+        
+
     }
 
     private void StopMovement(InputAction.CallbackContext context)
@@ -270,6 +286,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+
 
 }
 
