@@ -20,7 +20,7 @@ public class MeleeClass : EnemyClass
         if (!isMeleeAttacking)
         {
             isMeleeAttacking = true;
-            Debug.Log("Melee attacking");
+            //Debug.Log("Melee attacking");
             meleeTimer = meleeAttacktime;
         }
 
@@ -31,26 +31,28 @@ public class MeleeClass : EnemyClass
             if (playerInMeleeRange)
             {
                 // Player take damage
-                Debug.Log("Player took damage");
+                //Debug.Log("Player took damage");
+                //Play playerHurt sound
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
                 PlayerManager.Instance.HasTakenDamage(meleeDamage);
             }
 
             // Resets
             isMeleeAttacking = false;
             meleeTimer = meleeCooldown;
-            Debug.Log("Reset melee attack");
+            //Debug.Log("Reset melee attack");
         }
     }
     public void PlayerEnteredMeleeRange()
     {
         playerInMeleeRange = true;
-        Debug.Log("Player in melee range");
+        //Debug.Log("Player in melee range");
     }
 
     public void PlayerExitMeleeRange()
     {
         playerInMeleeRange = false;
-        Debug.Log("Player exit melee range");
+        //Debug.Log("Player exit melee range");
         // Cancel melee
         isMeleeAttacking = false;
     }
