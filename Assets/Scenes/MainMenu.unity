@@ -501,6 +501,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuAudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 105940841552324775, guid: d2a6f3b8c4b660c419ee3b8ee0fc0508, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8032778548300344557, guid: d2a6f3b8c4b660c419ee3b8ee0fc0508, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.020200014

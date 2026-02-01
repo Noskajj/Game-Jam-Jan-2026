@@ -24,7 +24,6 @@ public class MainMenuAudioManager : MonoBehaviour
     private List<EventInstance> eventInstances;
     private List<StudioEventEmitter> eventEmitters;
 
-    private EventInstance ambienceEventInstance;
     private EventInstance musicEventInstance;
 
     public static MainMenuAudioManager instance { get; private set; }
@@ -48,8 +47,6 @@ public class MainMenuAudioManager : MonoBehaviour
 
     private void Start()
     {
-        //InitializeAmbience(FMODEvents.instance.scaryAmbience);
-        //InitializeAmbience(FMODEvents.instance.scaryAmbience2);
         InitializeMusic(FMODEvents.instance.menuTheme);
     }
 
@@ -61,21 +58,10 @@ public class MainMenuAudioManager : MonoBehaviour
         sfxBus.setVolume(SFXVolume);
     }
 
-    private void InitializeAmbience(EventReference ambienceEventReference)
-    {
-        ambienceEventInstance = CreateInstance(ambienceEventReference);
-        ambienceEventInstance.start();
-    }
-
     private void InitializeMusic(EventReference musicEventReference)
     {
         musicEventInstance = CreateInstance(musicEventReference);
         musicEventInstance.start();
-    }
-
-    public void SetAmbienceParameter(string parameterName, float parameterValue)
-    {
-        ambienceEventInstance.setParameterByName(parameterName, parameterValue);
     }
 
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
