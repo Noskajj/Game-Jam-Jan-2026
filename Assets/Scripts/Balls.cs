@@ -11,7 +11,7 @@ public class Balls : MonoBehaviour
     public float k = 1f;
     public bool coolEq = false;
 
-    public float timeConst = 0.2f;
+    public float timeConst = 2f;
 
     [SerializeField] private GameObject ballPrefab;
     List<GameObject> ballsList = new List<GameObject>();
@@ -23,6 +23,7 @@ public class Balls : MonoBehaviour
     private float _totTime;
     private float _time;
     private float _kSqrt;
+    private Vector3 _center;
 
     private float _l;
     private float _n;
@@ -33,7 +34,8 @@ public class Balls : MonoBehaviour
     {
         _col = GetComponent<Collider>();
         _rb = GetComponent<Rigidbody>();
-
+        Transform daddySpawner = transform.parent;
+        _center = daddySpawner.position;
         _time = 0;
         _rb.useGravity = false;
         _rb.mass = 1f;      //This bitch lighter than your mum
@@ -50,7 +52,7 @@ public class Balls : MonoBehaviour
     {
         Vector3 curPos = GetComponent<Rigidbody>().position;
         _time += timeConst;
-        float x = curPos.x;
+        float x = curPos.x - _center.x;
         if (coolEq)
         {
             //CoolEqFunc();
@@ -62,7 +64,7 @@ public class Balls : MonoBehaviour
             if (Mathf.Abs(x) <= Mathf.Sqrt(_time))
             {
 
-                GetComponent<Rigidbody>().position = new Vector3(x, 0f, Mathf.Sqrt(_time - Mathf.Pow(x, 2f)));
+                GetComponent<Rigidbody>().position = new Vector3(_center.x + x, 20f , Mathf.Sqrt(_time - (x * x)));
             }
         }
     }
