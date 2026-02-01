@@ -16,6 +16,8 @@ public class UiPageManager : MonoBehaviour
     {
         cg.alpha = 0f;
         cg.interactable = false;
+        LoopVideoPlayer.enabled = false;
+        VideoPlayer.enabled = false;
         VideoPlayer.Prepare();
         StartCoroutine(CutsceneStartup());
     }
@@ -23,7 +25,7 @@ public class UiPageManager : MonoBehaviour
     private IEnumerator CutsceneStartup()
     {
         yield return new WaitForSeconds(1f);
-
+        VideoPlayer.enabled = true;
         VideoPlayer.Play();
 
         yield return new WaitForSeconds(2f);
