@@ -1,0 +1,878 @@
+fileFormatVersion: 2
+guid: 24afba47f08ebe94694880f837c6a8c9
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 500
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 3110
+        width: 583
+        height: 986
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4113fc402d54abe4db091e507dc12901
+      internalID: -902740656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 3110
+        width: 647
+        height: 986
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b0a2d3417d3c8849a8659c3cd457124
+      internalID: -1409345656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 3110
+        width: 663
+        height: 977
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae6fd5418de17254b8564cb65d4a7992
+      internalID: -945921680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 3216
+        y: 3092
+        width: 658
+        height: 968
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5b1363a22e62ce49b9aae519a225d20
+      internalID: -1574954656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 4239
+        y: 3110
+        width: 661
+        height: 977
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c3bd7f4862d544b892aa0f77c39882
+      internalID: 1771042755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 5262
+        y: 3089
+        width: 667
+        height: 971
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93930488060af7a4c9e0ec5d5f651bba
+      internalID: 1144328396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 5532
+        y: 4054
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a34bae72f1e1b49a881c9b4dca5a91
+      internalID: 748867415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 2078
+        width: 581
+        height: 996
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 324b513976eef014686066b9230d86ab
+      internalID: -1542708772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 2078
+        width: 635
+        height: 996
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b8892ebf4660cf4386ac4158b4d1043
+      internalID: 2032201971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 2261
+        y: 2078
+        width: 599
+        height: 998
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c3fe52085e0e71438584a2bfead5b17
+      internalID: 1883633040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 3305
+        y: 2051
+        width: 620
+        height: 1023
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aee6f202801c1ce479e6ce7e33f52b0b
+      internalID: 443901250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 4310
+        y: 2078
+        width: 596
+        height: 998
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9384a77853e4e44586305a893b58472
+      internalID: 748006110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 5288
+        y: 2051
+        width: 649
+        height: 1023
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee5f6169c5853f4cb7dc9e2de1295ce
+      internalID: -769623498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1052
+        width: 515
+        height: 999
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 525071e470266824d90c0db32e141f02
+      internalID: -1814498699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 1052
+        width: 550
+        height: 999
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed6705eb29889314986278e3fb83fa6e
+      internalID: 1196345302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 1052
+        width: 488
+        height: 998
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6e7c966975f11a448c5aede4db8208f
+      internalID: -1961787446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 3233
+        y: 1854
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 965facdc559e7624da7bb28422743f80
+      internalID: 700223467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 3354
+        y: 1058
+        width: 565
+        height: 989
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e684d4c6ef470646a597a035640dfe0
+      internalID: 1724645287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 4457
+        y: 1052
+        width: 488
+        height: 998
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b31cd0d67af0cc148801200877e2f72d
+      internalID: -2008048441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 5402
+        y: 1058
+        width: 539
+        height: 989
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dd8ec6f72bac6749a5064fc9a183399
+      internalID: 797034409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 5942
+        y: 1397
+        width: 65
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f204aec21a19f9e4b8342daf02d481be
+      internalID: 1292484925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 2837
+        y: 1226
+        width: 62
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19afe208fcb729b4cb14fad0524bdd47
+      internalID: 1127167611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 4883
+        y: 1226
+        width: 64
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3b7432df54ac8741a8c939dce7d7202
+      internalID: 1480892452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 0
+        width: 512
+        height: 1027
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7a5a6024a9278347a68d1780277d8dd
+      internalID: 356114245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 0
+        width: 550
+        height: 1027
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d962e4bf75b04a14c9baa691a8643a95
+      internalID: 2135659976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 2228
+        y: 29
+        width: 488
+        height: 994
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 966208e54d2209740abeb6952fd30da9
+      internalID: -835479493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 3281
+        y: 32
+        width: 536
+        height: 991
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf5a66b27a038b641ab19c8221b4993c
+      internalID: 839797988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 4277
+        y: 29
+        width: 488
+        height: 994
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a237e9fbdcf11b4db56e882c9061b8e
+      internalID: -824254381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 5300
+        y: 32
+        width: 566
+        height: 991
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30f1a50f2dbd67f4cb045696fb6fd78e
+      internalID: 2144283734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 5973
+        y: 830
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edad6641b6661114f837e01528d8d6a0
+      internalID: 439573260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 3215
+        y: 374
+        width: 65
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e97cc56b732cebb408120df647dcec33
+      internalID: -1974220627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 2226
+        y: 200
+        width: 64
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 788e988b595fa0240a64c830388d3f97
+      internalID: -1141932963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeleeCultistSpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 4274
+        y: 200
+        width: 62
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99229dd0f3da8154992be1720ff43630
+      internalID: 545062367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0a6b1b291bfef164cbcefbcfdc1abc2b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      MeleeCultistSpriteSheet_0: -902740656
+      MeleeCultistSpriteSheet_1: -1409345656
+      MeleeCultistSpriteSheet_10: 443901250
+      MeleeCultistSpriteSheet_11: 748006110
+      MeleeCultistSpriteSheet_12: -769623498
+      MeleeCultistSpriteSheet_13: -1814498699
+      MeleeCultistSpriteSheet_14: 1196345302
+      MeleeCultistSpriteSheet_15: -1961787446
+      MeleeCultistSpriteSheet_16: 700223467
+      MeleeCultistSpriteSheet_17: 1724645287
+      MeleeCultistSpriteSheet_18: -2008048441
+      MeleeCultistSpriteSheet_19: 797034409
+      MeleeCultistSpriteSheet_2: -945921680
+      MeleeCultistSpriteSheet_20: 1292484925
+      MeleeCultistSpriteSheet_21: 1127167611
+      MeleeCultistSpriteSheet_22: 1480892452
+      MeleeCultistSpriteSheet_23: 356114245
+      MeleeCultistSpriteSheet_24: 2135659976
+      MeleeCultistSpriteSheet_25: -835479493
+      MeleeCultistSpriteSheet_26: 839797988
+      MeleeCultistSpriteSheet_27: -824254381
+      MeleeCultistSpriteSheet_28: 2144283734
+      MeleeCultistSpriteSheet_29: 439573260
+      MeleeCultistSpriteSheet_3: -1574954656
+      MeleeCultistSpriteSheet_30: -1974220627
+      MeleeCultistSpriteSheet_31: -1141932963
+      MeleeCultistSpriteSheet_32: 545062367
+      MeleeCultistSpriteSheet_4: 1771042755
+      MeleeCultistSpriteSheet_5: 1144328396
+      MeleeCultistSpriteSheet_6: 748867415
+      MeleeCultistSpriteSheet_7: -1542708772
+      MeleeCultistSpriteSheet_8: 2032201971
+      MeleeCultistSpriteSheet_9: 1883633040
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
