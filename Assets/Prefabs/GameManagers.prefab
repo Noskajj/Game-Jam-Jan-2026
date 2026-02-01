@@ -433,13 +433,6 @@ MonoBehaviour:
       Data3: 1184702607
       Data4: 1080608345
     Path: event:/Music/Background Music
-  <transitionToBossFight>k__BackingField:
-    Guid:
-      Data1: -195419707
-      Data2: 1149878158
-      Data3: 1555387566
-      Data4: -1842186464
-    Path: event:/Music/Boss Fight Transition
   <phase1OfBossFight>k__BackingField:
     Guid:
       Data1: -1652630983
@@ -545,13 +538,27 @@ MonoBehaviour:
       Data3: 520966306
       Data4: 1961417862
     Path: event:/SFX/Enemy SFX/Enemy Magic Attack
-  <knifeThrow>k__BackingField:
+  <enemyKnifeSlash>k__BackingField:
+    Guid:
+      Data1: 1009371184
+      Data2: 1096636109
+      Data3: -1607889257
+      Data4: -1711424749
+    Path: event:/SFX/Enemy SFX/Maskless Enemies SFX/Knife Slash
+  <enemyKnifeThrow>k__BackingField:
     Guid:
       Data1: 944019734
       Data2: 1105244390
       Data3: 1242659002
       Data4: -1666961703
-    Path: event:/SFX/Enemy SFX/Monster SFX/Knife Throw
+    Path: event:/SFX/Enemy SFX/Maskless Enemies SFX/Knife Throw
+  <enemyHurt>k__BackingField:
+    Guid:
+      Data1: 777665580
+      Data2: 1241972265
+      Data3: -917647218
+      Data4: 92031683
+    Path: event:/SFX/Enemy SFX/Maskless Enemies SFX/Enemy Hurt
   <monsterMelee>k__BackingField:
     Guid:
       Data1: 572339937
