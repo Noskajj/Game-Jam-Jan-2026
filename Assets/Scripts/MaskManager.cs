@@ -42,6 +42,11 @@ public class MaskManager : MonoBehaviour
         get => masksCollected;
     }
 
+    public int AllMasks
+    {
+        get => allMasks;
+    }
+
     float maskCDMultiplier = 1;
 
     public void PactOfTime()
