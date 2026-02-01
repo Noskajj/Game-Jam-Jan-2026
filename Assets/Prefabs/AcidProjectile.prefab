@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 4049021669244876169}
   m_Layer: 0
   m_Name: AcidProjectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,6 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 10
   lifeTime: 5
+  specialProjectile: 0
+  damageMult: 0
 --- !u!1 &8789058406528824737
 GameObject:
   m_ObjectHideFlags: 0
