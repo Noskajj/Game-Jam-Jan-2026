@@ -21,7 +21,7 @@ public class RangedCultistLogic : EnemyClass
     private void ShootProjectile()
     {
         //Play enemyMagicAttack sound
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyMagicAttack, this.transform.position);
+        MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.enemyMagicAttack, this.transform.position);
         //spawn projectile range attack
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         //Debug.Log("Projectile Spawned");

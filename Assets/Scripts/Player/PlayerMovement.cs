@@ -63,9 +63,6 @@ public class PlayerMovement : MonoBehaviour
     //audio stuff
     private EventInstance playerFootsteps;
 
-
-    //player animation
-    public Animator playerAnimator;
      
     void Start()
     {
@@ -86,9 +83,7 @@ public class PlayerMovement : MonoBehaviour
         //Set_Velocity(new Vector3(0, 5, 0));
 
         //audio stuff
-        playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.playerFootstepsStone);
-
-        //playerAnimator = GetComponent<Animator>();
+        playerFootsteps = MainMenuAudioManager.instance.CreateInstance(FMODEvents.instance.playerFootstepsStone);
     }
 
     // Update is called once per frame
@@ -154,21 +149,10 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 targVel = new Vector3(moveKeyInput.x, 0f, moveKeyInput.y) * moveSpeed;
 
             currVel = Vector3.MoveTowards(currVel, targVel, playerAccel * _dt);
-
-            playerAnimator.SetFloat("MoveX", targVel.x);
-            playerAnimator.SetFloat("MoveZ", targVel.z);
-            playerAnimator.SetBool("IsMoving", true);
-        }
-        else
-        {
-            playerAnimator.SetBool("IsMoving", false);
         }
 
-            velocity.x = currVel.x;
+        velocity.x = currVel.x;
         velocity.z = currVel.z;
-
-        
-
     }
 
     private void StopMovement(InputAction.CallbackContext context)
@@ -204,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 dash = moveAction.ReadValue<Vector2>();
 
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerDash, this.transform.position);
+            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.playerDash, this.transform.position);
 
             if (dash.sqrMagnitude < 0.001f)
             {
@@ -286,8 +270,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
-
 
 }
 
