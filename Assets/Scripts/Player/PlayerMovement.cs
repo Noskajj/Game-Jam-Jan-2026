@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction moveAction;
     private InputAction dashAction;
 
-
+    public Vector2 moveKeyInput = Vector2.zero;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float gravity = -20f;
@@ -129,12 +129,12 @@ public class PlayerMovement : MonoBehaviour
         //Apply acceleration in a direction
         // V_{t+1} = V_t + clamp((U * MAX_SPEED), -r*delta_t, r*delta_t)
 
-        Vector2 keyInput = moveAction.ReadValue<Vector2>();
+        moveKeyInput = moveAction.ReadValue<Vector2>();
 
         //Gives the current velocity vector in 3D space
         Vector3 currVel = new Vector3(velocity.x, 0f, velocity.z);
 
-        if (keyInput.sqrMagnitude > 0f)
+        if (moveKeyInput.sqrMagnitude > 0f)
         {
             if (isGrounded)
             {
@@ -146,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
                 //Gives a velocity vector in 3D space
-                Vector3 targVel = new Vector3(keyInput.x, 0f, keyInput.y) * moveSpeed;
+                Vector3 targVel = new Vector3(moveKeyInput.x, 0f, moveKeyInput.y) * moveSpeed;
 
             currVel = Vector3.MoveTowards(currVel, targVel, playerAccel * _dt);
         }
