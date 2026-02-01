@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -20,12 +21,12 @@ public class uncleAttacks : MonoBehaviour
 
     //DASH NUMBERS
     public float dashForce = 100f;
-    public float dashCooldown = 3f; //TODO change
+    public float dashCooldown = 5f; //TODO change
     private Rigidbody _rblolt;
 
 
     //BOLT NUMBERS
-    public float boltCooldown = 0.1f;
+    public float boltCooldown = 5f;
     public float boltLockOnWindow = 5f; //TODO change
     public float boltSpeed = 20f;
 
@@ -62,6 +63,7 @@ public class uncleAttacks : MonoBehaviour
 
         if (timer <= 0f)
         {
+            Bolt_Hold();
             Bolt_Aim();
             if (timer < (-1f * boltLockOnWindow))
             {
@@ -76,7 +78,8 @@ public class uncleAttacks : MonoBehaviour
 
     void Bolt_Hold()
     {
-
+        _rblolt.linearVelocity = Vector3.zero;
+        _rblolt.MovePosition(transform.position + new Vector3 (0f, 3f, 0f));
     }
 
     void Bolt_Aim()
