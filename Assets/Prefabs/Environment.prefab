@@ -4425,7 +4425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7431265717650815779, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: gateCost
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7905457548758066503, guid: 83fa800bc0f14aa45ac3c41eb2977917, type: 3}
       propertyPath: m_VersionIndex
