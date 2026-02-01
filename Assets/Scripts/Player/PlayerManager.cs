@@ -237,8 +237,7 @@ public class PlayerManager : MonoBehaviour
     private void GameOver()
     {
         //TODO: display game over ui
-
-        //Time scale = 0
+        GameOverManager.Instance.OpenPanel();
     }
     #endregion
 

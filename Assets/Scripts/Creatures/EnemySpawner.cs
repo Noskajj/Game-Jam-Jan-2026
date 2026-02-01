@@ -17,6 +17,10 @@ public class EnemySpawner : MonoBehaviour
 
     #region WaveSection
     private int waveNumber = 0;
+    public int WaveNumber
+    {
+        get => waveNumber;
+    }
 
     private int totalWaveEnemies = 0;
 
