@@ -20,6 +20,8 @@ public class MeleeClass : EnemyClass
         if (!isMeleeAttacking)
         {
             isMeleeAttacking = true;
+            //Play enemyMelee sound
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.monsterMelee, this.transform.position);
             //Debug.Log("Melee attacking");
             meleeTimer = meleeAttacktime;
         }
