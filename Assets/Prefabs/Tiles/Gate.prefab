@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37adf8105360f3844bfe2846b51eacfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gate
-  gateCost: 5000
+  gateCost: 50
   canBeBought: 1
   popupText: {fileID: 3835447710008203582}
 --- !u!136 &8777205406718490624
