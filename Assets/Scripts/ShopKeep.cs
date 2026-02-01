@@ -8,47 +8,55 @@ public class ShopKeep : MonoBehaviour
     [SerializeField]
     private TextMeshPro popupText;
 
-    //Some sort of detection
+    //Defines Variable OpenShop which can be set to input keys
     private InputAction OpenShop;
 
     private bool playerInRange = false;
     private bool shopUIisOpen = false;
 
 
+    
     private void Start()
     {
-        OpenShop = InputSystem.actions.FindAction("Interact");
-        OpenShop.started += OpenShopUi;
-
-
+        OpenShop = InputSystem.actions.FindAction("Interact"); //Set OpenShop to monitor the interact key
+        
+        OpenShop.Enable(); //Turn on monitoring
+        
+        OpenShop.performed += OpenShopUi; //Run Test Every time OpenShop monitors an interaction with interact key
+        
+        
         popupText.text = $" 'E' ";
     }
 
+
+
+
     private void OpenShopUi(InputAction.CallbackContext context)
     {
-
+        Debug.Log("E was pressed!");
         if (playerInRange && PlayerStats.Health > 0 && shopUIisOpen == false)
         {
+
             //open shop
-            shopUIisOpen = true;
+
             UpgradeManager.Instance.OpenShopUi();
+            shopUIisOpen = true;
+
         }
+        else if (playerInRange && PlayerStats.Health > 0 && shopUIisOpen == true)
+        { 
 
-    }
-
-    private void CloseShopUi(InputAction.CallbackContext context)
-    {
-
-        if (playerInRange && PlayerStats.Health > 0 && shopUIisOpen == true)
-        {
-            //open shop
+            //close shop
             shopUIisOpen = false;
             UpgradeManager.Instance.CloseShopUi();
-         
+
 
         }
 
     }
+
+    
+    
 
     private void OnTriggerEnter(Collider other)
     {
