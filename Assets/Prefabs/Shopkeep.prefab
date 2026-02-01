@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fe52906efb78b4a9a8d5b441c24b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  popupText: {fileID: 0}
+  popupText: {fileID: 941400998635993447}
 --- !u!135 &7055820073951063417
 SphereCollider:
   m_ObjectHideFlags: 0
