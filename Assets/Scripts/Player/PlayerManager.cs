@@ -41,6 +41,8 @@ public class PlayerManager : MonoBehaviour
         if(other.CompareTag("Projectile"))
         {
             HasTakenDamage(10);
+            //Play playerHurt sound
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
             Destroy(other.gameObject);
         }
     }
@@ -95,7 +97,8 @@ public class PlayerManager : MonoBehaviour
         {
             //Hit anything in range
             AttackDetection.Instance.Attack();
-
+            //Play swordSlash sound
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.swordSlash, this.transform.position);
             PlayerStats.UseStamina(PlayerStats.SwordStaminaCost);
             StartCoroutine(MeleeCD());
         }
@@ -118,6 +121,8 @@ public class PlayerManager : MonoBehaviour
             Instantiate(bulletPrefab, transform.position, bulletDir);
 
             Debug.Log("Gun should shoot now");
+            //Play pistoleFire sound
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.pistolFire, this.transform.position);
             PlayerStats.ShootGun();
             StartCoroutine(GunCD());
         }
@@ -232,8 +237,7 @@ public class PlayerManager : MonoBehaviour
     private void GameOver()
     {
         //TODO: display game over ui
-
-        //Time scale = 0
+        GameOverManager.Instance.OpenPanel();
     }
     #endregion
 

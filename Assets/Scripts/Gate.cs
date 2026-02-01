@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,10 +10,16 @@ public class Gate : MonoBehaviour
     private InputAction PurchaseGate;
     private bool playerInRange = false;
 
+    [SerializeField]
+    private TextMeshPro popupText;
+
     private void Start()
     {
         PurchaseGate = InputSystem.actions.FindAction("Interact");
         PurchaseGate.started += BuyGate;
+
+        popupText.text = $" 'E' \n" +
+            $"Cost: {gateCost}";
     }
 
     private void BuyGate(InputAction.CallbackContext context)
@@ -41,6 +48,7 @@ public class Gate : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            popupText.enabled = true;
         }
     }
 
@@ -49,6 +57,7 @@ public class Gate : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            popupText.enabled = false;
         }
     }
 }
