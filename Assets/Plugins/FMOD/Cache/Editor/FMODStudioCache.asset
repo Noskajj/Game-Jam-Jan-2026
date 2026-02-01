@@ -100,8 +100,8 @@ MonoBehaviour:
     Data3: -2048076900
     Data4: 1991676968
   Banks:
-  - {fileID: -2248624134026241363}
   - {fileID: 8139946546878667675}
+  - {fileID: -2248624134026241363}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -263,8 +263,8 @@ MonoBehaviour:
     Data3: -925021559
     Data4: 1912107054
   Banks:
-  - {fileID: -2248624134026241363}
   - {fileID: 8139946546878667675}
+  - {fileID: -2248624134026241363}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -318,8 +318,8 @@ MonoBehaviour:
     Data3: 1475938447
     Data4: -1396481279
   Banks:
-  - {fileID: -2248624134026241363}
   - {fileID: 8139946546878667675}
+  - {fileID: -2248624134026241363}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639055475191708823
+  lastModified: 639055495298540362
   FileSizes: []
   Exists: 1
 --- !u!114 &-2232908316348330469
@@ -391,8 +391,8 @@ MonoBehaviour:
     Data3: 1500421801
     Data4: 935498771
   Banks:
-  - {fileID: -2248624134026241363}
   - {fileID: 8139946546878667675}
+  - {fileID: -2248624134026241363}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -455,7 +455,6 @@ MonoBehaviour:
   - {fileID: -8375725488154982899}
   - {fileID: 5001530702128342214}
   - {fileID: -4545639443583341892}
-  - {fileID: 2518813050023398690}
   - {fileID: -836150054414237507}
   - {fileID: 8577330285633147511}
   - {fileID: -5932380559811812952}
@@ -475,13 +474,14 @@ MonoBehaviour:
   - {fileID: 8122798917539941080}
   - {fileID: -2232908316348330469}
   - {fileID: 5327165860672714980}
+  - {fileID: 7270111172377109425}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2248624134026241363}
   StringsBanks:
   - {fileID: 4470068481176420875}
   cacheVersion: 131858
-  cacheTime: 639055475192804069
+  cacheTime: 639055495299197813
   SerializableEventsDict:
   - key: event:/Music/Menu Theme
     index: 0
@@ -503,45 +503,45 @@ MonoBehaviour:
     index: 8
   - key: event:/SFX/Player SFX/Pistol Fire
     index: 9
-  - key: event:/SFX/Enemy SFX/Monster SFX/Knife Throw
-    index: 10
   - key: event:/SFX/Player SFX/Weapon Upgrade
-    index: 11
+    index: 10
   - key: event:/SFX/Enemy SFX/Monster SFX/Monster Hurt
-    index: 12
+    index: 11
   - key: event:/SFX/Enemy SFX/Maskless Enemies SFX/Enemy Hurt
-    index: 13
+    index: 12
   - key: event:/SFX/Enemy SFX/Final Boss SFX/Uncle Laughter
-    index: 14
+    index: 13
   - key: event:/SFX/Enemy SFX/Maskless Enemies SFX/Knife Slash
-    index: 15
+    index: 14
   - key: event:/SFX/Player SFX/Mask Collected
-    index: 16
+    index: 15
   - key: event:/SFX/Player SFX/Player Hurt
-    index: 17
+    index: 16
   - key: event:/SFX/Player SFX/Player Dash
-    index: 18
+    index: 17
   - key: event:/SFX/Player SFX/Player Footsteps - Wood
-    index: 19
+    index: 18
   - key: event:/SFX/Player SFX/Magical Infusion
-    index: 20
+    index: 19
   - key: event:/SFX/Enemy SFX/Final Boss SFX/Uncle Dash
-    index: 21
+    index: 20
   - key: event:/SFX/Enemy SFX/Enemy Footsteps
-    index: 22
+    index: 21
   - key: event:/SFX/Player SFX/Player Footsteps - Gravel
-    index: 23
+    index: 22
   - key: event:/SFX/Player SFX/Player Footsteps - Stone
-    index: 24
+    index: 23
   - key: event:/SFX/Enemy SFX/Enemy Magic Attack
-    index: 25
+    index: 24
   - key: event:/SFX/Enemy SFX/Final Boss SFX/Uncle Hurt
-    index: 26
+    index: 25
   - key: event:/SFX/Enemy SFX/Monster SFX/Monster Melee
-    index: 27
+    index: 26
   - key: event:/SFX/Enemy SFX/Final Boss SFX/Uncle Slam
-    index: 28
+    index: 27
   - key: event:/SFX/Player SFX/Sword Slash
+    index: 28
+  - key: event:/SFX/Enemy SFX/Maskless Enemies SFX/Knife Throw
     index: 29
 --- !u!114 &442399714529014347
 MonoBehaviour:
@@ -643,8 +643,8 @@ MonoBehaviour:
     Data3: 1184702607
     Data4: 1080608345
   Banks:
-  - {fileID: -2248624134026241363}
   - {fileID: 8139946546878667675}
+  - {fileID: -2248624134026241363}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -695,36 +695,9 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639055475192804069
+  lastModified: 639055495299197813
   FileSizes: []
   Exists: 1
---- !u!114 &2518813050023398690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Enemy SFX/Monster SFX/Knife Throw
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/SFX/Enemy SFX/Monster SFX/Knife Throw
-  Guid:
-    Data1: 944019734
-    Data2: 1105244390
-    Data3: 1242659002
-    Data4: -1666961703
-  Banks:
-  - {fileID: 1835757635481557743}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 350
 --- !u!114 &2630346189116125473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,10 +791,10 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639055475191728850
+  lastModified: 639055495298565451
   FileSizes:
   - Name: 
-    Value: 2558
+    Value: 2552
   Exists: 1
 --- !u!114 &5001530702128342214
 MonoBehaviour:
@@ -904,6 +877,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 360
+--- !u!114 &7270111172377109425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enemy SFX/Maskless Enemies SFX/Knife Throw
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/SFX/Enemy SFX/Maskless Enemies SFX/Knife Throw
+  Guid:
+    Data1: 944019734
+    Data2: 1105244390
+    Data3: 1242659002
+    Data4: -1666961703
+  Banks:
+  - {fileID: 1835757635481557743}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 350
 --- !u!114 &8012150438997188990
 MonoBehaviour:
   m_ObjectHideFlags: 0
