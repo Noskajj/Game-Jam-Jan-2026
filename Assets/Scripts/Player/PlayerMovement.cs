@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using FMODUnity;
+using FMOD.Studio;
 /*
     GOAL -> 
 
@@ -59,7 +60,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector3  Momentum => mass * velocity;
 
 
-
+    //audio stuff
+    private EventInstance playerFootsteps;
 
      
     void Start()
@@ -68,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         dashAction = inputActions.FindAction("Player/Dash");
         
         dashAction.performed += Player_Dash;
+        moveAction.canceled += StopMovement;
 
 
         _rb = GetComponent<Rigidbody>();
@@ -79,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
 
         //Set_Velocity(new Vector3(0, 5, 0));
 
+        //audio stuff
+        playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.playerFootstepsStone);
     }
 
     // Update is called once per frame
@@ -117,6 +122,8 @@ public class PlayerMovement : MonoBehaviour
 
     //HELPERS:__________________________
 
+
+
     private void Player_Move(float _dt)
     {
         //Apply acceleration in a direction
@@ -131,20 +138,26 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isGrounded)
             {
-                // Play playerFootstep loop
-
+                PLAYBACK_STATE playbackState;
+                playerFootsteps.getPlaybackState(out playbackState);
+                if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+                {
+                    playerFootsteps.start();
+                }
             }
-            //Gives a velocity vector in 3D space
-            Vector3 targVel = new Vector3(keyInput.x, 0f, keyInput.y) * moveSpeed;
+                //Gives a velocity vector in 3D space
+                Vector3 targVel = new Vector3(keyInput.x, 0f, keyInput.y) * moveSpeed;
 
             currVel = Vector3.MoveTowards(currVel, targVel, playerAccel * _dt);
         }
 
         velocity.x = currVel.x;
         velocity.z = currVel.z;
+    }
 
-
-
+    private void StopMovement(InputAction.CallbackContext context)
+    {
+        playerFootsteps.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
 
