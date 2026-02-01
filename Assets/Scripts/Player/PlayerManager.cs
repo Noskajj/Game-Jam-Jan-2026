@@ -10,7 +10,9 @@ public class PlayerManager : MonoBehaviour
     //Static shop can upgrade what you have 
     //Call of duty esqe perks around the map, max 3 equipped, set locations(maybe randomized later)
 
-    
+    //animation
+    public Animator playerAnimation;
+
     public static PlayerManager Instance { get; private set; }
 
     private void Awake()
@@ -32,7 +34,8 @@ public class PlayerManager : MonoBehaviour
         equipGunAction.started += EquipGun;
         equipGunAction.canceled += UnequipGun;
         attackAction.performed += Attack;
-       
+
+        
     }
 
     #region ProjectileDetection
@@ -101,6 +104,8 @@ public class PlayerManager : MonoBehaviour
             AudioManager.instance.PlayOneShot(FMODEvents.instance.swordSlash, this.transform.position);
             PlayerStats.UseStamina(PlayerStats.SwordStaminaCost);
             StartCoroutine(MeleeCD());
+
+            
         }
         else
         {   //Fire projectile
@@ -121,6 +126,12 @@ public class PlayerManager : MonoBehaviour
             Instantiate(bulletPrefab, transform.position, bulletDir);
 
             Debug.Log("Gun should shoot now");
+            //gun animation
+            playerAnimation.SetBool("IsShooting", true);
+            playerAnimation.SetBool("IsShooting", false);
+            Debug.Log("SHooting animation");
+
+
             //Play pistoleFire sound
             AudioManager.instance.PlayOneShot(FMODEvents.instance.pistolFire, this.transform.position);
             PlayerStats.ShootGun();
