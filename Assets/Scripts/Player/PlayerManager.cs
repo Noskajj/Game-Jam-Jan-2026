@@ -118,6 +118,7 @@ public class PlayerManager : MonoBehaviour
             Instantiate(bulletPrefab, transform.position, bulletDir);
 
             Debug.Log("Gun should shoot now");
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.pistolFire, this.transform.position);
             PlayerStats.ShootGun();
             StartCoroutine(GunCD());
         }
