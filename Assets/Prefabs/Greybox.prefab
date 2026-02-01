@@ -15627,10 +15627,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -15677,10 +15673,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -15775,10 +15767,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000002
@@ -15825,10 +15813,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -15998,10 +15982,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -16048,10 +16028,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -16142,10 +16118,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate 2
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40.737106
@@ -16184,10 +16156,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -19609,10 +19577,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -19661,10 +19625,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19686,10 +19646,6 @@ PrefabInstance:
     - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_Name
       value: Gate (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
@@ -19737,10 +19693,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -31551,10 +31503,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -31601,10 +31549,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -38274,10 +38218,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000002
@@ -38324,10 +38264,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -41928,10 +41864,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000002
@@ -41980,10 +41912,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -42005,10 +41933,6 @@ PrefabInstance:
     - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_Name
       value: Gate (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
@@ -42056,10 +41980,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -42727,10 +42647,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000002
@@ -42777,10 +42693,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -43077,10 +42989,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -43127,10 +43035,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -43599,10 +43503,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate 1
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.231009
@@ -43641,10 +43541,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -43983,10 +43879,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000002
@@ -44035,10 +43927,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -44060,10 +43948,6 @@ PrefabInstance:
     - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_Name
       value: Gate (10)
-      objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
@@ -44111,10 +43995,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -45744,10 +45624,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000002
@@ -45794,10 +45670,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -51776,10 +51648,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -51826,10 +51694,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -51916,10 +51780,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 923455494916985040, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000002
@@ -51966,10 +51826,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148665671311860894, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8972090047881181155, guid: 9a3043225f8076245a004bb61cd29b75, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

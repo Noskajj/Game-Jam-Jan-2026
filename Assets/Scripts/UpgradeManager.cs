@@ -47,7 +47,6 @@ public class UpgradeManager : MonoBehaviour
         Time.timeScale = 0f;
         uiOpen = true;
         holder.SetActive(true);
-        Debug.Log("OpenShop");
     }
 
     public void CloseShopUi()
@@ -55,7 +54,6 @@ public class UpgradeManager : MonoBehaviour
         Time.timeScale = 1f;
         uiOpen = false;
         holder.SetActive(false);
-        Debug.Log("CloseShop");
     }
 
     private void CloseShopHotkey(InputAction.CallbackContext context)

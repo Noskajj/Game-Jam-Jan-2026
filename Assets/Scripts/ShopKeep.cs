@@ -12,7 +12,6 @@ public class ShopKeep : MonoBehaviour
     private InputAction OpenShop;
 
     private bool playerInRange = false;
-    private bool shopUIisOpen = false;
 
 
     private void Start()
@@ -26,26 +25,10 @@ public class ShopKeep : MonoBehaviour
 
     private void OpenShopUi(InputAction.CallbackContext context)
     {
-
-        if (playerInRange && PlayerStats.Health > 0 && shopUIisOpen == false)
+        if (playerInRange && PlayerStats.Health > 0)
         {
             //open shop
-            shopUIisOpen = true;
             UpgradeManager.Instance.OpenShopUi();
-        }
-
-    }
-
-    private void CloseShopUi(InputAction.CallbackContext context)
-    {
-
-        if (playerInRange && PlayerStats.Health > 0 && shopUIisOpen == true)
-        {
-            //open shop
-            shopUIisOpen = false;
-            UpgradeManager.Instance.CloseShopUi();
-         
-
         }
 
     }
