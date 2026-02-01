@@ -389,8 +389,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   moveSpeed: 4.5
   playerAccel: 30
-  dashUp: 8
-  dashHorz: 12
+  dashUp: 4
+  dashHorz: 20
   mass: 1
   groundCheckBuffer: 0.02
   groundMask:
