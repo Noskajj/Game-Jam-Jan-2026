@@ -100,8 +100,8 @@ MonoBehaviour:
     Data3: -2048076900
     Data4: 1991676968
   Banks:
-  - {fileID: 8139946546878667675}
   - {fileID: -2248624134026241363}
+  - {fileID: 8139946546878667675}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -263,8 +263,8 @@ MonoBehaviour:
     Data3: -925021559
     Data4: 1912107054
   Banks:
-  - {fileID: 8139946546878667675}
   - {fileID: -2248624134026241363}
+  - {fileID: 8139946546878667675}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -318,8 +318,8 @@ MonoBehaviour:
     Data3: 1475938447
     Data4: -1396481279
   Banks:
-  - {fileID: 8139946546878667675}
   - {fileID: -2248624134026241363}
+  - {fileID: 8139946546878667675}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639055495298540362
+  lastModified: 639055499538511169
   FileSizes: []
   Exists: 1
 --- !u!114 &-2232908316348330469
@@ -391,8 +391,8 @@ MonoBehaviour:
     Data3: 1500421801
     Data4: 935498771
   Banks:
-  - {fileID: 8139946546878667675}
   - {fileID: -2248624134026241363}
+  - {fileID: 8139946546878667675}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -481,7 +481,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 4470068481176420875}
   cacheVersion: 131858
-  cacheTime: 639055519344235545
+  cacheTime: 639055504632430995
   SerializableEventsDict:
   - key: event:/Music/Menu Theme
     index: 0
@@ -643,8 +643,8 @@ MonoBehaviour:
     Data3: 1184702607
     Data4: 1080608345
   Banks:
-  - {fileID: 8139946546878667675}
   - {fileID: -2248624134026241363}
+  - {fileID: 8139946546878667675}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -695,7 +695,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639055519344235545
+  lastModified: 639055504632430995
   FileSizes: []
   Exists: 1
 --- !u!114 &2630346189116125473
@@ -791,7 +791,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639055495298565451
+  lastModified: 639055504632360560
   FileSizes:
   - Name: 
     Value: 2552
@@ -973,7 +973,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639055475192234166
+  lastModified: 639055499539127393
   FileSizes: []
   Exists: 1
 --- !u!114 &8577330285633147511
