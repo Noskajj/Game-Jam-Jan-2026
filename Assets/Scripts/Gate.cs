@@ -16,14 +16,14 @@ public class Gate : MonoBehaviour
     [SerializeField]
     private TextMeshPro popupText;
 
+
     private void Start()
     {
         if(!canBeBought)
         {
             Destroy(gameObject.GetComponent<Gate>());
         }
-
-        popupText.transform.rotation = Quaternion.Inverse(transform.rotation) * Quaternion.Euler(0f, -75f, 90f);
+        
 
         PurchaseGate = InputSystem.actions.FindAction("Interact");
         PurchaseGate.started += BuyGate;

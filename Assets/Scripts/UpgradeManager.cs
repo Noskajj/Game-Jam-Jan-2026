@@ -28,6 +28,16 @@ public class UpgradeManager : MonoBehaviour
         swordCostTxt.text = $"Sword Cost: {SwordUpgradeCost}";
     }
 
+    public void OpenShopUi()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void CloseShopUi()
+    {
+        Time.timeScale = 1f;
+    }
+
     #region UI
     [SerializeField]
     private Button buyEfficientSwing, buyFasterSwing,buyHarderSwing;
