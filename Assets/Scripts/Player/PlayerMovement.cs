@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
 /*
     GOAL -> 
 
@@ -128,6 +129,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (keyInput.sqrMagnitude > 0f)
         {
+            if (isGrounded)
+            {
+                // Play playerFootstep loop
+
+            }
             //Gives a velocity vector in 3D space
             Vector3 targVel = new Vector3(keyInput.x, 0f, keyInput.y) * moveSpeed;
 
