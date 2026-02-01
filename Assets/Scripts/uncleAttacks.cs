@@ -38,6 +38,11 @@ public class uncleAttacks : MonoBehaviour
     private float _boltTimer = 0f;
     public float aimAngleMod = -30f;
 
+    public int meleeDamage = 10;
+    public float hitCooldown = 0.5f;
+    private float _hitTimer = 0f;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -63,34 +68,38 @@ public class uncleAttacks : MonoBehaviour
             Bolt_Aim();
 
             _boltTimer -= dt;
-            if(_boltTimer <= 0f)
+            if (_boltTimer <= 0f)
             {
                 Bolt_Throw();
                 boltIsLockingOn = false;
                 _atkTimer = Random.Range(minTimeBetween, maxTimeBetween);
             }
-            return;
+
         }
-        _atkTimer -= dt;
-        if (_atkTimer > 0f) return;
+        else
         {
-            int attack = Random.Range(0, 2);
-
-            if (attack == 0)
+            _atkTimer -= dt;
+            if (_atkTimer > 0f) return;
             {
-                Dash_Attack();
-                _atkTimer = Random.Range(minTimeBetween, maxTimeBetween);
-            }
-            else
-            {
-                Bolt_Hold();
-                Bolt_Aim();
-                boltIsLockingOn = true;
-                _boltTimer = boltLockOnWindow;
+                int attack = Random.Range(0, 2);
+
+                if (attack == 0)
+                {
+                    Dash_Attack();
+                    _atkTimer = Random.Range(minTimeBetween, maxTimeBetween);
+                }
+                else
+                {
+                    Bolt_Hold();
+                    Bolt_Aim();
+                    boltIsLockingOn = true;
+                    _boltTimer = boltLockOnWindow;
+                }
+
             }
 
+            if (_hitTimer > 0f) _hitTimer -= dt;
         }
-
 
 
         /*
@@ -123,6 +132,8 @@ public class uncleAttacks : MonoBehaviour
 
 
     }
+
+
 
     void Bolt_Hold()
     {
@@ -170,4 +181,21 @@ public class uncleAttacks : MonoBehaviour
     }
 
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (_hitTimer > 0f) return;
+
+        if (collision.collider.CompareTag("Player") || collision.collider.GetComponentInParent<PlayerManager>() != null)
+        {
+            PlayerManager.Instance.HasTakenDamage(meleeDamage);
+
+            _hitTimer = hitCooldown;
+        }
+    }
+
+
+
 }
+
+
+//                PlayerManager.Instance.HasTakenDamage(meleeDamage);
