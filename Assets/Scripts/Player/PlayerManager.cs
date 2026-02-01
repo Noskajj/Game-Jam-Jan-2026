@@ -42,7 +42,7 @@ public class PlayerManager : MonoBehaviour
         {
             HasTakenDamage(10);
             //Play playerHurt sound
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
+            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
             Destroy(other.gameObject);
         }
     }
@@ -98,7 +98,7 @@ public class PlayerManager : MonoBehaviour
             //Hit anything in range
             AttackDetection.Instance.Attack();
             //Play swordSlash sound
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.swordSlash, this.transform.position);
+            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.swordSlash, this.transform.position);
             PlayerStats.UseStamina(PlayerStats.SwordStaminaCost);
             StartCoroutine(MeleeCD());
         }
@@ -122,7 +122,7 @@ public class PlayerManager : MonoBehaviour
 
             Debug.Log("Gun should shoot now");
             //Play pistoleFire sound
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.pistolFire, this.transform.position);
+            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.pistolFire, this.transform.position);
             PlayerStats.ShootGun();
             StartCoroutine(GunCD());
         }
