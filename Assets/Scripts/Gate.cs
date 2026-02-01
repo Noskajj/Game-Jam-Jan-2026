@@ -7,24 +7,14 @@ public class Gate : MonoBehaviour
     [SerializeField]
     private int gateCost= 5000;
 
-    [SerializeField]
-    private bool canBeBought = true;
-
     private InputAction PurchaseGate;
     private bool playerInRange = false;
 
     [SerializeField]
     private TextMeshPro popupText;
 
-
     private void Start()
     {
-        if(!canBeBought)
-        {
-            Destroy(gameObject.GetComponent<Gate>());
-        }
-        
-
         PurchaseGate = InputSystem.actions.FindAction("Interact");
         PurchaseGate.started += BuyGate;
 
@@ -58,6 +48,7 @@ public class Gate : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            popupText.enabled = true;
         }
     }
 
@@ -66,6 +57,7 @@ public class Gate : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            popupText.enabled = false;
         }
     }
 }

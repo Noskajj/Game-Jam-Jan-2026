@@ -106,8 +106,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6421003391647294884}
   - {fileID: 916377121296813741}
+  - {fileID: 6421003391647294884}
   - {fileID: 5005547585973092303}
   - {fileID: 3262253625185974778}
   m_Father: {fileID: 0}
@@ -188,14 +188,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4119482100967479487}
     m_Modifications:
-    - target: {fileID: 2194510434169252672, guid: e532fcaa7dd22274f90bac32b6676a75, type: 3}
-      propertyPath: holder
-      value: 
-      objectReference: {fileID: 8541229002898541547}
-    - target: {fileID: 3929170092783956048, guid: e532fcaa7dd22274f90bac32b6676a75, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5528201274916402454, guid: e532fcaa7dd22274f90bac32b6676a75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -248,11 +240,6 @@ PrefabInstance:
 --- !u!4 &916377121296813741 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5528201274916402454, guid: e532fcaa7dd22274f90bac32b6676a75, type: 3}
-  m_PrefabInstance: {fileID: 4616116946896812987}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8541229002898541547 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3929170092783956048, guid: e532fcaa7dd22274f90bac32b6676a75, type: 3}
   m_PrefabInstance: {fileID: 4616116946896812987}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5950097628968993661
@@ -346,10 +333,6 @@ PrefabInstance:
     - target: {fileID: 2420124155669922209, guid: a49f9b22f2611a84491ad855fa88001b, type: 3}
       propertyPath: m_Name
       value: GameOver
-      objectReference: {fileID: 0}
-    - target: {fileID: 3912694304936117571, guid: a49f9b22f2611a84491ad855fa88001b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
