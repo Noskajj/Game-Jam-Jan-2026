@@ -2119,13 +2119,13 @@ PrefabInstance:
     - {fileID: 6735676082638482994, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8515870012549396430, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 4786639352620973933, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7945686942842024973}
   m_SourcePrefab: {fileID: 100100000, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
 --- !u!1 &7945686942842024972 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8515870012549396430, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4786639352620973933, guid: 27eab775eef62ab4abd2187dc6a48328, type: 3}
   m_PrefabInstance: {fileID: 7945686942842024971}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7945686942842024973
@@ -2158,7 +2158,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: a1489aad15307bb449cf267e10fed1be, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 571a03c1973c57e42bc0509724957345, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
