@@ -188,6 +188,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 dash = moveAction.ReadValue<Vector2>();
 
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerDash, this.transform.position);
+
             if (dash.sqrMagnitude < 0.001f)
             {
                 return;
