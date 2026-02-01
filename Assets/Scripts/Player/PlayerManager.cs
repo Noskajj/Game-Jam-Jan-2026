@@ -126,17 +126,25 @@ public class PlayerManager : MonoBehaviour
             Instantiate(bulletPrefab, transform.position, bulletDir);
 
             Debug.Log("Gun should shoot now");
-            //gun animation
-            playerAnimation.SetBool("IsShooting", true);
-            playerAnimation.SetBool("IsShooting", false);
+            
             Debug.Log("SHooting animation");
-
+            StartCoroutine(ShootAnim());
 
             //Play pistoleFire sound
             AudioManager.instance.PlayOneShot(FMODEvents.instance.pistolFire, this.transform.position);
             PlayerStats.ShootGun();
             StartCoroutine(GunCD());
         }
+    }
+
+    private IEnumerator ShootAnim()
+    {
+        //gun animation
+        playerAnimation.SetBool("IsShooting", true);
+
+        yield return new WaitForSeconds(1f);
+
+        playerAnimation.SetBool("IsShooting", false);
     }
 
     private bool CanAttack()
