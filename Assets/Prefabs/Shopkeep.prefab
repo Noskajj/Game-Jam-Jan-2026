@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: -17.45, y: 6.6, z: 37.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8631876194497082760}
   m_Father: {fileID: 0}
@@ -162,7 +162,6 @@ GameObject:
   - component: {fileID: 4994344517689946253}
   - component: {fileID: 941400998635993447}
   - component: {fileID: 5538176996498251756}
-  - component: {fileID: 5342652219459342209}
   m_Layer: 0
   m_Name: PopupText
   m_TagString: Untagged
@@ -178,7 +177,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6636897426676091237}
   m_LocalRotation: {x: -0.00040715182, y: -0.7071067, z: 0.7071067, w: -0.00040715182}
-  m_LocalPosition: {x: 0, y: 0, z: -8}
+  m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 0.6666699, y: 1.0228398, z: 1.4513897}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -285,8 +284,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -353,15 +352,3 @@ RotationConstraint:
   m_Sources:
   - sourceTransform: {fileID: 0}
     weight: 1
---- !u!114 &5342652219459342209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6636897426676091237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc47e4e91103e7648ae20829afca7e8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'

@@ -13,6 +13,7 @@ public class ShopKeep : MonoBehaviour
 
     private bool playerInRange = false;
 
+
     private void Start()
     {
         OpenShop = InputSystem.actions.FindAction("Interact");
@@ -24,7 +25,7 @@ public class ShopKeep : MonoBehaviour
 
     private void OpenShopUi(InputAction.CallbackContext context)
     {
-        if (playerInRange)
+        if (playerInRange && PlayerStats.Health > 0)
         {
             //open shop
             UpgradeManager.Instance.OpenShopUi();
