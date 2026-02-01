@@ -12,7 +12,7 @@ public class BallSpawner : MonoBehaviour
     public float k = 1f;
     public float timeConst = 0.2f;
     public bool coolEq = false;
-
+    public float iHateBen = 100f;
     [SerializeField] private GameObject ballPrefab;
     List<GameObject> ballsList = new List<GameObject>();
 
@@ -23,6 +23,7 @@ public class BallSpawner : MonoBehaviour
     private float _totTime;
     private float _time;
     private float _kSqrt;
+    private float _offesetX;
 
     private float _l;
     private float _n;
@@ -57,12 +58,14 @@ public class BallSpawner : MonoBehaviour
         else
         {
             
-            float ben10 = 100f;
+
 
             for (int i = 0; i < projCount; i++)
             {
+                _offesetX = (-iHateBen) / (2f) + (iHateBen / (projCount - 1)) * i;
+                Vector3 spawnPos = startPos + new Vector3(_offesetX, 0f, 0f);
                 //(-1 * l/2f) + (Mathf.Pow(i,2)/l)
-                GameObject newBall = Instantiate(ballPrefab, new Vector3((-ben10)/(2f) + (ben10/(projCount - 1))* i ,0, 0), ballPrefab.transform.rotation);
+                GameObject newBall = Instantiate(ballPrefab, new Vector3(_offesetX, 10f, startPos.y), ballPrefab.transform.rotation);
             
             }
         }

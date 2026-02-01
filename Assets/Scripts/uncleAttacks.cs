@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -20,13 +21,14 @@ public class uncleAttacks : MonoBehaviour
 
     //DASH NUMBERS
     public float dashForce = 100f;
-    public float dashCooldown = 3f; //TODO change
-
+    public float dashCooldown = 5f; //TODO change
+    private Rigidbody _rblolt;
 
 
     //BOLT NUMBERS
-    public float boltCooldown = 0.1f;
+    public float boltCooldown = 5f;
     public float boltLockOnWindow = 5f; //TODO change
+    public float boltSpeed = 20f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,7 +39,7 @@ public class uncleAttacks : MonoBehaviour
         GetComponent<Rigidbody>().mass = bossMass;
         phys = GetComponent<PhysicsObjects>();
         timer = dashCooldown;
-
+        _rblolt = bolt.GetComponent<Rigidbody>();
 
 
     }
@@ -45,7 +47,7 @@ public class uncleAttacks : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        /*
         timer -= Time.fixedDeltaTime;
         
         if(timer <= 0f)
@@ -54,41 +56,51 @@ public class uncleAttacks : MonoBehaviour
             timer = dashCooldown;
         }
 
-        
+        */
 
-        /*
+        
         timer -= Time.fixedDeltaTime;
 
         if (timer <= 0f)
         {
-            Bolt_Attack();
+            Bolt_Hold();
+            Bolt_Aim();
             if (timer < (-1f * boltLockOnWindow))
             {
+                Bolt_Throw();
                 timer = boltCooldown;
             }
         }
 
 
-        */
+        
     }
 
+    void Bolt_Hold()
+    {
+        _rblolt.linearVelocity = Vector3.zero;
+        _rblolt.MovePosition(transform.position + new Vector3 (0f, 3f, 0f));
+    }
 
-    void Bolt_Attack()
+    void Bolt_Aim()
     {
         _playerDirVec = PlayerManager.Instance.transform.position - transform.position;
         Player_Unit_Vec();
         bolt.Uncle_Aim(_unitPlayerVec);
     }
-
+    void Bolt_Throw()
+    {
+        _rblolt.linearVelocity = bolt.transform.up * boltSpeed;
+    }
 
     void Dash_Attack()
     {
          Vector3 pointAtPlayer = PlayerManager.Instance.transform.position - transform.position;
-        _playerDirVec = new Vector3(pointAtPlayer.x, 0f, pointAtPlayer.z);
+        _playerDirVec = new Vector3(pointAtPlayer.x, 0f , pointAtPlayer.z);
         Player_Unit_Vec();
 
-
-        phys.Apply_Force(_unitPlayerVec * dashForce);
+        Vector3 dashVec = _unitPlayerVec * dashForce;
+        phys.Apply_Force(dashVec);
 
     }
 

@@ -1,10 +1,19 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UpgradeManager : MonoBehaviour
 {
     public static UpgradeManager Instance;
+
+    private bool uiOpen;
+
+    [SerializeField]
+    private GameObject holder;
+    //Some sort of detection
+    private InputAction CloseUiInput;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -13,6 +22,9 @@ public class UpgradeManager : MonoBehaviour
         }
 
         Instance = this;
+
+        CloseUiInput = InputSystem.actions.FindAction("Interact");
+        CloseUiInput.started += CloseShopHotkey;
 
         buyEfficientSwing.onClick.AddListener(() => BuySwordUpgrade(0));
         buyFasterSwing.onClick.AddListener(() => BuySwordUpgrade(1));
@@ -26,6 +38,30 @@ public class UpgradeManager : MonoBehaviour
 
         gunCostTxt.text = $"Gun Cost: {GunUpgradeCost}";
         swordCostTxt.text = $"Sword Cost: {SwordUpgradeCost}";
+
+
+    }
+
+    public void OpenShopUi()
+    {
+        Time.timeScale = 0f;
+        uiOpen = true;
+        holder.SetActive(true);
+    }
+
+    public void CloseShopUi()
+    {
+        Time.timeScale = 1f;
+        uiOpen = false;
+        holder.SetActive(false);
+    }
+
+    private void CloseShopHotkey(InputAction.CallbackContext context)
+    {
+        if(uiOpen)
+        {
+            CloseShopUi();
+        }
     }
 
     #region UI
@@ -42,6 +78,8 @@ public class UpgradeManager : MonoBehaviour
     {
         if(CanBuyUpgrade(GunUpgradeCost))
         {
+            //Play weaponUpgrade sound
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.weaponUpgrade, this.transform.position);
             PlayerStats.SpendSouls(GunUpgradeCost);
             GunUpgradesPurchased++;
 
@@ -75,6 +113,8 @@ public class UpgradeManager : MonoBehaviour
     {
         if(CanBuyUpgrade(SwordUpgradeCost))
         {
+            //Play weaponUpgrade sound
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.weaponUpgrade, this.transform.position);
             PlayerStats.SpendSouls(SwordUpgradeCost);
             SwordUpgradesPurchased++;
 

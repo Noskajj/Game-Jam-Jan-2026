@@ -27,6 +27,8 @@ public class MonsterLogic : MeleeClass
 
     private void ShootProjectile()
     {
+        //Play knifeThrow sound
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyKnifeThrow, this.transform.position);
         //spawn projectile range attack
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         //Debug.Log("Projectile Spawned");

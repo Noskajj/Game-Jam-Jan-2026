@@ -33,6 +33,8 @@ public class Sigil : MonoBehaviour
             if (SigilManager.Instance.CanPurchaseSigil(sigilType))
             {
                 SigilManager.Instance.PurchaseSigil(sigilType);
+                //Play magicalInfusion
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.magicalInfusion, this.transform.position);
             }
         }
         

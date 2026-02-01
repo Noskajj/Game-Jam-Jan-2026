@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
+using FMOD.Studio;
 /*
     GOAL -> 
 
@@ -21,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction moveAction;
     private InputAction dashAction;
 
-
+    public Vector2 moveKeyInput = Vector2.zero;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float gravity = -20f;
@@ -58,8 +60,12 @@ public class PlayerMovement : MonoBehaviour
     public Vector3  Momentum => mass * velocity;
 
 
+    //audio stuff
+    private EventInstance playerFootsteps;
 
 
+    //player animation
+    public Animator playerAnimator;
      
     void Start()
     {
@@ -67,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         dashAction = inputActions.FindAction("Player/Dash");
         
         dashAction.performed += Player_Dash;
+        moveAction.canceled += StopMovement;
 
 
         _rb = GetComponent<Rigidbody>();
@@ -78,6 +85,10 @@ public class PlayerMovement : MonoBehaviour
 
         //Set_Velocity(new Vector3(0, 5, 0));
 
+        //audio stuff
+        playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.playerFootstepsStone);
+
+        //playerAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -116,29 +127,53 @@ public class PlayerMovement : MonoBehaviour
 
     //HELPERS:__________________________
 
+
+
     private void Player_Move(float _dt)
     {
         //Apply acceleration in a direction
         // V_{t+1} = V_t + clamp((U * MAX_SPEED), -r*delta_t, r*delta_t)
 
-        Vector2 keyInput = moveAction.ReadValue<Vector2>();
+        moveKeyInput = moveAction.ReadValue<Vector2>();
 
         //Gives the current velocity vector in 3D space
         Vector3 currVel = new Vector3(velocity.x, 0f, velocity.z);
 
-        if (keyInput.sqrMagnitude > 0f)
+        if (moveKeyInput.sqrMagnitude > 0f)
         {
-            //Gives a velocity vector in 3D space
-            Vector3 targVel = new Vector3(keyInput.x, 0f, keyInput.y) * moveSpeed;
+            if (isGrounded)
+            {
+                PLAYBACK_STATE playbackState;
+                playerFootsteps.getPlaybackState(out playbackState);
+                if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+                {
+                    playerFootsteps.start();
+                }
+            }
+                //Gives a velocity vector in 3D space
+                Vector3 targVel = new Vector3(moveKeyInput.x, 0f, moveKeyInput.y) * moveSpeed;
 
             currVel = Vector3.MoveTowards(currVel, targVel, playerAccel * _dt);
+
+            playerAnimator.SetFloat("MoveX", targVel.x);
+            playerAnimator.SetFloat("MoveZ", targVel.z);
+            playerAnimator.SetBool("IsMoving", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsMoving", false);
         }
 
-        velocity.x = currVel.x;
+            velocity.x = currVel.x;
         velocity.z = currVel.z;
 
+        
 
+    }
 
+    private void StopMovement(InputAction.CallbackContext context)
+    {
+        playerFootsteps.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
 
@@ -168,6 +203,8 @@ public class PlayerMovement : MonoBehaviour
         if(PlayerStats.dashStaminaCost <= PlayerStats.CurrentStamina)
         {
             Vector2 dash = moveAction.ReadValue<Vector2>();
+
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerDash, this.transform.position);
 
             if (dash.sqrMagnitude < 0.001f)
             {
@@ -249,6 +286,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+
 
 }
 

@@ -14,7 +14,6 @@ public class FMODEvents : MonoBehaviour
     [field: Header("Music")]
     [field: SerializeField] public EventReference menuTheme { get; private set; }
     [field: SerializeField] public EventReference backgroundMusic { get; private set; }
-    [field: SerializeField] public EventReference transitionToBossFight { get; private set; }
     [field: SerializeField] public EventReference phase1OfBossFight { get; private set; }
     [field: SerializeField] public EventReference phase2OfBossFight { get; private set; }
     [field: SerializeField] public EventReference bossFightEnding { get; private set; }
@@ -34,9 +33,11 @@ public class FMODEvents : MonoBehaviour
     [field: Header("Enemy SFX")]
     [field: SerializeField] public EventReference enemyFootsteps { get; private set; }
     [field: SerializeField] public EventReference enemyMagicAttack { get; private set; }
+    [field: SerializeField] public EventReference enemyKnifeSlash { get; private set; }
+    [field: SerializeField] public EventReference enemyKnifeThrow { get; private set; }
+    [field: SerializeField] public EventReference enemyHurt { get; private set; }
 
     [field: Header("Monster SFX")]
-    [field: SerializeField] public EventReference knifeThrow { get; private set; }
     [field: SerializeField] public EventReference monsterMelee { get; private set; }
     [field: SerializeField] public EventReference monsterHurt { get; private set; }
 
