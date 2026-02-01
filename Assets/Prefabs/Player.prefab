@@ -504,7 +504,7 @@ MonoBehaviour:
   moveKeyInput: {x: 0, y: 0}
   gravity: -10
   velocity: {x: 0, y: 0, z: 0}
-  moveSpeed: 4.5
+  moveSpeed: 12
   playerAccel: 30
   dashUp: 4
   dashHorz: 20

@@ -3810,14 +3810,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46118e3348b5fd4aaece2c823f03ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
+<<<<<<< HEAD
   buyEfficientSwing: {fileID: 0}
   buyFasterSwing: {fileID: 0}
   buyHarderSwing: {fileID: 0}
+=======
+  holder: {fileID: 3929170092783956048}
+  buyEfficientSwing: {fileID: 2865618179601706550}
+  buyFasterSwing: {fileID: 766774608906762887}
+  buyHarderSwing: {fileID: 8249369863091485123}
+>>>>>>> origin/Lighting
   buyHarderBullet: {fileID: 1947960804764784394}
-  buyLargerChamber: {fileID: 0}
-  buyLargerPouch: {fileID: 0}
-  buyNimbleFingers: {fileID: 0}
-  buySpeedWalker: {fileID: 0}
+  buyLargerChamber: {fileID: 1152869545493558336}
+  buyLargerPouch: {fileID: 7493484508128102048}
+  buyNimbleFingers: {fileID: 8552213258606778424}
+  buySpeedWalker: {fileID: 1696066074976540610}
   gunCostTxt: {fileID: 5994179397904005903}
   swordCostTxt: {fileID: 4037494566953391831}
 --- !u!1 &7716788662740385947
