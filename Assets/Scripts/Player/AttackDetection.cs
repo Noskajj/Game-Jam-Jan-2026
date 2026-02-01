@@ -1,14 +1,18 @@
-using NUnit.Framework;
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 public class AttackDetection : MonoBehaviour
 {
     public Vector3 meleeForce = new Vector3(0, 10, 35);  //Melee strength
 
     public static AttackDetection Instance { get; private set;}
-    
+
+    //player animation
+    public Animator playerAnimator;
+
     private void Awake()
     {
         if(Instance != null && Instance != this)
@@ -48,6 +52,10 @@ public class AttackDetection : MonoBehaviour
 
         //move collider around player
         transform.position = transform.parent.position + direction * orbitDist;
+
+        //animation
+        playerAnimator.SetFloat("ShootX", mouseOffset.x);
+        playerAnimator.SetFloat("ShootY", mouseOffset.y);
     }
     #endregion
 

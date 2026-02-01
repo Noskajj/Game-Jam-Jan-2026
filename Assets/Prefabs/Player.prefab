@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackDetection
   meleeForce: {x: 0, y: 6, z: 35}
+  playerAnimator: {fileID: 5933559602841353269}
 --- !u!1 &3723657078437017808
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  moveKeyInput: {x: 0, y: 0}
   gravity: -10
   velocity: {x: 0, y: 0, z: 0}
   moveSpeed: 4.5
@@ -513,6 +515,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   isGrounded: 0
   groundFriction: 15
+  playerAnimator: {fileID: 5933559602841353269}
 --- !u!114 &1796698889684797238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,6 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365431ce3fd834e439bcf5e87a52c01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  playerAnimation: {fileID: 5933559602841353269}
   bulletPrefab: {fileID: 3363635851721483712, guid: c79302b1451c61242a0ea4a064286180, type: 3}
 --- !u!1 &5742351490832242385
 GameObject:
