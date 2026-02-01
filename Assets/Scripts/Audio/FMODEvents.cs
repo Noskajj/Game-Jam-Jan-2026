@@ -14,7 +14,6 @@ public class FMODEvents : MonoBehaviour
     [field: Header("Music")]
     [field: SerializeField] public EventReference menuTheme { get; private set; }
     [field: SerializeField] public EventReference backgroundMusic { get; private set; }
-    [field: SerializeField] public EventReference transitionToBossFight { get; private set; }
     [field: SerializeField] public EventReference phase1OfBossFight { get; private set; }
     [field: SerializeField] public EventReference phase2OfBossFight { get; private set; }
     [field: SerializeField] public EventReference bossFightEnding { get; private set; }

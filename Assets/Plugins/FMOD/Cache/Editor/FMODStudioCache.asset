@@ -342,7 +342,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639055397498568487
+  lastModified: 639055475191708823
   FileSizes: []
   Exists: 1
 --- !u!114 &-2232908316348330469
@@ -470,7 +470,6 @@ MonoBehaviour:
   - {fileID: 9062638151560235315}
   - {fileID: 2630346189116125473}
   - {fileID: 622819268741651887}
-  - {fileID: 4469446746870318065}
   - {fileID: -4144072639066051436}
   - {fileID: 5540818293796439587}
   - {fileID: 8122798917539941080}
@@ -482,7 +481,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 4470068481176420875}
   cacheVersion: 131858
-  cacheTime: 639055397499564669
+  cacheTime: 639055475192804069
   SerializableEventsDict:
   - key: event:/Music/Menu Theme
     index: 0
@@ -534,18 +533,16 @@ MonoBehaviour:
     index: 23
   - key: event:/SFX/Player SFX/Player Footsteps - Stone
     index: 24
-  - key: event:/Music/Boss Fight Transition
-    index: 25
   - key: event:/SFX/Enemy SFX/Enemy Magic Attack
-    index: 26
+    index: 25
   - key: event:/SFX/Enemy SFX/Final Boss SFX/Uncle Hurt
-    index: 27
+    index: 26
   - key: event:/SFX/Enemy SFX/Monster SFX/Monster Melee
-    index: 28
+    index: 27
   - key: event:/SFX/Enemy SFX/Final Boss SFX/Uncle Slam
-    index: 29
+    index: 28
   - key: event:/SFX/Player SFX/Sword Slash
-    index: 30
+    index: 29
 --- !u!114 &442399714529014347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,7 +695,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639055397499564669
+  lastModified: 639055475192804069
   FileSizes: []
   Exists: 1
 --- !u!114 &2518813050023398690
@@ -806,34 +803,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &4469446746870318065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Boss Fight Transition
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Music/Boss Fight Transition
-  Guid:
-    Data1: -195419707
-    Data2: 1149878158
-    Data3: 1555387566
-    Data4: -1842186464
-  Banks:
-  - {fileID: 8139946546878667675}
-  - {fileID: 1835757635481557743}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 54000
 --- !u!114 &4470068481176420875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,10 +818,10 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639055397498711210
+  lastModified: 639055475191728850
   FileSizes:
   - Name: 
-    Value: 2598
+    Value: 2558
   Exists: 1
 --- !u!114 &5001530702128342214
 MonoBehaviour:
@@ -1004,7 +973,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639055397499353652
+  lastModified: 639055475192234166
   FileSizes: []
   Exists: 1
 --- !u!114 &8577330285633147511
