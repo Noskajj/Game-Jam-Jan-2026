@@ -130,7 +130,7 @@ MonoBehaviour:
   startPos: {x: 0, y: 0, z: 0}
   projCount: 5
   timeConst: 0.2
-  Fourier: 0
+  ShapeFunction: 1
   iHateBen: 100
   ballPrefab: {fileID: 5247173209860311581, guid: 13d2d0559089d3845a70fc2b4e9b06a9, type: 3}
 --- !u!54 &-3396785985177025858
