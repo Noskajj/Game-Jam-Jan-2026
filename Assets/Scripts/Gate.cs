@@ -32,6 +32,11 @@ public class Gate : MonoBehaviour
             $"Cost: {gateCost}";
     }
 
+    private void OnDestroy()
+    {
+        PurchaseGate.started -= BuyGate;
+    }
+
     private void BuyGate(InputAction.CallbackContext context)
     {
         if(playerInRange)

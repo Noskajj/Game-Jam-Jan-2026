@@ -6,8 +6,8 @@ using UnityEngine;
 public class RaycastWalls : MonoBehaviour
 {
     public LayerMask wallLayer;
-    private HashSet<Renderer> currentlyBlocking = new HashSet<Renderer>();
-    private HashSet<Renderer> lastFrameBlocking = new HashSet<Renderer>();
+    private HashSet<CanvasGroup> currentlyBlocking = new HashSet<CanvasGroup>();
+    private HashSet<CanvasGroup> lastFrameBlocking = new HashSet<CanvasGroup>();
     private Material wallMat;
 
     [SerializeField]
@@ -39,36 +39,39 @@ public class RaycastWalls : MonoBehaviour
 
             if (wallRenderer != null)
             {
-                currentlyBlocking.Add(wallRenderer);
+                CanvasGroup cg = wallRenderer.GetComponentInParent<CanvasGroup>();
+
+                if (cg == null)
+                    continue;
+
+                currentlyBlocking.Add(cg);
 
                 //Checks to see if it can be disabled via canvas group or renderer
                 if(wallRenderer.GetComponentInParent<CanvasGroup>() != null && 
                     wallRenderer.GetComponentInParent<CanvasGroup>().alpha == 1f)
                 {
-                    SetTransparent(wallRenderer, transparentVal);
+                    SetTransparent(cg, transparentVal);
                 }
                 else if (wallRenderer.GetComponentInParent<CanvasGroup>() == null &&
                     wallRenderer.gameObject.GetComponent<Renderer>().enabled == true)
                 {
-                    SetTransparent(wallRenderer, transparentVal);
+                    SetTransparent(cg, transparentVal);
                 }
             }
         }
 
-        foreach (var rend in lastFrameBlocking)
+        foreach (var cg in lastFrameBlocking)
         {
-            if (!currentlyBlocking.Contains(rend))
+            if (!currentlyBlocking.Contains(cg))
             {
-                SetOpaque(rend);
+                SetOpaque(cg);
             }
                 
         }
     }
 
-    private void SetTransparent(Renderer rend, float alpha)
+    private void SetTransparent(CanvasGroup cg, float alpha)
     {
-        Debug.Log("transparent attemp");
-        CanvasGroup cg = rend.GetComponentInParent<CanvasGroup>();
         if(cg != null)
         {
             foreach(var renderer in cg.GetComponentsInChildren<Renderer>())
@@ -77,16 +80,10 @@ public class RaycastWalls : MonoBehaviour
             }
            
         }
-        else
-        {
-            Debug.LogWarning($"The {rend.name} object does not have a valid canvas group on its parent: Disabling Default");
-            rend.gameObject.GetComponent<Renderer>().enabled = false;
-        }
     }
 
-    private void SetOpaque(Renderer rend)
+    private void SetOpaque(CanvasGroup cg)
     {
-        CanvasGroup cg = rend.GetComponentInParent<CanvasGroup>();
         
         if(cg != null)
         {
@@ -94,11 +91,6 @@ public class RaycastWalls : MonoBehaviour
             {
                 renderer.enabled = true;
             }
-        }
-        else
-        {
-            Debug.LogWarning($"The {rend.name} object does not have a valid canvas group on its parent: Enabling Default");
-            rend.gameObject.GetComponent<Renderer>().enabled = true;
         }
 
     }
