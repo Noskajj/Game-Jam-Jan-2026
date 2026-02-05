@@ -10,75 +10,106 @@ public class RaycastWalls : MonoBehaviour
     private HashSet<Renderer> lastFrameBlocking = new HashSet<Renderer>();
     private Material wallMat;
 
+    [SerializeField]
+    private float transparentVal = 0.2f, fadeTime = 1f;
+
+
     private void Update()
     {
+        CheckContacts();
+    }
+
+    private void CheckContacts()
+    {
         lastFrameBlocking.Clear();
-         foreach(var rend in currentlyBlocking)
+        foreach (var rend in currentlyBlocking)
         {
-           lastFrameBlocking.Add(rend);
+            lastFrameBlocking.Add(rend);
         }
 
-         currentlyBlocking.Clear();
+        currentlyBlocking.Clear();
 
         Vector3 direction = transform.parent.position - transform.position;
         float dist = direction.magnitude;
 
         RaycastHit[] hits = Physics.RaycastAll(transform.position, direction.normalized, dist, wallLayer);
-        foreach(var hit in hits)
+        foreach (var hit in hits)
         {
             Renderer wallRenderer = hit.collider.GetComponent<Renderer>();
+
             if (wallRenderer != null)
             {
                 currentlyBlocking.Add(wallRenderer);
 
-                wallRenderer.enabled = false;
+                //Checks to see if it can be disabled via canvas group or renderer
+                if(wallRenderer.GetComponentInParent<CanvasGroup>() != null && 
+                    wallRenderer.GetComponentInParent<CanvasGroup>().alpha == 1f)
+                {
+                    SetTransparent(wallRenderer, transparentVal);
+                }
+                else if (wallRenderer.GetComponentInParent<CanvasGroup>() == null &&
+                    wallRenderer.gameObject.GetComponent<Renderer>().enabled == true)
+                {
+                    SetTransparent(wallRenderer, transparentVal);
+                }
             }
-        }       
+        }
 
-       foreach(var rend in lastFrameBlocking)
+        foreach (var rend in lastFrameBlocking)
         {
             if (!currentlyBlocking.Contains(rend))
-                rend.enabled = true;
+            {
+                SetOpaque(rend);
+            }
+                
         }
     }
 
     private void SetTransparent(Renderer rend, float alpha)
     {
         Debug.Log("transparent attemp");
-        Material mat = rend.material;
-        mat.SetFloat("_Surface", 1);
-        Color color = mat.color;
-        color.a = alpha;
-        mat.color = color;
+        CanvasGroup cg = rend.GetComponentInParent<CanvasGroup>();
+        if(cg != null)
+        {
+            cg.alpha = alpha;
+           
+        }
+        else
+        {
+            Debug.LogWarning($"The {rend.name} object does not have a valid canvas group on its parent: Disabling Default");
+            rend.gameObject.GetComponent<Renderer>().enabled = false;
+        }
     }
 
-    private void SetOpaque(Renderer rend, float alpha)
+    private void SetOpaque(Renderer rend)
     {
-        Material mat = rend.material;
-        mat.SetFloat("_Surface", 0);
-        Color color = mat.color;
-        color.a = alpha;
-        mat.color = color;
+        CanvasGroup cg = rend.GetComponentInParent<CanvasGroup>();
+        
+        if(cg != null)
+        {
+            cg.alpha = 1.0f;
+        }
+        else
+        {
+            Debug.LogWarning($"The {rend.name} object does not have a valid canvas group on its parent: Enabling Default");
+            rend.gameObject.GetComponent<Renderer>().enabled = true;
+        }
+
     }
-
-
 
     //Not implemented yet
-    private IEnumerator FadeWall(Renderer wallRenderer, int targetVal, int fadeTime)
+    private IEnumerator FadeWall(CanvasGroup cg, float startVal, float targetVal, int fadeTime)
     {
-        Material mat = wallRenderer.material;
-        Color color = mat.color;
-        float startAlpha = color.a;
         float timer = 0;
 
         while(timer < fadeTime)
         {
             timer += Time.deltaTime;
-            float alpha = Mathf.Lerp(startAlpha, targetVal, timer / fadeTime);
-            mat.color = new Color(color.r, color.g, color.b, alpha);
+            float alpha = Mathf.Lerp(startVal, targetVal, timer / fadeTime);
+            cg.alpha = alpha;
             yield return null;
         }
 
-        mat.color = new Color(color.r, color.g, color.b, targetVal);
+        cg.alpha = targetVal;
     }
 }
