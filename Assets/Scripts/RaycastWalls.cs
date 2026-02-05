@@ -71,7 +71,10 @@ public class RaycastWalls : MonoBehaviour
         CanvasGroup cg = rend.GetComponentInParent<CanvasGroup>();
         if(cg != null)
         {
-            cg.alpha = alpha;
+            foreach(var renderer in cg.GetComponentsInChildren<Renderer>())
+            {
+                renderer.enabled = false;
+            }
            
         }
         else
@@ -87,7 +90,10 @@ public class RaycastWalls : MonoBehaviour
         
         if(cg != null)
         {
-            cg.alpha = 1.0f;
+            foreach (var renderer in cg.GetComponentsInChildren<Renderer>())
+            {
+                renderer.enabled = true;
+            }
         }
         else
         {

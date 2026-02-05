@@ -379,6 +379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1823654201677590945}
+  - component: {fileID: 8768591404965874570}
   m_Layer: 0
   m_Name: Wall_Group_1
   m_TagString: Untagged
@@ -405,6 +406,18 @@ Transform:
   - {fileID: 6531871868539255321}
   m_Father: {fileID: 5723549950132865833}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &8768591404965874570
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223166317246950850}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &409469374330336390
 GameObject:
   m_ObjectHideFlags: 0
@@ -3135,6 +3148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1307414908090893131}
+  - component: {fileID: 6802986897361660380}
   m_Layer: 0
   m_Name: Wall_Group_5
   m_TagString: Untagged
@@ -3161,6 +3175,18 @@ Transform:
   - {fileID: 3871178077706578411}
   m_Father: {fileID: 5723549950132865833}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &6802986897361660380
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538299171283596654}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2562602011532055810
 GameObject:
   m_ObjectHideFlags: 0
@@ -3396,6 +3422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8609781209824052253}
+  - component: {fileID: 1024358170741334442}
   m_Layer: 0
   m_Name: Wall_Group_3
   m_TagString: Untagged
@@ -3429,6 +3456,18 @@ Transform:
   - {fileID: 3938602265128164443}
   m_Father: {fileID: 5723549950132865833}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &1024358170741334442
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632565689359664381}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2664934095263957931
 GameObject:
   m_ObjectHideFlags: 0
@@ -8543,6 +8582,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4360654971366877234}
+  - component: {fileID: 8527647332817125369}
   m_Layer: 0
   m_Name: Wall_Group_6
   m_TagString: Untagged
@@ -8572,6 +8612,18 @@ Transform:
   - {fileID: 8501059847809196980}
   m_Father: {fileID: 5723549950132865833}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &8527647332817125369
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6381235057385810245}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6471033988814676518
 GameObject:
   m_ObjectHideFlags: 0
@@ -9299,6 +9351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5638476847225000813}
+  - component: {fileID: 493314563342331455}
   m_Layer: 0
   m_Name: Wall_Group_2
   m_TagString: Untagged
@@ -9325,6 +9378,18 @@ Transform:
   - {fileID: 4526839166869164489}
   m_Father: {fileID: 5723549950132865833}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &493314563342331455
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939736172849456883}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6997015630134078031
 GameObject:
   m_ObjectHideFlags: 0
@@ -9932,6 +9997,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4545604556408949439}
+  - component: {fileID: 8900004749788104819}
   m_Layer: 0
   m_Name: Wall_Group_4
   m_TagString: Untagged
@@ -9956,6 +10022,18 @@ Transform:
   - {fileID: 408316339612753355}
   m_Father: {fileID: 5723549950132865833}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &8900004749788104819
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7352209937909367583}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7447069671986746526
 GameObject:
   m_ObjectHideFlags: 0
