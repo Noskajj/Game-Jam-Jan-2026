@@ -81,7 +81,7 @@ public class UpgradeManager : MonoBehaviour
         if(CanBuyUpgrade(GunUpgradeCost))
         {
             //Play weaponUpgrade sound
-            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.weaponUpgrade, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.weaponUpgrade, this.transform.position);
             PlayerStats.SpendSouls(GunUpgradeCost);
             GunUpgradesPurchased++;
 
@@ -116,7 +116,7 @@ public class UpgradeManager : MonoBehaviour
         if(CanBuyUpgrade(SwordUpgradeCost))
         {
             //Play weaponUpgrade sound
-            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.weaponUpgrade, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.weaponUpgrade, this.transform.position);
             PlayerStats.SpendSouls(SwordUpgradeCost);
             SwordUpgradesPurchased++;
 
