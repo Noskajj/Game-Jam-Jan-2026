@@ -1,6 +1,15 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+
+public enum Shape_Function 
+{ 
+
+    Fourier, 
+    SemiCircle
+
+}
 
 public class BallSpawner : MonoBehaviour
 {
@@ -8,13 +17,13 @@ public class BallSpawner : MonoBehaviour
 
     public Vector3 posVec;
     public Vector3 startPos;
-    public float projCount = 30f;
-    public float k = 1f;
+    public float projCount = 5f;
+    private float k = 0f;
     public float timeConst = 0.2f;
-    public bool coolEq = false;
+    public Shape_Function ShapeFunction = Shape_Function.Fourier;
     public float iHateBen = 100f;
     [SerializeField] private GameObject ballPrefab;
-    List<GameObject> ballsList = new List<GameObject>();
+    
 
 
     //PREALLOCATING MEMORY
@@ -25,37 +34,40 @@ public class BallSpawner : MonoBehaviour
     private float _kSqrt;
     private float _offesetX;
 
-    private float _l;
-    private float _n;
-    private float _m;
+    private List<GameObject> spawnedBalls = new List<GameObject>();
 
+    private float Fourier_Length;
+    private float Fourier_x;
+    private float Fourier_y;
+    private float tmax = 20;
+    private float t = 0;
+    private float tstep = 0.03f;
+    private float tpause = 0.05f;
+    private float ttransition = 0.05f;
+    private float kmax = 100f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        startPos = transform.position;
+        /*startPos = transform.position;
         _col = GetComponent<Collider>();
         _rb = GetComponent<Rigidbody>();
-
+        Debug.Log("started");
         _time = 0;
         _rb.useGravity = false;
-        _rb.mass = 1f;      //This bitch lighter than your mum
+        _rb.mass = 1f; */     //This bitch lighter than your mum
 
-        if (coolEq)
+        if (ShapeFunction == Shape_Function.Fourier)
         {
-            for(int i = 0; i< 50; i++)
-            {
 
-                CoolEqFunc();
-
-                GameObject newBall = Instantiate(ballPrefab, new Vector3(_n, 0, _m), ballPrefab.transform.rotation);
-                _time += 0.5f;
-            }
-
-
+            StartCoroutine(AttFourier());
+            //IAttFourier();
+      
         }
+
         else
+        
         {
             
 
@@ -64,30 +76,68 @@ public class BallSpawner : MonoBehaviour
             {
                 _offesetX = (-iHateBen) / (2f) + (iHateBen / (projCount - 1)) * i;
                 Vector3 spawnPos = startPos + new Vector3(_offesetX, 0f, 0f);
-                //(-1 * l/2f) + (Mathf.Pow(i,2)/l)
+   
                 GameObject newBall = Instantiate(ballPrefab, new Vector3(_offesetX, 10f, startPos.y), ballPrefab.transform.rotation);
             
             }
         }
+      
 
-
-    }
-
-    void CoolEqFunc()
-    {
-        _l = k * Mathf.Sin(0.5f * Mathf.PI) * _time;
-        _n = 2f * (Mathf.Cos(_time)) + _l * Mathf.Cos(_time);
-        _m = 2f * Mathf.Sin(_time) + _l * Mathf.Sin(_time);
-    }
 }
 
-    // Update is called once per frame
+
+
+    IEnumerator AttFourier()
+    {
+        for (float i = 0; i < tmax; i += tstep)
+        {
+            GameObject newBall = Instantiate(ballPrefab);
+            spawnedBalls.Add(newBall);
+        }
+
+        while (k < kmax)
+        {
+            int ballIndex = 0;
+
+            while (t < tmax)
+            {
+                Fourier_Length = k * Mathf.Sin(t * 0.5f * Mathf.PI);
+                Fourier_x = 2f * (Mathf.Cos(t)) + Fourier_Length * Mathf.Cos(t);
+                Fourier_y = 2f * Mathf.Sin(t) + Fourier_Length * Mathf.Sin(t);
+                spawnedBalls[ballIndex].transform.position = new Vector3(Fourier_x, 1, Fourier_y);
+
+                t = t + tstep;
+                ballIndex++;
+            }
+
+            k = k + 0.1f;
+            t = 0;
+            yield return new WaitForSeconds(ttransition);
+        }
+    }
+
+    void IAttFourier()
+    {
+        
+        while (t < tmax)
+        {
+
+            Fourier_Length = k * Mathf.Sin(t * 10f * Mathf.PI);
+            Fourier_x = 2f * (Mathf.Cos(t)) + Fourier_Length * Mathf.Cos(t);
+            Fourier_y = 2f * Mathf.Sin(t) + Fourier_Length * Mathf.Sin(t);
+            GameObject newBall = Instantiate(ballPrefab, new Vector3(Fourier_x, 0, Fourier_y), ballPrefab.transform.rotation);
+            spawnedBalls.Add(newBall);
+
+            t = t + tstep;
 
 
 
+        }
 
+    }
 
-/*
-             Vector3 curPos = ballsList[i].GetComponent<Rigidbody>().position;
-            curPos.z = Mathf.Sqrt(_time - Mathf.Pow(curPos.x, 2));
- */
+    /*IEnumerator AttHalfCircle()
+    {
+        
+    }*/
+}

@@ -33,7 +33,7 @@ public class ShopKeep : MonoBehaviour
 
     private void OpenShopUi(InputAction.CallbackContext context)
     {
-        Debug.Log("E was pressed!");
+        
         if (playerInRange && PlayerStats.Health > 0 && shopUIisOpen == false)
         {
 
