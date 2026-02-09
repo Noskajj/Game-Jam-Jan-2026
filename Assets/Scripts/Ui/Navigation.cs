@@ -43,7 +43,7 @@ public class Navigation : MonoBehaviour
             while (timeElapsed < fadeTime)
             {
                 Debug.Log("Navigation: time for fade" + timeElapsed);
-                timeElapsed += Time.deltaTime;
+                timeElapsed += Time.unscaledDeltaTime;
                 float timer = timeElapsed / fadeTime;
 
                 colour.a = Mathf.Lerp(0f, 1f, timer);
