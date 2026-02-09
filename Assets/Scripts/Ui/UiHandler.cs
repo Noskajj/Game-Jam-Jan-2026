@@ -72,7 +72,7 @@ public class UiHandler : MonoBehaviour
 
             while (timer < animateTime)
             {
-                timer += Time.deltaTime;
+                timer += Time.unscaledDeltaTime;
                 float t = timer / animateTime;
 
                 hpImage.fillAmount = Mathf.Lerp(startFill, endFill, t);

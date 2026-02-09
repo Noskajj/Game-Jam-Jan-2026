@@ -136,7 +136,9 @@ public abstract class EnemyClass : MonoBehaviour
     private IEnumerator DamageVisualisation()
     {
         //fade in
+        
         float timer = 0;
+        Debug.Log($"Enemy: We starting the visu enumer timer:{timer} fade time:{enemyDamageFadeTime}");
         while (timer < enemyDamageFadeTime)
         {
             timer += Time.deltaTime;
@@ -145,7 +147,6 @@ public abstract class EnemyClass : MonoBehaviour
             var col = enemyDamageOverlay.color;
             col.a = Mathf.Lerp(0, 1, t);
             enemyDamageOverlay.color = col;
-
             yield return null;
         }
 
@@ -154,6 +155,9 @@ public abstract class EnemyClass : MonoBehaviour
 
         //End effect
         timer = 0;
+
+        
+
 
         while (timer < enemyDamageFadeTime)
         {
