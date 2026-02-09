@@ -4,7 +4,7 @@ using UnityEngine;
 public static class PlayerStats
 {
     #region Delegates
-    public static event Action MaxHealthChanged, healthUpdated, soulsUpdated, ammoUpdated;
+    public static event Action maxHealthChanged, healthUpdated, soulsUpdated, ammoUpdated, stamUpdated, maxStamChanged;
     #endregion
 
     #region Variables
@@ -206,11 +206,13 @@ public static class PlayerStats
     {
         currentStamina -= amount;
         PlayerManager.Instance.HasUsedStamina(amount);
+        stamUpdated?.Invoke();
     }
 
     public static void GainStamina(int amount)
     {
         currentStamina += amount;
+        stamUpdated?.Invoke();
     }
 
     public static void ShootGun()
@@ -232,12 +234,14 @@ public static class PlayerStats
     {
         bonusHealBuffer = 1;
         maxHealthBonus = 50;
+        maxHealthChanged?.Invoke();
     }
 
     public static void PactOfService()
     {
         bonusStamBuffer = 0.3f;
         bonusMaxStamina = 50;
+        maxStamChanged?.Invoke();
     }
 
     public static void PactOfAgility()

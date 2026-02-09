@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53bd73b8ae1f61b4ba801ce1c0bc7bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverManager
+  gameOverPanel: {fileID: 3912694304936117571}
   gameOverTxt: {fileID: 134117767213764086}
 --- !u!1001 &3808568407974671241
 PrefabInstance:
@@ -61,6 +62,82 @@ PrefabInstance:
     - target: {fileID: 186457881836762826, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
       propertyPath: m_Name
       value: GameOverPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 186457881836762826, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116715447548267039, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960793305291561229, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960793305291561229, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970032703965603947, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970032703965603947, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970032703965603947, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -336
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970032703965603947, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -188
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820947697465212543, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820947697465212543, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324540262064982317, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_text
+      value: Re
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849169156020536089, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849169156020536089, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849169156020536089, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 376
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849169156020536089, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -204
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294531864189929030, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294531864189929030, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294531864189929030, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5294531864189929030, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6776120396510841150, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
       propertyPath: m_Pivot.x
@@ -158,6 +235,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &3912694304936117571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 186457881836762826, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}
+  m_PrefabInstance: {fileID: 3808568407974671241}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7697598789260163767 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6776120396510841150, guid: 61626d8fe7c9ca448a0253b47724398b, type: 3}

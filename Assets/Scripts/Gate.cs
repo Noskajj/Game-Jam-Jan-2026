@@ -39,7 +39,6 @@ public class Gate : MonoBehaviour
 
     private void BuyGate(InputAction.CallbackContext context)
     {
-        context.ReadValue<Vector2>();
         if(playerInRange)
         {
             if (CheckAffordGate())
