@@ -78,7 +78,7 @@ public static class PlayerStats
 
     public static float StamRegenPerSecond = 10f;
 
-    private static int meleeDamage = 25;
+    private static int meleeDamage = 50;
     public static int meleeBonus = 0;
     public static int MeleeDamage
     {

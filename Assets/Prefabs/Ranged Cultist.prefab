@@ -143,7 +143,7 @@ MonoBehaviour:
   monsterSpeed: 3
   stopDistance: 10
   maxHealth: 100
-  soulValue: 1
+  soulValue: 5
   enemyDamageOverlay: {fileID: 3317507360210132043}
   rangeAttacktime: 2
   rangeCooldown: 3
