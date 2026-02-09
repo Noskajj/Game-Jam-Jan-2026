@@ -109,7 +109,7 @@ public class PlayerManager : MonoBehaviour
             AttackDetection.Instance.Attack();
             //Play swordSlash sound
             AudioManager.instance.PlayOneShot(FMODEvents.instance.swordSlash, this.transform.position);
-            PlayerStats.UseStamina(PlayerStats.SwordStaminaCost);
+            //PlayerStats.UseStamina(PlayerStats.SwordStaminaCost);
             StartCoroutine(MeleeCD());
 
             
@@ -169,7 +169,7 @@ public class PlayerManager : MonoBehaviour
         else
         {
             //Check melee CD
-            if(!swordOnCD && PlayerStats.SwordStaminaCost < PlayerStats.CurrentStamina)
+            if(!swordOnCD)
             {
                 Debug.Log("We can meelee");
                 return true;
