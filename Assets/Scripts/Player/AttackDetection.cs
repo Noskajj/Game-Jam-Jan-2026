@@ -43,13 +43,16 @@ public class AttackDetection : MonoBehaviour
         Vector3 direction = (mouseWorldPos - playerPos).normalized;
 
         //This is the same idea as a radius for a sphere
-        Vector3 halfExtents = Vector3.one;
+        Vector3 halfExtents = new Vector3(1f,1f,2f);
 
         Vector3 boxCenter = playerPos + direction * halfExtents.z;
 
+        Quaternion boxRotation = Quaternion.LookRotation(direction);
+
         Collider[] hits = Physics.OverlapBox(
                 boxCenter,
-                halfExtents
+                halfExtents,
+                boxRotation
             );
 
         foreach (var hit in hits)

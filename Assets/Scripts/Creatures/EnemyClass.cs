@@ -138,6 +138,8 @@ public abstract class EnemyClass : MonoBehaviour
         //fade in
         
         float timer = 0;
+        var startAlpha = enemyDamageOverlay.color.a;
+
         Debug.Log($"Enemy: We starting the visu enumer timer:{timer} fade time:{enemyDamageFadeTime}");
         while (timer < enemyDamageFadeTime)
         {
@@ -145,7 +147,7 @@ public abstract class EnemyClass : MonoBehaviour
             float t = timer / enemyDamageFadeTime;
 
             var col = enemyDamageOverlay.color;
-            col.a = Mathf.Lerp(0, 1, t);
+            col.a = Mathf.Lerp(startAlpha, 1, t);
             enemyDamageOverlay.color = col;
             yield return null;
         }
