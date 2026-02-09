@@ -26,6 +26,11 @@ public class Sigil : MonoBehaviour
             $"Cost: {SigilManager.Instance.SigilCost(sigilType)}";
     }
 
+    private void OnDisable()
+    {
+        PurchaseSigil.started -= BuySigil;
+    }
+
     private void BuySigil(InputAction.CallbackContext context)
     {
         if(playerInRange)

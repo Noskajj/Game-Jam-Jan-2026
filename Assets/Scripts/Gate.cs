@@ -32,7 +32,7 @@ public class Gate : MonoBehaviour
             $"Cost: {gateCost}";
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         PurchaseGate.started -= BuyGate;
     }

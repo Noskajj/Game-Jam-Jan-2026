@@ -226,7 +226,9 @@ public static class PlayerStats
         if (TotalAmmo <= 0 || currentAmmo >= 6)
             return;
 
-        TotalAmmo--;
+        //Total ammo disabled means that we have infinite reserves
+        //This is done as we havent implemented a way to get more ammo
+        //TotalAmmo--;
         currentAmmo++;
     }
 

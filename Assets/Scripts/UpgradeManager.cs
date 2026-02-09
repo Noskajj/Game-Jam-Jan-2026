@@ -42,6 +42,11 @@ public class UpgradeManager : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        CloseUiInput.started -= CloseShopHotkey;
+    }
+
     public void OpenShopUi()
     {
         Time.timeScale = 0f;

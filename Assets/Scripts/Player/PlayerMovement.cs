@@ -89,6 +89,12 @@ public class PlayerMovement : MonoBehaviour
         playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.playerFootstepsStone);
     }
 
+    private void OnDisable()
+    {
+        dashAction.performed -= Player_Dash;
+        moveAction.canceled -= StopMovement;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {

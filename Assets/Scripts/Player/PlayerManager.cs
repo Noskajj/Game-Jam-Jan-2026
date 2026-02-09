@@ -38,6 +38,13 @@ public class PlayerManager : MonoBehaviour
         
     }
 
+    private void OnDisable()
+    {
+        equipGunAction.started -= EquipGun;
+        equipGunAction.canceled -= UnequipGun;
+        attackAction.performed -= Attack;
+    }
+
     #region ProjectileDetection
     private void OnTriggerEnter(Collider other)
     {
