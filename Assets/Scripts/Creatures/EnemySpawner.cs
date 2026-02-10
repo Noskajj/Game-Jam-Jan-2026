@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,9 +15,10 @@ public class EnemySpawner : MonoBehaviour
 
     public float enemyDelay = 1f;
 
+    public static event Action waveUpdated;
 
     #region WaveSection
-    private int waveNumber = 0;
+    private int waveNumber = 1;
     public int WaveNumber
     {
         get => waveNumber;
@@ -70,11 +72,13 @@ public class EnemySpawner : MonoBehaviour
             yield return StartCoroutine(EnemySpawning());
 
             waveNumber++;
+            
         }
     }
 
     private IEnumerator EnemySpawning()
     {
+        waveUpdated?.Invoke();
         bool waveActive = true;
         while(waveActive)
         {
@@ -111,17 +115,17 @@ public class EnemySpawner : MonoBehaviour
                 if(MaskManager.Instance.MasksCollected >=3)
                 {
                     //Random all enemies
-                    selection = Random.Range(0, enemyPrefabs.Length);
+                    selection = UnityEngine.Random.Range(0, enemyPrefabs.Length);
                 }
                 else if(MaskManager.Instance.MasksCollected >= 2)
                 {
                     //Random 3 enemies
-                    selection = Random.Range(0, enemyPrefabs.Length -1);
+                    selection = UnityEngine.Random.Range(0, enemyPrefabs.Length -1);
                 }
                 else if(MaskManager.Instance.MasksCollected >= 1)
                 {
                     //Random 2 enemies
-                    selection = Random.Range(0, enemyPrefabs.Length -2);
+                    selection = UnityEngine.Random.Range(0, enemyPrefabs.Length -2);
                 }
 
                 GameObject newEnemy = Instantiate(enemyPrefabs[selection], spawnPos, enemyPrefabs[selection].transform.rotation, transform);
@@ -147,7 +151,7 @@ public class EnemySpawner : MonoBehaviour
     private (int, int) GetCoords()
     {
         //Debug.Log("We getting coords");
-        int side = Random.Range(0, 4);
+        int side = UnityEngine.Random.Range(0, 4);
         int x = 0;
         int y = 0;
 
@@ -157,19 +161,19 @@ public class EnemySpawner : MonoBehaviour
         {
             case 0:
                 x = 0;
-                y = Random.Range(0, Screen.height);
+                y = UnityEngine.Random.Range(0, Screen.height);
                 break;
             case 1:
                 x = Screen.width;
-                y = Random.Range(0, Screen.height);
+                y = UnityEngine.Random.Range(0, Screen.height);
                 break;
             case 2:
                 y = 0;
-                x = Random.Range(0, Screen.width);
+                x = UnityEngine.Random.Range(0, Screen.width);
                 break;
             case 3:
                 y = Screen.height;
-                x = Random.Range(0, Screen.width);
+                x = UnityEngine.Random.Range(0, Screen.width);
                 break;
                
         }

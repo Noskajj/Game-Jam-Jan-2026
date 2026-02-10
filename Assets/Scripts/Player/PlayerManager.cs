@@ -38,6 +38,13 @@ public class PlayerManager : MonoBehaviour
         
     }
 
+    private void OnDisable()
+    {
+        equipGunAction.started -= EquipGun;
+        equipGunAction.canceled -= UnequipGun;
+        attackAction.performed -= Attack;
+    }
+
     #region ProjectileDetection
     private void OnTriggerEnter(Collider other)
     {
@@ -45,7 +52,7 @@ public class PlayerManager : MonoBehaviour
         {
             HasTakenDamage(10);
             //Play playerHurt sound
-            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
             Destroy(other.gameObject);
         }
     }
@@ -101,8 +108,8 @@ public class PlayerManager : MonoBehaviour
             //Hit anything in range
             AttackDetection.Instance.Attack();
             //Play swordSlash sound
-            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.swordSlash, this.transform.position);
-            PlayerStats.UseStamina(PlayerStats.SwordStaminaCost);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.swordSlash, this.transform.position);
+            //PlayerStats.UseStamina(PlayerStats.SwordStaminaCost);
             StartCoroutine(MeleeCD());
 
             
@@ -131,7 +138,7 @@ public class PlayerManager : MonoBehaviour
             StartCoroutine(ShootAnim());
 
             //Play pistoleFire sound
-            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.pistolFire, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.pistolFire, this.transform.position);
             PlayerStats.ShootGun();
             StartCoroutine(GunCD());
         }
@@ -162,7 +169,7 @@ public class PlayerManager : MonoBehaviour
         else
         {
             //Check melee CD
-            if(!swordOnCD && PlayerStats.SwordStaminaCost < PlayerStats.CurrentStamina)
+            if(!swordOnCD)
             {
                 Debug.Log("We can meelee");
                 return true;

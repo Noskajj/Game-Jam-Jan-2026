@@ -28,7 +28,7 @@ public class GameOverManager : MonoBehaviour
         Time.timeScale = 0;
         gameOverPanel.SetActive(true);
         gameOverTxt.text = $"You survived until Round {EnemySpawner.Instance.WaveNumber}." +
-            $"You managed to collect {MaskManager.Instance.AllMasks} out of {MaskManager.Instance.MasksCollected} Masks" +
+            $"You managed to collect {MaskManager.Instance.MasksCollected} out of {MaskManager.Instance.AllMasks} Masks" +
             $" and had {PlayerStats.Souls} souls at the end.";
     }
 

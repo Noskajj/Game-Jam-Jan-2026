@@ -21,7 +21,7 @@ public class MeleeClass : EnemyClass
         {
             isMeleeAttacking = true;
             //Play enemyMelee sound
-            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.enemyKnifeSlash, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyKnifeSlash, this.transform.position);
             //Debug.Log("Melee attacking");
             meleeTimer = meleeAttacktime;
         }
@@ -35,7 +35,7 @@ public class MeleeClass : EnemyClass
                 // Player take damage
                 //Debug.Log("Player took damage");
                 //Play playerHurt sound
-                MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.playerHurt, this.transform.position);
                 PlayerManager.Instance.HasTakenDamage(meleeDamage);
             }
 

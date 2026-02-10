@@ -26,6 +26,11 @@ public class Sigil : MonoBehaviour
             $"Cost: {SigilManager.Instance.SigilCost(sigilType)}";
     }
 
+    private void OnDisable()
+    {
+        PurchaseSigil.started -= BuySigil;
+    }
+
     private void BuySigil(InputAction.CallbackContext context)
     {
         if(playerInRange)
@@ -34,7 +39,7 @@ public class Sigil : MonoBehaviour
             {
                 SigilManager.Instance.PurchaseSigil(sigilType);
                 //Play magicalInfusion
-                MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.magicalInfusion, this.transform.position);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.magicalInfusion, this.transform.position);
             }
         }
         

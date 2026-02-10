@@ -86,7 +86,13 @@ public class PlayerMovement : MonoBehaviour
         //Set_Velocity(new Vector3(0, 5, 0));
 
         //audio stuff
-        playerFootsteps = MainMenuAudioManager.instance.CreateInstance(FMODEvents.instance.playerFootstepsStone);
+        playerFootsteps = AudioManager.instance.CreateInstance(FMODEvents.instance.playerFootstepsStone);
+    }
+
+    private void OnDisable()
+    {
+        dashAction.performed -= Player_Dash;
+        moveAction.canceled -= StopMovement;
     }
 
     // Update is called once per frame
@@ -202,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 dash = moveAction.ReadValue<Vector2>();
 
-            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.playerDash, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerDash, this.transform.position);
 
             if (dash.sqrMagnitude < 0.001f)
             {
