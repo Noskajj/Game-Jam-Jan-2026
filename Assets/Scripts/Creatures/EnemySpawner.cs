@@ -113,15 +113,13 @@ public class EnemySpawner : MonoBehaviour
             bool spotFound = false;
             int attempts = 0;
 
-            //TODO: Change this so that different enemies spawn based on round
             //Selects which enemy will spawn
-            int selection = UnityEngine.Random.Range(0, enemyPrefabs.Length);
+            int selection = GetEnemySelectionIndex();
 
             while (!spotFound && attempts < 10) //Ensures theres no infinite loops
             {
                 selectedSpawnPos = GetRandomSpawnPoint();
 
-                //TODO: Need to figure out if this needs to be changed for this game.
                 Collider col = enemyPrefabs[selection].GetComponent<Collider>();
 
                 Bounds bounds = col.bounds;
@@ -183,6 +181,28 @@ public class EnemySpawner : MonoBehaviour
         targetSpawnPoint = spawnPoints[i].transform.position;
        
         return targetSpawnPoint;
+    }
+
+    private int GetEnemySelectionIndex()
+    {
+        int selection = 0;
+
+        //TODO: need to finalise spawn conditions for enemies
+        //Currently after wave 5 they all spawn, after 2 ranged cultists are added
+        //At the start only melee cultists
+
+        if (waveNumber > 5)
+        {
+            selection = UnityEngine.Random.Range(0, enemyPrefabs.Length);
+        }
+        else if(waveNumber > 2)
+        {
+            selection = UnityEngine.Random.Range(0, 2);
+        }
+
+        //If the if statements dont successfully run, its defaulting to 0
+
+        return selection;
     }
 
 
