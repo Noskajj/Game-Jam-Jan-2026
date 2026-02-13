@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,13 +9,19 @@ public class EnemySpawner : MonoBehaviour
 {
     public static EnemySpawner Instance { get; private set; }
 
-
+    [Header("References")]
     [SerializeField]
     private GameObject[] enemyPrefabs;
     [SerializeField]
     private GameObject player;
 
-    public float enemyDelay = 1f;
+    private List<GameObject> spawnPoints = new List<GameObject>();
+
+    [Header("Spawn Details")]
+    [SerializeField]
+    private float spawnTimer = 1f;
+
+    
 
     public static event Action waveUpdated;
 
@@ -38,6 +46,13 @@ public class EnemySpawner : MonoBehaviour
     }
     #endregion
 
+    private void Start()
+    {
+        foreach (Transform child in transform)
+        {
+            spawnPoints.Add(child.gameObject);
+        }
+    }
 
     private void Awake()
     {
@@ -51,6 +66,10 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(WaveSpawning());
     }
 
+    /// <summary>
+    /// Handles the waves, including waiting between waves for all enemies to die
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator WaveSpawning()
     {
         while (true)
@@ -76,59 +95,63 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles spawning enemies during waves based on how many enemies in the wave
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator EnemySpawning()
     {
         waveUpdated?.Invoke();
         bool waveActive = true;
-        while(waveActive)
+        while(waveActive) //For spawning enemies
         {
             yield return new WaitUntil(() => enemyCount < maxEnemies);
 
             //Debug.Log("Started spawn cycle");
 
-            (int, int) coords = GetCoords();
+            Vector3 selectedSpawnPos = Vector3.zero;
+            bool spotFound = false;
+            int attempts = 0;
 
-            //Get world pos
+            //TODO: Change this so that different enemies spawn based on round
+            //Selects which enemy will spawn
+            int selection = UnityEngine.Random.Range(0, enemyPrefabs.Length);
 
-            Ray ray = Camera.main.ScreenPointToRay(new Vector3(coords.Item1, coords.Item2, 0f));
-
-            Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-
-            if(!groundPlane.Raycast(ray, out float enter))
+            while (!spotFound && attempts < 10) //Ensures theres no infinite loops
             {
-                yield return null;
-                continue;
+                selectedSpawnPos = GetRandomSpawnPoint();
+
+                //TODO: Need to figure out if this needs to be changed for this game.
+                Collider col = enemyPrefabs[selection].GetComponent<Collider>();
+
+                Bounds bounds = col.bounds;
+
+                bounds.center += selectedSpawnPos - col.transform.position;
+                
+                //Uses layers to determine what collisions to check for
+                int spawnPointsLayer = LayerMask.NameToLayer("SpawnPoints");
+                int groundLayer = LayerMask.NameToLayer("Ground");
+                LayerMask ignoreMask = (1 << spawnPointsLayer) | (1 << groundLayer);
+
+                Collider[] hits = Physics.OverlapBox(
+                    bounds.center,
+                    bounds.extents,
+                    Quaternion.identity,
+                    ~ignoreMask
+                    );
+
+                if(hits.Length == 0)
+                {
+                    spotFound = true;
+                }
+
+                attempts++;
             }
-
-            Vector3 worldPos = ray.GetPoint(enter);
-
-            //Check navmesh
-            float maxDist = 2f;
-            NavMeshHit hit;
-
-            if (NavMesh.SamplePosition(worldPos, out hit, maxDist, NavMesh.AllAreas))
+            
+            if(spotFound)
             {
-                //Debug.Log("We at spawning stage");
-                Vector3 spawnPos = hit.position;
-                spawnPos.y = 1;
-                int selection = 0;
-                if(MaskManager.Instance.MasksCollected >=3)
-                {
-                    //Random all enemies
-                    selection = UnityEngine.Random.Range(0, enemyPrefabs.Length);
-                }
-                else if(MaskManager.Instance.MasksCollected >= 2)
-                {
-                    //Random 3 enemies
-                    selection = UnityEngine.Random.Range(0, enemyPrefabs.Length -1);
-                }
-                else if(MaskManager.Instance.MasksCollected >= 1)
-                {
-                    //Random 2 enemies
-                    selection = UnityEngine.Random.Range(0, enemyPrefabs.Length -2);
-                }
-
-                GameObject newEnemy = Instantiate(enemyPrefabs[selection], spawnPos, enemyPrefabs[selection].transform.rotation, transform);
+                GameObject newEnemy = Instantiate(enemyPrefabs[selection], selectedSpawnPos, enemyPrefabs[selection].transform.rotation);
+                newEnemy.transform.parent = transform;
 
                 EnemyClass enemy = newEnemy.GetComponent<EnemyClass>();
                 enemy.SetPlayer(player);
@@ -139,46 +162,28 @@ public class EnemySpawner : MonoBehaviour
                 enemy.WaveModifiers(waveNumber);
                 enemy.InitializeStun(MaskManager.Instance.mask3IsActive);
             }
+            
+            
+        }
 
-            yield return new WaitForSeconds(enemyDelay);
+            yield return new WaitForSeconds(spawnTimer);
 
             if(waveEnemiesSpawned >= totalWaveEnemies)
                 waveActive = false;
         }
 
-    }
 
-    private (int, int) GetCoords()
+   private Vector3 GetRandomSpawnPoint()
     {
-        //Debug.Log("We getting coords");
-        int side = UnityEngine.Random.Range(0, 4);
-        int x = 0;
-        int y = 0;
-
-        //Debug.Log($"{side} side");
-
-        switch (side)
-        {
-            case 0:
-                x = 0;
-                y = UnityEngine.Random.Range(0, Screen.height);
-                break;
-            case 1:
-                x = Screen.width;
-                y = UnityEngine.Random.Range(0, Screen.height);
-                break;
-            case 2:
-                y = 0;
-                x = UnityEngine.Random.Range(0, Screen.width);
-                break;
-            case 3:
-                y = Screen.height;
-                x = UnityEngine.Random.Range(0, Screen.width);
-                break;
-               
-        }
+        //TODO: needs to select from spawn points around the player, not just any
+        Vector3 targetSpawnPoint = Vector3.zero;
         
+        int i = UnityEngine.Random.Range(0, spawnPoints.Count);
 
-        return (x, y);
+        targetSpawnPoint = spawnPoints[i].transform.position;
+       
+        return targetSpawnPoint;
     }
+
+
 }
