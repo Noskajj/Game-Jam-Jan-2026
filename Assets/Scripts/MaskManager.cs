@@ -33,6 +33,13 @@ public class MaskManager : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        useMask1.started -= CheckForMask1;
+        useMask2.started -= CheckForMask2;
+        useMask3.started -= CheckForMask3;
+    }
+
 
     [SerializeField]
     private int allMasks, masksCollected;

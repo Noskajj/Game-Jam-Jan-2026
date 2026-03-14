@@ -42,11 +42,17 @@ public class UpgradeManager : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        CloseUiInput.started -= CloseShopHotkey;
+    }
+
     public void OpenShopUi()
     {
         Time.timeScale = 0f;
         uiOpen = true;
         holder.SetActive(true);
+        Debug.Log("OpenShop");
     }
 
     public void CloseShopUi()
@@ -54,6 +60,7 @@ public class UpgradeManager : MonoBehaviour
         Time.timeScale = 1f;
         uiOpen = false;
         holder.SetActive(false);
+        Debug.Log("CloseShop");
     }
 
     private void CloseShopHotkey(InputAction.CallbackContext context)
@@ -79,7 +86,7 @@ public class UpgradeManager : MonoBehaviour
         if(CanBuyUpgrade(GunUpgradeCost))
         {
             //Play weaponUpgrade sound
-            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.weaponUpgrade, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.weaponUpgrade, this.transform.position);
             PlayerStats.SpendSouls(GunUpgradeCost);
             GunUpgradesPurchased++;
 
@@ -114,7 +121,7 @@ public class UpgradeManager : MonoBehaviour
         if(CanBuyUpgrade(SwordUpgradeCost))
         {
             //Play weaponUpgrade sound
-            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.weaponUpgrade, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.weaponUpgrade, this.transform.position);
             PlayerStats.SpendSouls(SwordUpgradeCost);
             SwordUpgradesPurchased++;
 

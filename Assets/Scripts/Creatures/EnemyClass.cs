@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +20,11 @@ public abstract class EnemyClass : MonoBehaviour
 
     protected bool stunned = false;
 
+    [SerializeField]
+    private SpriteRenderer enemyDamageOverlay;
+    private float enemyDamageFadeTime = 0.5f;
+    private Coroutine damageVisualisationCoroutine;
+
     private void Start()
     {
         MaskManager.mask3Activated += StunActivated;
@@ -25,6 +32,12 @@ public abstract class EnemyClass : MonoBehaviour
         agent = transform.GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         StopDist();
+    }
+
+    private void OnDisable()
+    {
+        MaskManager.mask3Activated -= StunActivated;
+        MaskManager.mask3Deactivated -= StunDeactivated;
     }
 
     protected NavMeshAgent agent;
@@ -76,7 +89,7 @@ public abstract class EnemyClass : MonoBehaviour
             // call gun damage from player stats class
             TakeDamage(other.GetComponent<Projectile>().ProjectileHit());
             // Play enemyHurt sound
-            MainMenuAudioManager.instance.PlayOneShot(FMODEvents.instance.enemyHurt, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyHurt, this.transform.position);
             //destroys the bullet
             Destroy(other.gameObject);
         }
@@ -90,6 +103,12 @@ public abstract class EnemyClass : MonoBehaviour
             Death();
             return true;
         }
+
+        if(damageVisualisationCoroutine != null) 
+            StopCoroutine(damageVisualisationCoroutine);
+
+        Debug.Log("Enemy should be taking damage");
+        damageVisualisationCoroutine = StartCoroutine(DamageVisualisation());
 
         return false;
     }
@@ -110,8 +129,53 @@ public abstract class EnemyClass : MonoBehaviour
     public void WaveModifiers(int wave)
     {
         maxHealth *= Mathf.Atan(wave * 0.02f) + 1f;
-        monsterSpeed *= 0.12f * Mathf.Log(wave + 1) + 1;
+        monsterSpeed *= 0.12f * Mathf.Log(wave) + 1;
 
+    }
+
+    private IEnumerator DamageVisualisation()
+    {
+        //fade in
+        
+        float timer = 0;
+        var startAlpha = enemyDamageOverlay.color.a;
+
+        Debug.Log($"Enemy: We starting the visu enumer timer:{timer} fade time:{enemyDamageFadeTime}");
+        while (timer < enemyDamageFadeTime)
+        {
+            timer += Time.deltaTime;
+            float t = timer / enemyDamageFadeTime;
+
+            var col = enemyDamageOverlay.color;
+            col.a = Mathf.Lerp(startAlpha, 1, t);
+            enemyDamageOverlay.color = col;
+            yield return null;
+        }
+
+        //leave maxxed for a second
+        yield return new WaitForSeconds(1f);
+
+        //End effect
+        timer = 0;
+
+        
+
+
+        while (timer < enemyDamageFadeTime)
+        {
+            timer += Time.deltaTime;
+            float t = timer / enemyDamageFadeTime;
+
+            var col = enemyDamageOverlay.color;
+            col.a = Mathf.Lerp(1, 0, t);
+            enemyDamageOverlay.color = col;
+
+            yield return null;
+        }
+
+        var c = enemyDamageOverlay.color;
+        c.a = 0;
+        enemyDamageOverlay.color = c;
     }
 
 }
